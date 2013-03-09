@@ -1,0 +1,82 @@
+package StructBase;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD ON}
+{$DEFINE NDEBUG}
+
+requires
+  rtl,
+  odac140,
+  vcl,
+  xmlrtl,
+  soaprtl,
+  dsnap,
+  vcldb,
+  adortl,
+  RaizeComponentsVcl,
+  IndyCore,
+  IndySystem,
+  IndyProtocols,
+  vclimg,
+  Dev;
+
+contains
+  CommonBpl_BaseType in 'Unit\CommonBpl_BaseType.pas',
+  commonBpl_PublicFun in 'Unit\commonBpl_PublicFun.pas',
+  DBpl_DBProvides in 'Unit\DBpl_DBProvides.pas',
+  DBpl_IDBProvide in 'Unit\DBpl_IDBProvide.pas',
+  DBpl_ImplIDBProvide_Access in 'Unit\DBpl_ImplIDBProvide_Access.pas',
+  DBpl_ImplIDBProvide_Odac in 'Unit\DBpl_ImplIDBProvide_Odac.pas',
+  DBpl_ImplIDBProvide_QJ in 'Unit\DBpl_ImplIDBProvide_QJ.pas',
+  Struct_Application in 'Unit\Struct_Application.pas',
+  Struct_Applications in 'Unit\Struct_Applications.pas',
+  Struct_DicBaseItem in 'Unit\Struct_DicBaseItem.pas',
+  Struct_DicDataSets in 'Unit\Struct_DicDataSets.pas',
+  Struct_DicItems in 'Unit\Struct_DicItems.pas',
+  Struct_LoginUser in 'Unit\Struct_LoginUser.pas',
+  Struct_MetaSource in 'Unit\Struct_MetaSource.pas',
+  Struct_MetaSources in 'Unit\Struct_MetaSources.pas',
+  uMyException in 'Unit\uMyException.pas',
+  uStructbaseFrameWork in 'Unit\uStructbaseFrameWork.pas',
+  XmlRegObj in 'Unit\XmlRegObj.pas',
+  Base64 in 'Phprpc_Unit\Base64.pas',
+  BigInt in 'Phprpc_Unit\BigInt.pas',
+  MD5 in 'Phprpc_Unit\MD5.pas',
+  PHPRPC in 'Phprpc_Unit\PHPRPC.pas',
+  PHPRPCClient in 'Phprpc_Unit\PHPRPCClient.pas',
+  PHPRPCIdHttpClient in 'Phprpc_Unit\PHPRPCIdHttpClient.pas',
+  XXTEA in 'Phprpc_Unit\XXTEA.pas',
+  CommonBpl_DBFormBase in 'DBform_Unit\CommonBpl_DBFormBase.pas' {DbFormBase},
+  CommonBpl_DBFormBaseEx in 'DBform_Unit\CommonBpl_DBFormBaseEx.pas' {DBFormBaseEx},
+  IMCode_delphi2010 in 'DBform_Unit\IMCode_delphi2010.pas',
+  Struct_BaseForm_Function in 'DBform_Unit\Struct_BaseForm_Function.pas',
+  Struct_BaseForm_FunctionEx in 'DBform_Unit\Struct_BaseForm_FunctionEx.pas',
+  Struct_BaseFormFun in 'DBform_Unit\Struct_BaseFormFun.pas',
+  Struct_CntlDataInput in 'DBform_Unit\Struct_CntlDataInput.pas',
+  Struct_DBControls in 'DBform_Unit\Struct_DBControls.pas',
+  Struct_Filter in 'DBform_Unit\Struct_Filter.pas',
+  CnDebug in 'Unit\CnDebug.pas';
+
+end.
+

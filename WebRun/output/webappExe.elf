@@ -1,0 +1,309 @@
+EurekaLog 6.0.24
+
+Application:
+------------------------------------------------------
+  1.1 Start Date      : Fri, 8 Mar 2013 15:10:00 +0800
+  1.2 Name/Description: webappExe.exe - (警综平台)
+  1.3 Version Number  : 1.0.0.2
+  1.4 Parameters      : 
+  1.5 Compilation Date: Fri, 8 Mar 2013 15:09:59 +0800
+  1.6 Up Time         : 0 second
+
+Exception:
+----------------------------------------------------------------------------------------------------------------
+  2.1 Date          : Fri, 8 Mar 2013 15:10:00 +0800
+  2.2 Address       : 00470A93
+  2.3 Module Name   : webappExe.exe - (警综平台)
+  2.4 Module Version: 1.0.0.2
+  2.5 Type          : EAccessViolation
+  2.6 Message       : Access violation at address 00470A93 in module 'webappExe.exe'. Write of address 000003E4.
+  2.7 ID            : FC7D
+  2.8 Count         : 1
+  2.9 Status        : New
+  2.10 Note         : 
+
+User:
+-------------------------------------------------------
+  3.1 ID        : quanj
+  3.2 Name      : 微软用户
+  3.3 Email     : 
+  3.4 Company   : 微软中国
+  3.5 Privileges: SeChangeNotifyPrivilege         - ON
+                  SeSecurityPrivilege             - OFF
+                  SeBackupPrivilege               - OFF
+                  SeRestorePrivilege              - OFF
+                  SeSystemtimePrivilege           - OFF
+                  SeShutdownPrivilege             - OFF
+                  SeRemoteShutdownPrivilege       - OFF
+                  SeTakeOwnershipPrivilege        - OFF
+                  SeDebugPrivilege                - ON
+                  SeSystemEnvironmentPrivilege    - OFF
+                  SeSystemProfilePrivilege        - OFF
+                  SeProfileSingleProcessPrivilege - OFF
+                  SeIncreaseBasePriorityPrivilege - OFF
+                  SeLoadDriverPrivilege           - ON
+                  SeCreatePagefilePrivilege       - OFF
+                  SeIncreaseQuotaPrivilege        - OFF
+                  SeUndockPrivilege               - ON
+                  SeManageVolumePrivilege         - OFF
+                  SeImpersonatePrivilege          - ON
+                  SeCreateGlobalPrivilege         - ON
+
+Active Controls:
+--------------------------------------------------------------------------------
+  4.1 Form Class   : TAppBuilder
+  4.2 Form Text    : webappExe - Delphi 2010 - webappExe.dproj [Running] [Built]
+  4.3 Control Class: 
+  4.4 Control Text : 
+
+Computer:
+-----------------------------------------------------------------------------------
+  5.1 Name          : 全江
+  5.2 Total Memory  : 2038 Mb
+  5.3 Free Memory   : 1097 Mb
+  5.4 Total Disk    : 90.29 Gb
+  5.5 Free Disk     : 59.82 Gb
+  5.6 System Up Time: 1 day, 4 hours, 49 minutes, 17 seconds
+  5.7 Processor     : Pentium(R) Dual-Core  CPU      E5300  @ 2.60GHz
+  5.8 Display Mode  : 1280 x 960, 32 bit
+  5.9 Display DPI   : 96
+  5.10 Video Card   : Intel(R) G33/G31 Express Chipset Family (driver 6.14.10.4906)
+  5.11 Printer      : HP LaserJet 1022n (driver 6,0,3508,0)
+
+Operating System:
+------------------------------------
+  6.1 Type    : Microsoft Windows XP
+  6.2 Build # : 2600
+  6.3 Update  : Service Pack 2
+  6.4 Language: Chinese
+  6.5 Charset : 134
+
+Network:
+---------------------------------
+  7.1 IP Address: 010.075.001.073
+  7.2 Submask   : 255.255.255.000
+  7.3 Gateway   : 010.075.001.254
+  7.4 DNS 1     : 010.075.001.001
+  7.5 DNS 2     : 000.000.000.000
+  7.6 DHCP      : OFF            
+
+Call Stack Information:
+----------------------------------------------------------------------------------
+|Address |Module       |Unit         |Class       |Procedure/Method       |Line  |
+----------------------------------------------------------------------------------
+|*Exception Thread: ID=3800; Priority=0; Class=; [Main]                          |
+|--------------------------------------------------------------------------------|
+|00470A93|webappExe.exe|Main.pas     |TMainForm   |FormShow               |141[5]|
+|502BEBEA|vcl140.bpl   |Forms.pas    |TCustomForm |DoShow                 |      |
+|5000A0D8|rtl140.bpl   |System.pas   |            |_CallDynaInst          |      |
+|502C3175|vcl140.bpl   |Forms.pas    |TCustomForm |CMShowingChanged       |      |
+|5000A187|rtl140.bpl   |System.pas   |TObject     |Dispatch               |      |
+|50295B28|vcl140.bpl   |Controls.pas |TControl    |WndProc                |      |
+|5029A158|vcl140.bpl   |Controls.pas |TWinControl |WndProc                |      |
+|50295A20|vcl140.bpl   |Controls.pas |TControl    |Perform                |      |
+|502959FC|vcl140.bpl   |Controls.pas |TControl    |Perform                |      |
+|502999FC|vcl140.bpl   |Controls.pas |TWinControl |UpdateShowing          |      |
+|50299B5C|vcl140.bpl   |Controls.pas |TWinControl |UpdateControlState     |      |
+|5029C7CA|vcl140.bpl   |Controls.pas |TWinControl |CMVisibleChanged       |      |
+|7C9210ED|ntdll.dll    |             |            |RtlLeaveCriticalSection|      |
+|77D1CE93|USER32.dll   |             |            |MonitorFromWindow      |      |
+|77D1CEA6|USER32.dll   |             |            |MonitorFromWindow      |      |
+|5000D0D8|rtl140.bpl   |System.pas   |            |_UStrClr               |      |
+|50295B28|vcl140.bpl   |Controls.pas |TControl    |WndProc                |      |
+|5029A158|vcl140.bpl   |Controls.pas |TWinControl |WndProc                |      |
+|50063EAC|rtl140.bpl   |Classes.pas  |TList       |First                  |      |
+|502C56AF|vcl140.bpl   |Forms.pas    |TScreen     |GetMonitor             |      |
+|502C56A4|vcl140.bpl   |Forms.pas    |TScreen     |GetDesktopWidth        |      |
+|502C0951|vcl140.bpl   |Forms.pas    |TCustomForm |SetWindowToMonitor     |      |
+|50295A20|vcl140.bpl   |Controls.pas |TControl    |Perform                |      |
+|502959FC|vcl140.bpl   |Controls.pas |TControl    |Perform                |      |
+|5029443A|vcl140.bpl   |Controls.pas |TControl    |SetVisible             |      |
+|50294414|vcl140.bpl   |Controls.pas |TControl    |SetVisible             |      |
+|502BEE48|vcl140.bpl   |Forms.pas    |TCustomForm |SetVisible             |      |
+|502C89F0|vcl140.bpl   |Forms.pas    |TApplication|Run                    |      |
+|00474799|webappExe.exe|webappExe.dpr|            |                       |27[7] |
+----------------------------------------------------------------------------------
+
+Modules Information:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name                     |Description                                                        |Version         |Size   |Modified           |Path                                                                                                |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|webappExe.exe            |警综平台                                                           |1.0.0.2         |714752 |2013-03-08 15:10:00|D:\StructBase Source新结构\WebRun\output                                                            |
+|004C0000|StructBase.bpl           |                                                                   |1.0.0.0         |627712 |2013-03-05 17:20:42|D:\StructBase Source新结构\WebRun\output                                                            |
+|00560000|RaizeComponentsVcl140.bpl|Raize Components 5 Package                                         |5.5.0.0         |2017280|2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|00760000|odac140.bpl              |                                                                   |6.90.0.53       |1182208|2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|00890000|dac140.bpl               |                                                                   |6.90.0.57       |870912 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|00970000|Dev.bpl                  |                                                                   |1.0.0.0         |3693056|2013-02-15 18:53:30|D:\StructBase Source新结构\WebRun\output                                                            |
+|01B30000|VrvHook.dll              |edphookNt                                                          |9.5.25.16       |294912 |2013-03-07 10:21:26|C:\WINDOWS\system32                                                                                 |
+|10000000|prtHook.dll              |prthook                                                            |9.9.20.10       |466944 |2013-03-07 10:22:40|C:\WINDOWS\system32                                                                                 |
+|40830000|vclimg140.bpl            |Embarcadero Imaging Package                                        |14.0.3513.24210 |320512 |2009-09-01 22:26:36|D:\StructBase Source新结构\WebRun\output                                                            |
+|4AE90000|gdiplus.dll              |Microsoft GDI+                                                     |5.1.3102.2180   |1712128|2004-08-17 20:00:00|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2180_x-ww_522f9f82        |
+|4DD10000|msado15.dll              |Microsoft Data Access - ActiveX Data Objects                       |2.81.1128.0     |536576 |2006-12-26 21:07:40|C:\Program Files\Common Files\system\ado                                                            |
+|50000000|rtl140.bpl               |Embarcadero Component Package                                      |14.0.3513.24210 |1784832|2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|501C0000|vcl140.bpl               |Embarcadero Component Package                                      |14.0.3513.24210 |2446848|2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50420000|vclx140.bpl              |Embarcadero Extended Component Package                             |14.0.3513.24210 |237056 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50610000|dsnap140.bpl             |Embarcadero Local Provider Component Package                       |14.0.3513.24210 |287744 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50660000|dbrtl140.bpl             |Embarcadero Database Component Package                             |14.0.3513.24210 |404992 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|506D0000|xmlrtl140.bpl            |Embarcadero XML Component Package                                  |14.0.3513.24210 |1572864|2012-12-31 17:33:56|D:\StructBase Source新结构\WebRun\output                                                            |
+|50940000|inet140.bpl              |Embarcadero Internet Component Package                             |14.0.3513.24210 |171008 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|509F0000|IndyCore140.bpl          |Internet Direct (Indy) 10.2.5 Core Run-Time for Delphi             |14.0.3513.24210 |394752 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50A60000|IndyProtocols140.bpl     |Internet Direct (Indy) 10.2.5 Protocols Run-Time Package for Delphi|14.0.3513.24210 |2295296|2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50CA0000|IndySystem140.bpl        |Internet Direct (Indy) 10.2.5 - System Run-Time Package for Delphi |14.0.3513.24210 |253440 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50CF0000|adortl140.bpl            |Embarcadero ADO DB Component Package                               |14.0.3513.24210 |176640 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|50D30000|vcldb140.bpl             |Embarcadero Database Component Package                             |14.0.3513.24210 |314368 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|51470000|soaprtl140.bpl           |Embarcadero SOAP Runtime Support                                   |14.0.3513.24210 |680960 |2012-12-29 22:51:50|D:\StructBase Source新结构\WebRun\output                                                            |
+|5ADC0000|uxtheme.dll              |Microsoft UxTheme Library                                          |6.0.2900.2180   |216064 |2007-12-09 19:51:40|C:\WINDOWS\system32                                                                                 |
+|5EFE0000|olepro32.dll             |                                                                   |5.1.2600.2180   |83456  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|5FDD0000|NETAPI32.dll             |Net Win32 API DLL                                                  |5.1.2600.2976   |332288 |2006-08-17 20:29:48|C:\WINDOWS\system32                                                                                 |
+|62C20000|LPK.DLL                  |Language Pack                                                      |5.1.2600.2180   |22016  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|719C0000|mswsock.dll              |Microsoft Windows Sockets 2.0 Service Provider                     |5.1.2600.2180   |240640 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|71A10000|WS2HELP.dll              |Windows Socket 2.0 Helper for Windows NT                           |5.1.2600.2180   |19968  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|71A20000|WS2_32.dll               |Windows Socket 2.0 32-Bit DLL                                      |5.1.2600.2180   |82944  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|71A40000|wsock32.dll              |Windows Socket 32-Bit DLL                                          |5.1.2600.2180   |28672  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|71A90000|mpr.dll                  |Multiple Provider Router DLL                                       |5.1.2600.2180   |59904  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|72F70000|winspool.drv             |Windows Spooler Driver                                             |5.1.2600.2180   |145920 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|73640000|msctfime.ime             |Microsoft Text Frame Work Service IME                              |5.1.2600.2180   |177152 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|73FA0000|USP10.dll                |Uniscribe Unicode script processor                                 |1.420.2600.2180 |406528 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74680000|MSCTF.dll                |MSCTF Server DLL                                                   |5.1.2600.2180   |293376 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74BE0000|oleacc.dll               |Active Accessibility Core Component                                |4.2.5406.0      |163328 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|74C90000|oledlg.dll               |Microsoft Windows(TM) OLE 2.0 User Interface Support               |5.1.2600.3016   |116736 |2006-10-17 00:15:52|C:\WINDOWS\system32                                                                                 |
+|75B50000|MSDART.DLL               |Microsoft Data Access - OLE DB Runtime Routines                    |2.81.1117.0     |151552 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|75FF0000|MSVCP60.dll              |Microsoft (R) C++ Runtime Library                                  |6.2.3104.0      |413696 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76060000|setupapi.dll             |Windows Setup API                                                  |5.1.2600.2180   |1388032|2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|762F0000|msimg32.dll              |GDIEXT Client DLL                                                  |5.1.2600.2180   |4608   |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76300000|IMM32.DLL                |Windows XP IMM32 API Client DLL                                    |5.1.2600.2180   |110080 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76320000|comdlg32.dll             |Common Dialogs DLL                                                 |6.0.2900.2180   |269312 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|765E0000|CRYPT32.dll              |Crypto API32                                                       |5.131.2600.2180 |590336 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76680000|wininet.dll              |Internet Extensions for Win32                                      |6.0.2900.3231   |644608 |2007-10-11 14:12:10|C:\WINDOWS\system32                                                                                 |
+|76990000|ole32.dll                |Microsoft OLE for Windows                                          |5.1.2600.2726   |1284608|2005-07-26 12:39:50|C:\WINDOWS\system32                                                                                 |
+|76B10000|winmm.dll                |MCI API DLL                                                        |5.1.2600.2180   |163840 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76BC0000|Psapi.dll                |Process Status Helper                                              |5.1.2600.2180   |23040  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76C60000|IMAGEHLP.DLL             |Windows NT Image Helper                                            |5.1.2600.2180   |144384 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76DB0000|MSASN1.dll               |ASN.1 Runtime APIs                                                 |5.1.2600.2180   |57344  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76E50000|rtutils.dll              |Routing Utilities                                                  |5.1.2600.2180   |44032  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76E60000|rasman.dll               |Remote Access Connection Manager                                   |5.1.2600.2180   |61440  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76E80000|TAPI32.dll               |Microsoft(R) Windows(TM) Telephony API Client DLL                  |5.1.2600.2180   |181760 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76EB0000|Rasapi32.dll             |Remote Access API                                                  |5.1.2600.2180   |235520 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|76FA0000|CLBCATQ.DLL              |                                                                   |2001.12.4414.308|498688 |2005-07-26 12:39:46|C:\WINDOWS\system32                                                                                 |
+|77020000|COMRes.dll               |                                                                   |2001.12.4414.258|615936 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|770F0000|oleaut32.dll             |                                                                   |5.1.2600.3139   |549376 |2007-05-17 19:29:10|C:\WINDOWS\system32                                                                                 |
+|77180000|comctl32.dll             |User Experience Controls Library                                   |6.0.2900.2982   |1054208|2006-08-25 08:49:42|C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2982_x-ww_ac3f9c03|
+|77BD0000|version.dll              |Version Checking and File Installation Libraries                   |5.1.2600.2180   |18944  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|77BE0000|msvcrt.dll               |Windows NT CRT DLL                                                 |7.0.2600.2180   |343040 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|77D10000|USER32.dll               |Windows XP USER API Client DLL                                     |5.1.2600.3099   |573952 |2007-03-08 23:37:22|C:\WINDOWS\system32                                                                                 |
+|77DA0000|ADVAPI32.dll             |Advanced Windows 32 Base API                                       |5.1.2600.2180   |674304 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|77E50000|RPCRT4.dll               |Remote Procedure Call Runtime                                      |5.1.2600.3173   |584192 |2007-07-09 21:09:42|C:\WINDOWS\system32                                                                                 |
+|77EF0000|GDI32.dll                |GDI Client DLL                                                     |5.1.2600.3159   |282112 |2007-06-19 21:32:10|C:\WINDOWS\system32                                                                                 |
+|77F40000|SHLWAPI.dll              |Shell Light-weight Utility Library                                 |6.0.2900.3231   |473088 |2007-10-11 14:12:08|C:\WINDOWS\system32                                                                                 |
+|77FC0000|Secur32.dll              |Security Support Provider Interface                                |5.1.2600.2180   |55808  |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|7C800000|kernel32.dll             |Windows NT BASE API Client DLL                                     |5.1.2600.3119   |1145344|2007-04-16 23:54:26|C:\WINDOWS\system32                                                                                 |
+|7C920000|ntdll.dll                |NT Layer DLL                                                       |5.1.2600.2180   |591360 |2004-08-17 12:00:00|C:\WINDOWS\system32                                                                                 |
+|7D590000|shell32.dll              |Windows Shell Common Dll                                           |6.0.2900.3241   |8312320|2007-10-26 00:54:52|C:\WINDOWS\system32                                                                                 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Processes Information:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|ID  |Name             |Description                            |Version        |Memory   |Priority|Threads|Path                                                             |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|4   |System           |                                       |               |331776   |Normal  |88     |                                                                 |
+|204 |SCardSvr.exe     |Smart Card Resource Management Server  |5.1.2600.2180  |4247552  |Normal  |9      |C:\WINDOWS\System32                                              |
+|688 |alg.exe          |Application Layer Gateway Service      |5.1.2600.2180  |5087232  |Normal  |5      |C:\WINDOWS\System32                                              |
+|708 |mDNSResponder.exe|Bonjour Service                        |1.0.3.1        |5251072  |Normal  |5      |C:\Program Files\Bonjour                                         |
+|788 |wdfmgr.exe       |Windows User Mode Driver Manager       |5.2.3790.1230  |3321856  |Normal  |4      |C:\WINDOWS\system32                                              |
+|812 |ekrn.exe         |ESET Service                           |5.0.2126.0     |83771392 |Normal  |23     |C:\Program Files\ESET\ESET NOD32 Antivirus                       |
+|856 |vmware-authd.exe |VMware Authorization Service           |6.0.0.45731    |8749056  |Normal  |6      |C:\Program Files\VMware\VMware Workstation                       |
+|916 |vrvsafec.exe     |edpsafec                               |9.10.13.16     |4640768  |Normal  |2      |C:\WINDOWS\system32                                              |
+|928 |smss.exe         |                                       |               |413696   |Normal  |3      |\SystemRoot\System32                                             |
+|952 |fbguard.exe      |Firebird SQL Server                    |2.5.0.26074    |4423680  |Normal  |3      |E:\CBXv537\AppSvr\DBSvr\bin                                      |
+|984 |eSafeService.exe |eSafeService                           |1.0.0.2        |3899392  |Normal  |3      |C:\WINDOWS\system32                                              |
+|1008|csrss.exe        |                                       |               |12918784 |Normal  |12     |C:\WINDOWS\system32                                              |
+|1036|winlogon.exe     |                                       |               |1867776  |High    |21     |C:\WINDOWS\system32                                              |
+|1080|services.exe     |Services and Controller app            |5.1.2600.2180  |5963776  |Normal  |15     |C:\WINDOWS\system32                                              |
+|1092|lsass.exe        |LSA Shell (Export Version)             |5.1.2600.2180  |6909952  |Normal  |21     |C:\WINDOWS\system32                                              |
+|1268|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |6623232  |Normal  |23     |C:\WINDOWS\system32                                              |
+|1316|jqs.exe          |Java(TM) Quick Starter Service         |6.0.100.32     |1601536  |Low     |5      |C:\Program Files\Java\jre6\bin                                   |
+|1356|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |6201344  |Normal  |10     |C:\WINDOWS\system32                                              |
+|1400|LogWatNT.exe     |                                       |               |1318912  |Normal  |2      |C:\WINDOWS                                                       |
+|1420|MDM.EXE          |Machine Debug Manager                  |7.0.9466.0     |4538368  |Normal  |4      |C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG          |
+|1468|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |44089344 |Normal  |70     |C:\WINDOWS\System32                                              |
+|1508|mnmsrvc.exe      |NetMeeting Remote Desktop Sharing      |5.1.2600.2180  |4739072  |Normal  |2      |C:\WINDOWS\system32                                              |
+|1556|wmiprvse.exe     |WMI                                    |5.1.2600.2180  |6627328  |Normal  |4      |C:\WINDOWS\system32\wbem                                         |
+|1572|vmount2.exe      |virtual disk mount service             |2.2.5.42958    |6225920  |Normal  |3      |C:\Program Files\Common Files\VMware\VMware Virtual Image Editing|
+|1592|vmnat.exe        |VMware NAT Service                     |6.0.0.45731    |3559424  |Normal  |3      |C:\WINDOWS\system32                                              |
+|1676|rundll32.exe     |Run a DLL as an App                    |5.1.2600.2180  |4374528  |Normal  |1      |C:\WINDOWS\system32                                              |
+|1696|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |5918720  |Normal  |6      |C:\WINDOWS\system32                                              |
+|1712|vmnetdhcp.exe    |VMware VMnet DHCP service              |6.0.0.45731    |3325952  |Normal  |2      |C:\WINDOWS\system32                                              |
+|1804|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |7925760  |Normal  |17     |C:\WINDOWS\system32                                              |
+|1816|WatchClient.exe  |                                       |6.6.24.52      |3837952  |Normal  |3      |C:\WINDOWS\system32                                              |
+|1928|svchost.exe      |Generic Host Process for Win32 Services|5.1.2600.2180  |5287936  |Normal  |7      |C:\WINDOWS\system32                                              |
+|1936|vrvrf_c.exe      |VRVRF_C                                |6.6.1403.5     |12292096 |Normal  |18     |C:\WINDOWS\system32                                              |
+|1948|trThread.exe     |                                       |               |4530176  |Normal  |6      |C:\Program Files\Trap Receiver                                   |
+|1968|VrvEdp_m.exe     |2011-01-19 公安标准版本（V1.3）        |6.6.24.9000    |14041088 |Normal  |22     |C:\WINDOWS\system32                                              |
+|2020|fbserver.exe     |Firebird SQL Server                    |2.5.0.26074    |5308416  |Normal  |6      |E:\CBXv537\AppSvr\DBSvr\bin                                      |
+|2040|spoolsv.exe      |Spooler SubSystem App                  |5.1.2600.2696  |8847360  |Normal  |14     |C:\WINDOWS\system32                                              |
+|2504|EdpTrayIcon.exe  |VRV                                    |6.6.21.3622    |4767744  |Normal  |1      |C:\WINDOWS\system32                                              |
+|2816|xlnfsctl.exe     |                                       |               |5013504  |Normal  |1      |C:\WINDOWS\system32                                              |
+|2896|WebServ.         |                                       |               |3219456  |Normal  |2      |D:\StructBase Source新结构\WebRun\debug_www                      |
+|2940|TSVNCache.exe    |TortoiseSVN status cache               |1.5.9.15518    |8269824  |Normal  |9      |C:\Program Files\TortoiseSVN\bin                                 |
+|2984|wmiprvse.exe     |WMI                                    |5.1.2600.2180  |7819264  |Normal  |5      |C:\WINDOWS\system32\wbem                                         |
+|3040|explorer.exe     |Windows Explorer                       |6.0.2900.3156  |44511232 |Normal  |28     |C:\WINDOWS                                                       |
+|3088|vmware-tray.exe  |VMware Tray Process                    |6.0.0.45731    |20094976 |Normal  |5      |C:\Program Files\VMware\VMware Workstation                       |
+|3108|eSafe_monitor.exe|_Tray Microsoft 基础类应用程序         |1.0.0.1        |5160960  |Normal  |1      |C:\Program Files\eSafe                                           |
+|3172|daemon.exe       |Virtual DAEMON Manager                 |3.47.0.0       |5140480  |Normal  |2      |C:\Program Files\D-Tools                                         |
+|3240|egui.exe         |ESET Main GUI                          |5.0.2126.0     |12537856 |Normal  |7      |C:\Program Files\ESET\ESET NOD32 Antivirus                       |
+|3348|ctfmon.exe       |CTF Loader                             |5.1.2600.2180  |5275648  |Normal  |1      |C:\WINDOWS\system32                                              |
+|3968|bds.exe          |Embarcadero RAD Studio for Windows     |14.0.3513.24210|232370176|Normal  |19     |C:\Program Files\Embarcadero\RAD Studio\7.0\Bin                  |
+|4024|webappExe.       |                                       |               |28471296 |Normal  |2      |D:\StructBase Source新结构\WebRun\output                         |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Assembler Information:
+-------------------------------------------------------------------
+; Main.TMainForm.FormShow (Line=136 - Offset=0)
+; ---------------------------------------------
+00470A6C  push    dword ptr fs:[eax]
+00470A6F  mov     fs:[eax], esp
+;
+; Line=138 - Offset=2
+; -------------------
+00470A72  lea     eax, [ebp-$04]
+00470A75  call    Sysutils.GetCurrentDir
+00470A7A  mov     edx, [ebp-$04]
+00470A7D  mov     eax, dword ptr [$47BB38]
+00470A82  mov     ecx, $00470B18                    ; '\'
+00470A87  call    System._UStrCat3
+;
+; Line=141 - Offset=5
+; -------------------
+00470A8C  mov     eax, dword ptr [$47BB64]
+00470A91  mov     eax, [eax]
+00470A93  mov     [eax+$03E4], ebx                  ; <-- EXCEPTION
+00470A99  mov     dword ptr [eax+$03E0], $00470900  ; '梵.'
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 01BA7170
+EBX: 01BA7170   ESI: 502BEBD4
+ECX: 0000005C   ESP: 0012FB1C
+EDX: 00000000   EIP: 00470A93
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FB1C: 0012FB40   00470A93: 89 98 E4 03 00 00 C7 80 E0 03 00 00 00 09 47 00  ..............G.
+0012FB20: 5000AEB0   00470AA3: A1 64 BB 47 00 8B 00 89 98 EC 03 00 00 C7 80 E8  .d.G............
+0012FB24: 0012FB30   00470AB3: 03 00 00 EC 09 47 00 A1 64 BB 47 00 8B 00 8B 10  .....G..d.G.....
+0012FB28: 01BA7170   00470AC3: FF 92 10 01 00 00 A1 64 BB 47 00 8B 00 83 78 0C  .......d.G....x.
+0012FB2C: 00000000   00470AD3: 00 75 0E A1 78 2D 48 00 8B 00 E8 0A E8 FF FF EB  .u..x-H.........
+0012FB30: 0012FB88   00470AE3: 07 33 C0 E8 25 EB FF FF 33 C0 5A 59 59 64 89 10  .3..%...3.ZYYd..
+0012FB34: 502BEBEF   00470AF3: 68 08 0B 47 00 8D 45 FC E8 30 08 F9 FF C3 E9 92  h..G..E..0......
+0012FB38: 0012FD3C   00470B03: 06 F9 FF EB F0 5B 59 5D C3 B0 04 02 00 FF FF FF  .....[Y]........
+0012FB3C: 502C317A   00470B13: FF 01 00 00 00 5C 00 00 00 53 56 57 83 C4 F4 89  .....\...SVW....
+0012FB40: 0012FB4C   00470B23: 14 24 8B D8 8B 83 94 03 00 00 E8 F2 E8 FF FF 8B  .$..............
+0012FB44: 5000AC80   00470B33: F0 4E 85 F6 7C 42 46 33 FF 8B D7 8B 83 94 03 00  .N..|BF3........
+0012FB48: 0012FB88   00470B43: 00 E8 D3 E8 FF FF 8D 54 24 08 52 8D 4C 24 08 8B  .......T$.R.L$..
+0012FB4C: 0012FB58   00470B53: D0 8B C3 E8 A1 FE FF FF 33 D2 8B 44 24 04 E8 66  ........3..D$..f
+0012FB50: 502C3711   00470B63: E8 FF FF 8B 44 24 08 8B 40 64 BA FF FF FF 00 E8  ....D$..@d......
+0012FB54: 0012FB88   00470B73: BD E7 FF FF 47 4E 75 C1 8B 04 24 8B 40 34 8D 54  ....GNu...$.@4.T
+0012FB58: 0012FD58   00470B83: 24 08 52 8D 4C 24 08 8B D0 8B C3 E8 69 FE FF FF  $.R.L$......i...
+
+
+

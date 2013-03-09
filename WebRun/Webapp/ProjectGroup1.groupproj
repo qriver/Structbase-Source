@@ -1,0 +1,96 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{EEAFBA34-32E2-4E4B-BB77-25C0A8745518}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\newStructBase\StructBase.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\StructRun\StructRun.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="project\download\download.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\SystemManager\SysManager.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="webapp.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\DataPickUp\DataPickup.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="StructBase">
+			<MSBuild Projects="..\newStructBase\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Clean">
+			<MSBuild Targets="Clean" Projects="..\newStructBase\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Make">
+			<MSBuild Targets="Make" Projects="..\newStructBase\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructRun">
+			<MSBuild Projects="..\StructRun\StructRun.dproj"/>
+		</Target>
+		<Target Name="StructRun:Clean">
+			<MSBuild Targets="Clean" Projects="..\StructRun\StructRun.dproj"/>
+		</Target>
+		<Target Name="StructRun:Make">
+			<MSBuild Targets="Make" Projects="..\StructRun\StructRun.dproj"/>
+		</Target>
+		<Target Name="download">
+			<MSBuild Projects="project\download\download.dproj"/>
+		</Target>
+		<Target Name="download:Clean">
+			<MSBuild Targets="Clean" Projects="project\download\download.dproj"/>
+		</Target>
+		<Target Name="download:Make">
+			<MSBuild Targets="Make" Projects="project\download\download.dproj"/>
+		</Target>
+		<Target Name="SysManager">
+			<MSBuild Projects="..\SystemManager\SysManager.dproj"/>
+		</Target>
+		<Target Name="SysManager:Clean">
+			<MSBuild Targets="Clean" Projects="..\SystemManager\SysManager.dproj"/>
+		</Target>
+		<Target Name="SysManager:Make">
+			<MSBuild Targets="Make" Projects="..\SystemManager\SysManager.dproj"/>
+		</Target>
+		<Target Name="webapp">
+			<MSBuild Projects="webapp.dproj"/>
+		</Target>
+		<Target Name="webapp:Clean">
+			<MSBuild Targets="Clean" Projects="webapp.dproj"/>
+		</Target>
+		<Target Name="webapp:Make">
+			<MSBuild Targets="Make" Projects="webapp.dproj"/>
+		</Target>
+		<Target Name="DataPickup">
+			<MSBuild Projects="..\DataPickUp\DataPickup.dproj"/>
+		</Target>
+		<Target Name="DataPickup:Clean">
+			<MSBuild Targets="Clean" Projects="..\DataPickUp\DataPickup.dproj"/>
+		</Target>
+		<Target Name="DataPickup:Make">
+			<MSBuild Targets="Make" Projects="..\DataPickUp\DataPickup.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="StructBase;StructRun;download;SysManager;webapp;DataPickup"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="StructBase:Clean;StructRun:Clean;download:Clean;SysManager:Clean;webapp:Clean;DataPickup:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="StructBase:Make;StructRun:Make;download:Make;SysManager:Make;webapp:Make;DataPickup:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

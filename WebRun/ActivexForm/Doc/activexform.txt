@@ -1,0 +1,401 @@
+
+BCB的开发的ActiveForm，在IE浏览器中TEdit,TMemo控间中,方向键和BackSpace键不响应 
+.
+ 
+
+
+
+
+对我有用[0]丢个板砖[0]引用 | 举报 | 
+
+管理 | TOP回复次数：5 
+
+
+
+
+
+
+gloomgloom等级：
+
+2
+
+ 
+
+#1得分：0 回复于： 2001-12-01 11:50:42 
+
+是被IE截获了吧？ 
+
+
+
+
+
+专访周家安：我的十年编程自学之路
+
+对我有用[0]丢个板砖[0]引用 | 举报 | 
+
+管理 | TOP 
+
+
+
+
+
+
+781014781014等级： 
+
+#2得分：0 回复于： 2001-12-01 12:12:09 
+
+关注 
+
+
+
+
+
+
+
+对我有用[0]丢个板砖[0]引用 | 举报 | 
+
+管理 | TOP 
+
+
+
+
+
+
+renweirenwei等级： 
+
+#3得分：0 回复于： 2001-12-01 13:22:03 
+
+我检查过，它是BCB中存在的BUG，在国外的很多论坛上都有讨论，Borland公司对此一直保持沉默，在Delphi中（5，6）它已经被解决了，可是在BCB中，已经过去了三个版本，还是存在问题。
+ 
+我所获得解决方式由以下四种，：
+ 解决方式1：
+    重载WantChildKey虚函数，在这里你可以得到全部对当前构件（包括Form）发出的消息，可以由你来决定此消息由构件本身还是它的父构件来处理。我尝试将此消息截获，再转发给构件，则出现构件消息无限循环的问题，我没有解决。
+ 
+
+方式2：
+ 
+   使用HOOK机制，通过HOOK动态连接库截取全部的消息或者键盘事件，再转发给ActiveForm,由于在键盘hook中得到的只是wParam，没有lParam，因此发出的键盘消息是不完整的。backspace是可以使用的，return键成了tab键，我没有大量的时间，目前开发测试搁浅（我的项目很紧急！！！）
+ 
+
+方式3：
+     使用WindowProc hook，即多重继承，从TActiveForm和你的应用类继承，对消息进行检查，分别发送给自己和父进程。
+ 
+
+TMyForm = class(TActiveForm, IMyForm)
+     ...
+     ThirdPartActiveXControl: TThirdPartActiveXControl;
+     ...
+     procedure ActiveFormCreate(Sender: TObject);
+   private
+     ThirdPartActiveXControlOldWndProc:TWndMethod;
+     procedure ThirdPartActiveXControlWndProc(var Msg:TMessage);
+     ...
+   end;
+ 
+procedure TMyForm.ActiveFormCreate(Sender: TObject);
+ begin
+   ...
+   ThirdPartActiveXControlOldWndProc:=ThirdPartActiveXControl.WindowProc;
+   ThirdPartActiveXControl.WindowProc:=ThirdPartActiveXControlWndProc;
+ end;
+ 
+procedure TMyForm .sgR3WndProc(var Msg: TMessage);
+ begin
+   case Msg.Msg of
+    WM_KEYDOWN:
+     begin
+      if (Msg.wParam>=VK_PRIOR) and (Msg.wParam<=VK_DOWN) then
+        case Msg.wParam of // you need to handle all of these keys :(
+         VK_PRIOR: ; // 21 PAGE UP key
+         VK_NEXT: ; // 22 PAGE DOWN key
+         VK_END: ;// 23 END key
+         VK_HOME: // 24 HOME key
+         VK_LEFT: // 25 LEFT ARROW key
+         VK_UP: // 26 UP ARROW key
+         VK_RIGHT: //27 RIGHT ARROW key
+         VK_DOWN: // 28 DOWN ARROW key
+        end
+       else
+        ThirdPartActiveXControlOldWndProc(Msg);
+     end;
+    WM_KEYUP:
+     begin
+      if (Msg.wParam>=VK_PRIOR) and (Msg.wParam<=VK_DOWN)  then
+        begin
+           // you need to handle all of these keys :(
+        end
+       else
+        ThirdPartActiveXControlOldWndProc(Msg);
+     end;
+    else
+     ThirdPartActiveXControlOldWndProc(Msg);
+   end;
+ end;
+ 
+
+    我尚未验证！！！
+ 
+
+方法四：
+ 
+    重载CMDialogKey函数，
+ protected
+     procedure CMDialogKey(var Message: TCMDialogKey); message CM_DIALOGKEY;
+ 
+procedure TActiveFormX.CMDialogKey(var Message: TCMDialogKey);
+ var ignore: Boolean;
+ begin
+   if (ControlCount > 0) and
+     (GetKeyState(VK_MENU) >= 0) and
+     (Message.CharCode = VK_TAB) and
+     (GetKeyState(VK_CONTROL) >= 0) then
+ 
+  begin
+     if GetKeyState(VK_SHIFT) >= 0 then
+       ignore := (TControl(ActiveControl) = Controls[ ControlCount-1 ])
+     else
+       ignore := TControl(ActiveControl) = Controls[ 0 ];
+     if ignore then
+     begin
+       Message.Result := 0;   // tell the container we're ignoring this key
+       Exit;
+     end;
+   end;
+   inherited;
+ end;
+ 
+This leaves you in the position where tabbing off the end works fine, but
+ tabbing back into the control places focus back at the "last active"
+ control, which in this case was the last control.  There is no ideal
+ solution to this issue, since there it is perfectly feasible for your form
+ to decide to activate the third control first.  Nevertheless, here's  a
+ simple hack:  When your control gets UI-activated, simply clear the
+ ActiveControl so that it will then seek out the first tab control to set
+ focus to.  This requires a change to my fixed AXCTRLS.PAS file, inserting
+ this line before line 1627 (in the UIActivation part of the
+ TActiveXControl.InPlaceActivate method).
+ 
+>insert these two lines
+ >1627    // HACK: forces the first control to become active.
+ >1628    TCustomForm(FWinControl).ActiveControl := nil;
+ 1629    SetFocus(FWinControl.Handle);
+ 1630
+ 1631    FOleInPlaceFrame.SetActiveObject(Self as IOleInPlaceActiveObject,
+ nil);
+ 
+I'm not entirely sure this will work in all instances, but it gets the job
+ done.  Maybe there should be an OnUIActivate event that you can
+ implement/override in your form for stuff like this.
+ 
+
+以上是我这数天所获，公布出来大家讨论。
+ 
+我现在的项目已经快把我压死了。
+ 
+程序人生，唉！
+
+ 
+
+
+
+
+
+
+对我有用[0]丢个板砖[0]引用 | 举报 | 
+
+管理 | TOP 
+
+
+
+
+
+
+renweirenwei等级： 
+
+#4得分：0 回复于： 2001-12-01 13:29:02 
+
+以下是Borland社区给出的解释，是1999年的：
+ 
+
+
+Lost keys in the IE5 ActiveX controls - by 
+ 
+
+
+
+Abstract:Hooking the IWebBrowser and DHTML controls to properly handle keystrokes
+ The problem: If you import the Internet Explorer or Microsoft DHTML ActiveX controls into Delphi or C++Builder, the control does not respond to certain keystrokes (Tab, in the case of IE, and delete, in the case of DHTML). 
+ 
+
+The reasons for the problem: The problem occurs because of a combination of peculiar behavior on the part of the controls, and peculiar behavior on the part of the Delphi and C++Builder IDEs. 
+ 
+
+How the control is strange: The control believes that the keys in question should be treated as accelerators and wishes to handle them as such, rather than as Windows key down messages. 
+ 
+
+What Delphi and C++Builder are doing: TApplication catches all windows messages. As part of the processing of such messages, it allows windows contained within the application to respond to key messages themselves rather than use the default processing To allow VCL-wrapped windows to distinguish between messages passed to them by TApplication in the middle of message processing from messages which have been passed on after TApplication has given up on processing them, the VCL modifies the message and passes the modified message to the window via SendMessage. (The relevant code is in forms.pas: Application.IsKeyMsg). 
+ 
+When an ActiveX control is imported, it is wrapped by a descendant class of TOleControl (olectrls.pas). TOleControl hooks the window procedure; the hook catches the messages thrown by Application, modifies them back to their original state, and calls IOleInPlaceActiveObject.TranslateAccelerator, allowing the code to respond to accelerators. 
+ 
+With most controls, this works. Unfortunately, the dynamic nature of the IE controls causes a problem, in that the window which is recieving the messages is either a child or a grandchild of the window which has been subclassed. Their window procedures don't understand the messages they are recieving from TApplication (and so ignore them); the accelerators never get translated; and the message that was intended by pressing tab or delete gets lost. 
+ 
+How Delphi 5 solves the problem: The problem was solved in Delphi 5 by modifying the behavior of TApplication.IsKeyMsg to walk the parent chain of a non-VCL window until a VCL window is encountered, and then throw the modified message at it. This allows the TOleControl wrapper to ask the control to translate the accelerator. 
+ 
+
+How you can solve the problem in C++Builder 4 or Delphi 4: The problem can be solved on an ad-hoc basis by dynamically subclassing the window procedures of the controls in question. (An earlier fix to the problem in Delphi5 involved modifying TOleControl to subclass the windows of all children created by the embedded Ole control; the problem with this approach was that, while the controls notify you verify their event interfaces when their children are destroyed and recreated, they do not pass such a notification through a standard Ole interface, so it was difficult to find a general-case mechanism for the container to know when to hook the child windows). 
+ 
+
+When to hook the window procedure: In the case of the WebBrowser control, a new child window is created whenever a new web page is accessed (and so the window procedure should be hooked in the OnNavigatComplete2 or the OnNewWindow2 event handlers). In the case of the DHTML control, there is usually only one child window whose creation is delayed until well past the creation of the control itself; manually hooking its window procedure in the form's OnActivate method should work). 
+ 
+
+How to get the handle for the window: The handle for the window that you want to subclass can be retrieved in one of two ways (one is generic, the other is not). You can get the handle for the window which was subclassed at the creation of the control by accessing the Handle method of the TOleControl descendant, using code that looks more or less like the following pascal code: 
+ 
+
+{these are members of Form1} 
+ 
+WebBrowser1 : TWebBrowser;
+ FFrameWndProcInstance: Pointer;
+ FFrameHwnd : HWND;
+ FFrameDefWndProc : Pointer;
+ 
+function Form1.SubClassFrame;
+ var
+ Child : HWND;
+ begin
+   Child := GetWindow(WebBrowser1.Handle, GW_CHILD);
+   if Child <> 0 then
+   begin
+      Child := GetWindow(Child, GW_CHILD);
+      if (Child <>0) and (Child <> FFrameHwnd) then
+      { don't bother subclassing if you've already got it subclassed }  
+      begin
+          if FFrameWndProcInstance <> nil then
+              UnSubClassFrame;
+          FFrameHwnd := Child;
+          FFrameWndProcInstance := MakeObjectInstance(FrameWndProc);
+          FFrameDefWndProc := Pointer(GetWindowLong(FFrameHwnd, GWL_WNDPROC));
+          SetWindowLong(FFrameHwnd, GWL_WNDPROC, LongInt(FFrameWndProcInstance));
+     end;
+   end;
+ end;
+ 
+function Form1.UnSubClassFrame;
+ begin
+    if (FFrameWndProcInstance <> nil and (FDefFrameWndProc)  <> nil and (FFrameHwnd <> 0) then
+    begin
+        SetWindowLong(FFrameHwnd, GWL_WNDPROC, LongInt(FDefFrameWndProc));
+        FFrameWndProcInstance := nil;
+        FFrameHwnd := nil;
+        { require the caller to set FDefFrameWndProc to nil so you can unsubclass and then call the default
+           proc when responding to WM_DESTROY events }
+    end;
+ end;
+ Alternately, you can ask the control to return to you an IOleInPlaceActiveObject interface, and query it for its window handle: 
+ function Form1.SubClassFrame;
+ var
+ ActiveObject : IOleInPlaceActiveObject;
+ Child : HWND;
+ begin
+    if (WebBrowser1.DefaultDispatch.QueryInterface(IOleInPlaceActiveObject, ActiveObject) = S_OK) then
+    try 
+      Child := ActiveObject.GetWindow;
+      if (Child <> nil) and (Child <> FFrameHwnd) then
+      begin
+          if FFrameWndProcInstance <> nil then
+              UnSubClassFrame;
+          FFrameHwnd := Child;
+          FFrameWndProcInstance := MakeObjectInstance(FrameWndProc);
+          FFrameDefWndProc := Pointer(GetWindowLong(FFrameHwnd, GWL_WNDPROC));
+          SetWindowLong(FFrameHwnd, GWL_WNDPROC, LongInt(FFrameWndProcInstance));
+     end;
+   finally
+     ActiveObject.Release;
+   end;
+ end;
+ 
+function Form1.UnSubClassFrame;
+ var
+ ActiveObject: IOleInPlaceActiveObject;
+ begin
+   if (WebBrowser1.DefaultDispatch.QueryInterface(IOleInPlaceActiveObject, ActiveObject) = S_OK) then
+     try
+     if (FFrameWndProcInstance <> nil and (FDefFrameWndProc)  <> nil and (FFrameHwnd <> 0) then
+     begin
+        SetWindowLong(FFrameHwnd, GWL_WNDPROC, LongInt(FDefFrameWndProc));
+        FFrameWndProcInstance := nil;
+        FFrameHwnd := nil;
+        { require the caller to set FDefFrameWndProc to nil so you can unsubclass and then call the default
+           proc when responding to WM_DESTROY events }
+    end;
+    finally
+      ActiveObject.Release;
+    end;
+ end;
+ What the window procedure should do. The window procedure hook you install should, at a minimum, pass the key messages on to the ole control's accelerator treanslator, properly unhook itself in response to a WM_DESTROY message,and pass all other messages along to the default window procedure, as per the following example: 
+ procedure Form1.FrameWndProc(var Message: TMessage);
+ var
+   WinMsg: TMsg;
+   ActiveObject : IOleInPlaceActiveObject;
+ begin
+   if (Message.Msg >= CN_BASE + WM_KEYFIRST) 
+      and (Message.Msg <= CN_BASE + WM_KEYLAST) then
+   begin
+       WinMsg.HWnd := WebBrowser1.Handle;
+       WinMsg.Message := Message.Msg - CN_BASE;
+       WinMsg.WParam := Message.WParam;
+       WinMsg.LParam := Message.LParam;
+       WinMsg.Time := GetMessagTime;
+       WinMsg.Pt.X := $115DE1F1;
+       WinMsg.Pt.Y= $115DE1F1;
+       if (WebBrowser1.DefaultDispatch.QueryInterface(IOleInPlaceActiveObject, ActiveObject) = S_OK) then
+       try
+         if ActiveObject.TranslateAccelerator(WinMsg) = S_OK then
+         begin
+            Message.Result := 1;
+            WinMsg.Pt.X := $5ACC355;
+         end;
+      finally
+         ActiveObject.Release;
+      end;
+      if WinMsg.Pt.X = $5ACC355 then
+          Exit;
+   end;
+   with Message do
+   begin
+      case Msg of
+         WM_DESTROY:
+          begin
+             UnSubClassFrame;
+             CallWindowProc(FDefFrameWndProc, FFrameHwnd, Message.Msg, Message.WParam, Message.LParam);
+              FDefFrameWndProc := nil;
+          end;
+     end;
+     Result := CallWindowProc(FDefFrameWndProc, FFrameHwnd, Msg, WParam, LParam);
+   end;
+ end;
+
+ 
+
+
+
+
+
+
+对我有用[0]丢个板砖[0]引用 | 举报 | 
+
+管理 | TOP 
+
+
+
+
+
+
+renweirenwei等级： 
+
+#5得分：0 回复于： 2001-12-01 13:31:55 
+
+上面使用了类的子类化，我不知道在BCB中如何实现，现在忙于开发工作，没有时间再去研究技术了！
+ 
+
+那位有好主意，或者解决办法，欢迎讨论！
+ 

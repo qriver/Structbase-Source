@@ -1,0 +1,291 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 312
+  ClientWidth = 732
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Button1: TButton
+    Left = 562
+    Top = 8
+    Width = 79
+    Height = 33
+    Caption = #25511#20214#27880#20876
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = -1
+    Width = 545
+    Height = 210
+    Caption = 'pnl1'
+    TabOrder = 1
+    object txt6: TStaticText
+      Left = 32
+      Top = 50
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #24207#21495
+      TabOrder = 0
+    end
+    object txtlbl2: TStaticText
+      Left = 32
+      Top = 74
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #20013#25991#21517
+      TabOrder = 1
+    end
+    object edtColChineseName: TMaskEdit
+      Left = 148
+      Top = 74
+      Width = 144
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 2
+    end
+    object txtlbl3: TStaticText
+      Left = 32
+      Top = 98
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #38271#24230
+      TabOrder = 3
+    end
+    object edtColLength: TMaskEdit
+      Left = 148
+      Top = 98
+      Width = 144
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 4
+    end
+    object txtlbl4: TStaticText
+      Left = 32
+      Top = 122
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #26159#21542#20027#38190
+      TabOrder = 5
+    end
+    object edtPkFlag: TMaskEdit
+      Left = 148
+      Top = 122
+      Width = 144
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 6
+    end
+    object txtlbl15: TStaticText
+      Left = 291
+      Top = 98
+      Width = 72
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #25968#25454#23383#20856
+      TabOrder = 7
+    end
+    object edtDicId: TMaskEdit
+      Left = 362
+      Top = 97
+      Width = 165
+      Height = 26
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 19
+    end
+    object txtPkBuild: TStaticText
+      Left = 291
+      Top = 122
+      Width = 72
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #20027#38190#35268#21017
+      TabOrder = 8
+    end
+    object edtPKBuild: TMaskEdit
+      Left = 362
+      Top = 122
+      Width = 165
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 9
+    end
+    object txt7: TStaticText
+      Left = 32
+      Top = 146
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #25968#25454#34920#21517
+      TabOrder = 10
+    end
+    object edtTableName: TMaskEdit
+      Left = 148
+      Top = 146
+      Width = 144
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 11
+    end
+    object txt8: TStaticText
+      Left = 291
+      Top = 146
+      Width = 72
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #25152#23646#31995#32479
+      TabOrder = 12
+    end
+    object edtAppId: TMaskEdit
+      Left = 362
+      Top = 146
+      Width = 165
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 13
+    end
+    object edtColName: TMaskEdit
+      Left = 362
+      Top = 50
+      Width = 165
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 14
+    end
+    object edtColXH: TMaskEdit
+      Left = 148
+      Top = 50
+      Width = 144
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 15
+    end
+    object txt1: TStaticText
+      Left = 291
+      Top = 50
+      Width = 72
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #21015#21517
+      TabOrder = 16
+    end
+    object edtColType: TMaskEdit
+      Left = 362
+      Top = 73
+      Width = 165
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 17
+    end
+    object StaticText2: TStaticText
+      Left = 291
+      Top = 74
+      Width = 72
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #21015#31867#22411
+      TabOrder = 18
+    end
+    object StaticText1: TStaticText
+      Left = 32
+      Top = 25
+      Width = 116
+      Height = 25
+      Alignment = taCenter
+      AutoSize = False
+      BorderStyle = sbsSingle
+      Caption = #21807#19968#32534#21495
+      TabOrder = 20
+    end
+    object edtColId: TMaskEdit
+      Left = 148
+      Top = 25
+      Width = 379
+      Height = 25
+      AutoSize = False
+      Ctl3D = False
+      ParentCtl3D = False
+      ReadOnly = True
+      TabOrder = 21
+    end
+  end
+  object Button2: TButton
+    Left = 562
+    Top = 47
+    Width = 79
+    Height = 33
+    Caption = #26174#31034#25968#25454
+    TabOrder = 2
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 562
+    Top = 90
+    Width = 79
+    Height = 33
+    Caption = #36755#20837#25968#25454#20195#29702
+    TabOrder = 3
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 242
+    Top = 250
+    Width = 79
+    Height = 33
+    Caption = #36755#20837#25968#25454#20195#29702
+    TabOrder = 4
+  end
+end

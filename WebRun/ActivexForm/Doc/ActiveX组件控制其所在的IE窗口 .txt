@@ -1,0 +1,96 @@
+ActiveX组件控制其所在的IE窗口 .
+分类： Delphi 2006-12-15 20:42 1857人阅读 评论(0) 收藏 举报 
+ieintegerfunctiondelphiinterfacebutton    在实际的项目开发过程中，有时我们需要利用ActiveX组件控制其所在的IE窗口，如隐藏工具条和状态栏、全屏等，以使程序的工作区域最大。
+ 
+1.  用Delphi建立一个ActiveXForm工程，添加对SHDocVw单元的引用；
+2.  在Interface段声明一个自定义的消息常量，如下所示：
+const
+  WM_UPDATE = WM_USER + 1;
+
+
+3.  在类的私有段定义如下变量和函数：
+    private
+       FWebBrowser: IWebBrowser2;
+       procedure WMUpdate(var Msg: Integer); message WM_UPDATE;
+       function FindIEWebBrowser: IWebBrowser2;
+       function FindIEWindow(ParentHandle, ChildHandle: HWND): Boolean;
+4.  按Ctrl+Shift+C自动生成函数体的代码，完善代码内容如下：
+procedure TActiveFormX.WMUpdate(var Msg: Integer);
+begin
+ FWebBrowser := FindIEWebBrowser;
+ if FWebBrowser <> nil then
+ begin
+    FWebBrowser.ToolBar := 0;
+    FWebBrowser.StatusBar := false;
+ end;
+end;
+ 
+function TActiveFormX.FindIEWebBrowser: IWebBrowser2;
+var
+ tmpShell: IShellWindows;
+ tmpIntf: IDispatch;
+ tmpIE: IWebBrowser2;
+ i: Integer;
+begin
+ try
+    tmpSHell := CoShellWindows.Create;
+    for i := 0 to tmpShell.Count - 1 do
+    begin
+      tmpIntf := tmpShell.Item(i);
+      if tmpIntf = nil then continue;
+      tmpIntf.QueryInterface(IID_IWebBrowser2, tmpIE);
+      if tmpIE = nil then Continue;
+      if (Integer(Handle) = tmpIE.HWND) or FindIEWindow(Integer(tmpIE.HWND), Handle) then
+     begin
+        Result := tmpIE;
+        Exit;
+      end;
+    end;
+ except
+ end;
+end;
+ 
+function TActiveFormX.FindIEWindow(ParentHandle,
+ ChildHandle: HWND): Boolean;
+var
+ tmpHandle : HWND;
+begin
+ tmpHandle := GetParent(ChildHandle);
+ if tmpHandle = 0 then
+ begin
+    Result := False;
+    Exit;
+ end else
+ begin
+    if tmpHandle = ParentHandle then
+    begin
+     Result := True;
+     Exit;
+    end else
+    begin
+      Result := FindIEWindow(ParentHandle, tmpHandle);
+    end;
+ end;
+end;
+5.  双击主窗体，在ActiveFormCreate事件中添下如下代码：
+procedure TActiveFormX.ActiveFormCreate(Sender: TObject);
+begin
+ PostMessage(Handle, WM_UPDATE, 0, 0);
+end;
+6.  在窗体上添加两个Button，分别命名为btnFullScreen和btnUnFullScreen，为其OnClick事件添加如下代码：
+procedure TActiveFormX.btnFullScreenClick(Sender: TObject);
+begin
+ if FWebBrowser <> nil then
+ begin
+    FWebBrowser.FullScreen := true;
+ end;
+end;
+ 
+procedure TActiveFormX.btnUnFullScreenClick(Sender: TObject);
+begin
+ if FWebBrowser <> nil then
+ begin
+    FWebBrowser.FullScreen := false;
+ end;
+end;
+7.  Build工程将其发布，运行生成的Html页面，组件加载成功后IE窗口的工具栏和状态条被隐藏了，通过窗体上的两个按钮可以控制IE窗口的全屏状态。

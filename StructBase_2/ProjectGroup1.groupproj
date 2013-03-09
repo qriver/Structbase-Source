@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{66ED903E-526C-4CCB-B791-732DC750EEC6}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="StructBase.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="PrjStructBaseExe.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="StructBase">
+			<MSBuild Projects="StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Clean">
+			<MSBuild Targets="Clean" Projects="StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Make">
+			<MSBuild Targets="Make" Projects="StructBase.dproj"/>
+		</Target>
+		<Target Name="PrjStructBaseExe">
+			<MSBuild Projects="PrjStructBaseExe.dproj"/>
+		</Target>
+		<Target Name="PrjStructBaseExe:Clean">
+			<MSBuild Targets="Clean" Projects="PrjStructBaseExe.dproj"/>
+		</Target>
+		<Target Name="PrjStructBaseExe:Make">
+			<MSBuild Targets="Make" Projects="PrjStructBaseExe.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="StructBase;PrjStructBaseExe"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="StructBase:Clean;PrjStructBaseExe:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="StructBase:Make;PrjStructBaseExe:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

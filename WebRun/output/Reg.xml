@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Doc Version="2.0">
+        <AUTODOWNLOAD VER="1.0.0.0"  />
+	<SYSTEM>
+		<LOADMODULE>
+			<USER PRJJZPT.DLL="Module=($APP_PATH)\PRJJZPT.DLL;Load=True" JZBZDZDLL.DLL="Module=($APP_PATH)\PrjBzDzDll.dll;Load=False" SYSTEMDESIGN.DLL="Module=($APP_PATH)SystemDesign.dll;Load=True" DATAPICKUPDLL.DLL="Module=($APP_PATH)\DATAPICKUPDLL.DLL;Load=True" SYSMANAGER="Module=($APP_PATH)\SysManager.dll;Load=True"/>
+		</LOADMODULE>
+	</SYSTEM>
+	<YCGA>
+		<UPGRADE URL="http://10.75.9.151/yc/update.inf" DATEVERSION="06/08/2012" VERSIONNUMBER="1.0.1.5"/>
+		<APPLICATION>
+			<JWZHPT CHINESENAME="警综平台" DATASOURCE="SYSCONFIG" SCHEMA="" APPID="APP001" METASOURCE="DEFAULT" AUTOLOAD="false"/>
+			<SYSMANAGE CHINESENAME="数据字典维护和管理" DATASOURCE="SYSCONFIG" SCHEMA="" APPID="SYSTEM" METASOURCE="DEFAULT" AUTOLOAD="false"/>
+			<DATACOLLECT CHINESENAME="数据采集审核" DATASOURCE="COLLECT" SCHEMA="" APPID="DATACOLLECT" METASOURCE="DEFAULT" AUTOLOAD="true"/></APPLICATION>
+		<PGIS><DATAEDIT SERVER="10.75.53.50" PORT="8888" SERVICE="/PGIS_S_Map/DirectPort"/><LAYER ADDRESS_LAYER_NAME="GIS420500000000.dz_mpdz_pt"/></PGIS></YCGA>
+	<DATASOURCE>
+		<JWZHPT DBTYPE="JAVA" URL="http://172.16.1.100:8080/dataProvide/phprpc" JNDI="jdbc/Jwzhpt" DESC="" AUTOLOAD="TRUE"/>
+		<DATASEND DBTYPE="JAVA" URL="http://172.16.1.100:8080/dataProvide/phprpc" JNDI="jdbc/data_exchange" DESC="" AUTOLOAD="TRUE"/>
+		<SYSCONFIG DBTYPE="JAVA" URL="http://172.16.1.100:8080/dataProvide/phprpc" JNDI="jdbc/TestDB" DESC="系统配元数据置文件" AUTHCODE="0" AUTOLOAD="TRUE" URL2="http://172.16.1.100:8080/dataProvide/phprpc" URL3="http://127.0.0.1:8080/ycDataProvide/phprpc"/>
+		<COLLECT DBTYPE="JAVA" URL="http://172.16.1.100:8080/dataProvide/phprpc" JNDI="jdbc/Collect" DESC="系统配元数据置文件(10.75.53.53)" AUTHCODE="0" AUTOLOAD="TRUE" URL2="http://172.16.1.100:8080/dataProvide/phprpc" URL3="http://127.0.0.1:8080/ycDataProvide/phprpc"/>
+		<SYSMANAGE DBTYPE="ODAC" URL="username=structbase,password=structbase,server=10.75.53.82:1521:ycgadb1" JNDI="jdbc/TestDB" DESC="数据字典配置维护数据源" AUTHCODE="0" AUTOLOAD="TRUE" URL2="http://172.16.1.100:8080/dataProvide/phprpc"/>
+		<ADOSAMPLE DBTYPE="ADO" URL="Provider=Microsoft.Jet.OLEDB.4.0;Password=&quot;&quot;;Data Source=..\Db\db.mdb;  Mode=ReadWrite|Share Deny None;Persist Security Info=false" JNDI="" DESC="ADO配置示例" AUTOLOAD="FALSE"/>
+		<ODACSAMPLE DBTYPE="ODAC" URL="username=xxxxx,password=xxxxx,server=1.1.1.1:1521:orcl" JNDI="jdbc/TestDB" DESC="odac配置示例"/>
+		<TEST DBTYPE="JAVA" URL="http://127.0.0.1:8080/ycDataProvide/phprpc" JNDI="jdbc/TestDB" AUTOLOAD="TRUE"/></DATASOURCE>
+	<METASOURCE><DEFAULT DATASOURCE="SYSCONFIG" SCHEMA=""/></METASOURCE></Doc>

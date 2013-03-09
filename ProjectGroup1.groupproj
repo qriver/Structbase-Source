@@ -1,0 +1,84 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{4B78F2AE-3461-4EA0-8C90-7D0CC342D1CC}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="StructBase_2\StructBase.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WebRun\ActivexForm\WebXForm.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WebRun\AXForm_Download\struct_download.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WebRun\Webapp\webapp.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WebRun\WebApp\webappExe.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="StructBase">
+			<MSBuild Projects="StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Clean">
+			<MSBuild Targets="Clean" Projects="StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Make">
+			<MSBuild Targets="Make" Projects="StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="WebXForm">
+			<MSBuild Projects="WebRun\ActivexForm\WebXForm.dproj"/>
+		</Target>
+		<Target Name="WebXForm:Clean">
+			<MSBuild Targets="Clean" Projects="WebRun\ActivexForm\WebXForm.dproj"/>
+		</Target>
+		<Target Name="WebXForm:Make">
+			<MSBuild Targets="Make" Projects="WebRun\ActivexForm\WebXForm.dproj"/>
+		</Target>
+		<Target Name="struct_download">
+			<MSBuild Projects="WebRun\AXForm_Download\struct_download.dproj"/>
+		</Target>
+		<Target Name="struct_download:Clean">
+			<MSBuild Targets="Clean" Projects="WebRun\AXForm_Download\struct_download.dproj"/>
+		</Target>
+		<Target Name="struct_download:Make">
+			<MSBuild Targets="Make" Projects="WebRun\AXForm_Download\struct_download.dproj"/>
+		</Target>
+		<Target Name="webapp">
+			<MSBuild Projects="WebRun\Webapp\webapp.dproj"/>
+		</Target>
+		<Target Name="webapp:Clean">
+			<MSBuild Targets="Clean" Projects="WebRun\Webapp\webapp.dproj"/>
+		</Target>
+		<Target Name="webapp:Make">
+			<MSBuild Targets="Make" Projects="WebRun\Webapp\webapp.dproj"/>
+		</Target>
+		<Target Name="webappExe">
+			<MSBuild Projects="WebRun\WebApp\webappExe.dproj"/>
+		</Target>
+		<Target Name="webappExe:Clean">
+			<MSBuild Targets="Clean" Projects="WebRun\WebApp\webappExe.dproj"/>
+		</Target>
+		<Target Name="webappExe:Make">
+			<MSBuild Targets="Make" Projects="WebRun\WebApp\webappExe.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="StructBase;WebXForm;struct_download;webapp;webappExe"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;struct_download:Clean;webapp:Clean;webappExe:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="StructBase:Make;WebXForm:Make;struct_download:Make;webapp:Make;webappExe:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

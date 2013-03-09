@@ -1,0 +1,29 @@
+object StructRun_MainForm: TStructRun_MainForm
+  Left = 0
+  Top = 0
+  Width = 568
+  Height = 388
+  Caption = 'StructRun_MainForm'
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnActivate = ActiveFormActivate
+  OnCreate = ActiveFormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object oPanel: TPanel
+    Left = 80
+    Top = 48
+    Width = 249
+    Height = 145
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+  end
+end
