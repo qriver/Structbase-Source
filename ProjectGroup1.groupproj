@@ -9,9 +9,6 @@
 			<Projects Include="WebRun\ActivexForm\WebXForm.dproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="WebRun\AXForm_Download\struct_download.dproj">
-				<Dependencies/>
-			</Projects>
 			<Projects Include="WebRun\Webapp\webapp.dproj">
 				<Dependencies/>
 			</Projects>
@@ -44,15 +41,6 @@
 		<Target Name="WebXForm:Make">
 			<MSBuild Targets="Make" Projects="WebRun\ActivexForm\WebXForm.dproj"/>
 		</Target>
-		<Target Name="struct_download">
-			<MSBuild Projects="WebRun\AXForm_Download\struct_download.dproj"/>
-		</Target>
-		<Target Name="struct_download:Clean">
-			<MSBuild Targets="Clean" Projects="WebRun\AXForm_Download\struct_download.dproj"/>
-		</Target>
-		<Target Name="struct_download:Make">
-			<MSBuild Targets="Make" Projects="WebRun\AXForm_Download\struct_download.dproj"/>
-		</Target>
 		<Target Name="webapp">
 			<MSBuild Projects="WebRun\Webapp\webapp.dproj"/>
 		</Target>
@@ -72,13 +60,13 @@
 			<MSBuild Targets="Make" Projects="WebRun\WebApp\webappExe.dproj"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="StructBase;WebXForm;struct_download;webapp;webappExe"/>
+			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;struct_download:Clean;webapp:Clean;webappExe:Clean"/>
+			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="StructBase:Make;WebXForm:Make;struct_download:Make;webapp:Make;webappExe:Make"/>
+			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

@@ -153,7 +153,7 @@ begin
   begin
 
        // messagebox(0,pchar('装入'+gsMainDir+'\'+sDll+'文件失败'),'错误',mb_ok);
-       messagebox(0,'装入'+gsMainDir+'\'+'文件失败','',0);
+       messagebox(0,'装入'+gsMainDir+'\'+FDllFileName+'文件失败','',0);
        exit;
   end;
   // 表示载入成功
@@ -407,7 +407,7 @@ begin
   {释放资源}
    // if FFormHD>0 then closewindow(FFormHD);
 
-  //    FreeLibrary(FDllFileHandle);
+  FreeLibrary(FDllFileHandle);
   if FFormHD>0 then    SendMESSAGE(ffORMHD,WM_CLOSE,0,0);
 
   //DownloadForm.Close;
