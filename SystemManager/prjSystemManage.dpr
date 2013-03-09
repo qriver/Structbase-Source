@@ -31,7 +31,7 @@ begin
   if DbConnectForm.ModalResult=mrOk  then
   begin
     DbConnectForm.Free;
-     structbase.structInitialization;
+    structbase.structInitialization;
     Application.CreateForm(TMainForm, MainForm);
     Application.CreateForm(TMyDataModule, MyDataModule);
     MainForm.Show;

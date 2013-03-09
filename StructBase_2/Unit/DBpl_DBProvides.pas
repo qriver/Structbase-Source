@@ -122,7 +122,11 @@ begin
   //  setlength(FDBProvideList, FDBClassChain.Count);
 
   FDBClassChain.Sort;
-
+  if FDBClassChain.IndexOf(uDBProvideName) <0 then
+  begin
+  result:=nil;
+  exit;
+  end;
   classname := (FDBClassChain.Objects[FDBClassChain.IndexOf(uDBProvideName)])
     .classname;
 
