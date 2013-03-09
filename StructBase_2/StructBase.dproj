@@ -23,11 +23,11 @@
 			<DCC_DcuOutput>DCU</DCC_DcuOutput>
 			<DCC_Define>NDEBUG;$(DCC_Define)</DCC_Define>
 			<DCC_DcpOutput>D:\StructBase SDK\lib\</DCC_DcpOutput>
-			<DCC_BplOutput>c:\jwzhptClient</DCC_BplOutput>
+			<DCC_BplOutput>D:\StructBase SDK\BPL</DCC_BplOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DesignOnlyPackage>false</DesignOnlyPackage>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DependencyCheckOutputName>c:\jwzhptClient\StructBase.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>D:\StructBase SDK\BPL\StructBase.bpl</DCC_DependencyCheckOutputName>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_Platform>x86</DCC_Platform>
 			<DCC_UnitSearchPath>D:\StructBase SDK\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
