@@ -15,6 +15,12 @@
 			<Projects Include="WebRun\WebApp\webappExe.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="SystemManager\prjSystemManage.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="demo\MainForm Project\MainForm.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +65,32 @@
 		<Target Name="webappExe:Make">
 			<MSBuild Targets="Make" Projects="WebRun\WebApp\webappExe.dproj"/>
 		</Target>
+		<Target Name="prjSystemManage">
+			<MSBuild Projects="SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="prjSystemManage:Clean">
+			<MSBuild Targets="Clean" Projects="SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="prjSystemManage:Make">
+			<MSBuild Targets="Make" Projects="SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="MainForm">
+			<MSBuild Projects="demo\MainForm Project\MainForm.dproj"/>
+		</Target>
+		<Target Name="MainForm:Clean">
+			<MSBuild Targets="Clean" Projects="demo\MainForm Project\MainForm.dproj"/>
+		</Target>
+		<Target Name="MainForm:Make">
+			<MSBuild Targets="Make" Projects="demo\MainForm Project\MainForm.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe"/>
+			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe;prjSystemManage;MainForm"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean"/>
+			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean;prjSystemManage:Clean;MainForm:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make"/>
+			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make;prjSystemManage:Make;MainForm:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

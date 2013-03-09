@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F43C8176-234E-422F-92EC-B418ADE2FA35}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="MainForm Project\MainFormDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\SystemManager\prjSystemManage.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\StructBase_2\StructBase.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="MainFormDemo">
+			<MSBuild Projects="MainForm Project\MainFormDemo.dproj"/>
+		</Target>
+		<Target Name="MainFormDemo:Clean">
+			<MSBuild Targets="Clean" Projects="MainForm Project\MainFormDemo.dproj"/>
+		</Target>
+		<Target Name="MainFormDemo:Make">
+			<MSBuild Targets="Make" Projects="MainForm Project\MainFormDemo.dproj"/>
+		</Target>
+		<Target Name="prjSystemManage">
+			<MSBuild Projects="..\SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="prjSystemManage:Clean">
+			<MSBuild Targets="Clean" Projects="..\SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="prjSystemManage:Make">
+			<MSBuild Targets="Make" Projects="..\SystemManager\prjSystemManage.dproj"/>
+		</Target>
+		<Target Name="StructBase">
+			<MSBuild Projects="..\StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Clean">
+			<MSBuild Targets="Clean" Projects="..\StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="StructBase:Make">
+			<MSBuild Targets="Make" Projects="..\StructBase_2\StructBase.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="MainFormDemo;prjSystemManage;StructBase"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="MainFormDemo:Clean;prjSystemManage:Clean;StructBase:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="MainFormDemo:Make;prjSystemManage:Make;StructBase:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

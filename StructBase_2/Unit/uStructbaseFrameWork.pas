@@ -4,8 +4,10 @@ interface
 
 uses classes,
      XmlRegObj,
+     Struct_SysConfigUtils,
      Struct_DicItems,
      Struct_CntlDataInput,
+     DBpl_IDBProvide,
      DBpl_DBProvides,
      Struct_LoginUser,
      Struct_DicDataSets,
@@ -24,6 +26,7 @@ Type
     FDicItems:TDicItems;
     FCntlDataInput:TStruct_CntlDataInput ;
     FUserAuthList: TStringList;
+    FSysCOnfigUtils:TStruct_SysConfigUtils ;
 
     procedure registApplication(appName:String);
     procedure registMetaSource(metaId:String);
@@ -31,15 +34,17 @@ Type
     Constructor Create;
     Destructor  Destroy;override;
     procedure   structInitialization;
-    property Applications: TStruct_Applications read FAppItems write FAppItems;
-    property MetaSources: TStructMetaSources read FMetaSourcItems write FMetaSourcItems;
-    property DBProvids: TDBpl_DBProvides read FDBProvidItems write FDBProvidItems;
-    property LoginUser: TLoginUser read FLoginUser write FLoginUser;
-    property DicDataSets: TDicDataSets read FDicDataSets write FDicDataSets;
-    property DicItems: TDicItems read FDicItems write FDicItems;
-    property CntlDataInput: TStruct_CntlDataInput read FCntlDataInput;
-    property UserAuthList: TStringList read FUserAuthList write FUserAuthList;
+    property  Applications: TStruct_Applications read FAppItems write FAppItems;
+    property  MetaSources: TStructMetaSources read FMetaSourcItems write FMetaSourcItems;
+    property  DBProvids: TDBpl_DBProvides read FDBProvidItems write FDBProvidItems;
+    property  LoginUser: TLoginUser read FLoginUser write FLoginUser;
+    property  DicDataSets: TDicDataSets read FDicDataSets write FDicDataSets;
+    property  DicItems: TDicItems read FDicItems write FDicItems;
+    property  CntlDataInput: TStruct_CntlDataInput read FCntlDataInput;
+    property  UserAuthList: TStringList read FUserAuthList write FUserAuthList;
     procedure loadDBProvide(uName: String);
+    procedure ReadConfigFromDB(uDbProvideName:String);
+    procedure LoadApplication(uAppName:String);
    // TDBpl_DBProvides
 end;
 
@@ -68,6 +73,7 @@ begin
       FCntlDataInput:=TStruct_CntlDataInput.Create(nil);
       FDicItems:=TDicItems.Create;
       FUserAuthList:=TStringList.create;
+      FSysCOnfigUtils:=TStruct_SysConfigUtils.Create;
 end;
 
 destructor TStructbase.Destroy;
@@ -88,7 +94,12 @@ begin
   FDicItems.Free;
   FUserAuthList.Free;
   FDBProvidItems.Destroy;
+  FSysCOnfigUtils.Free;
+end;
 
+procedure TStructbase.LoadApplication(uAppName: String);
+begin
+  self.FSysCOnfigUtils.LoadApplication(uappname);
 end;
 
 procedure TStructbase.structInitialization;
@@ -151,6 +162,11 @@ begin
 
      DBProvids.AddDBProvide(uName,dbtype,URL);
      DBProvids.find(uName);
+end;
+
+procedure TStructbase.ReadConfigFromDb(uDbprovideName:String);
+begin
+  self.FSysCOnfigUtils.ReadSysConfigFromDb(uDbprovideName);
 end;
 
 procedure TStructbase.registApplication(appName: String);
