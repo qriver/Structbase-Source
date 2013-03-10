@@ -82,6 +82,18 @@
 			<DCCReference Include="DicManageUnit\uDIC_SOURCE_MainForm.pas">
 				<Form>DIC_SOURCE_MainForm</Form>
 			</DCCReference>
+			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_MainForm.pas">
+				<Form>APP_DATASOURCE_MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_Form.pas">
+				<Form>APP_DATASOURCE_Form</Form>
+			</DCCReference>
+			<DCCReference Include="TableDefineUnit\uAPP_NAME_MainForm.pas">
+				<Form>APP_NAME_MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="TableDefineUnit\uAPP_NAME_Form.pas">
+				<Form>APP_NAME_Form</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -139,8 +151,18 @@
 					<Source>
 						<Source Name="MainSource">prjSystemManage.dpr</Source>
 					</Source>
+					<DebugEnvironmentVariables>
+						<DebugEnvironmentVariables Name="1830B7BD-F7A3-4c4d-989B-C004DE465EDE">&apos;ec8:284388&apos;</DebugEnvironmentVariables>
+					</DebugEnvironmentVariables>
 					<DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="1830B7BD-F7A3-4c4d-989B-C004DE465EDE">&apos;ec8:284388&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptModuleDesc">&apos;Delphi Core Integrated Development Environment&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptModuleName">&apos;delphicoreide140.bpl&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptModuleVer">&apos;14.0.3513.24210&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptMsg">&apos;Access violation at address 21916CE9 in module &apos;&apos;delphicoreide140.bpl&apos;&apos;. Read of address 4FF02634.&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_LineBreak">&apos;&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_MainModuleDesc">&apos;Embarcadero RAD Studio for Windows&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_MainModuleName">&apos;bds.exe&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_MainModuleVer">&apos;14.0.3513.24210&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="ALLUSERSPROFILE">&apos;C:\Documents and Settings\All Users&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Documents and Settings\Administrator\Application Data&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="asl.log">&apos;Destination=file&apos;</DebugSysEnvironmentVariables>

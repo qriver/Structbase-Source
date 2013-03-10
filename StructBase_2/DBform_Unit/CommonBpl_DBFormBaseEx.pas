@@ -191,7 +191,7 @@ end;
 function TDBFormBaseEx.mUpdateRecord(aPanel: TPanel;
   uTableName: String): integer;
 begin
-  self.mUpdateRecord(apanel);
+  result:=self.mUpdateRecord(apanel);
 end;
 
 function TDBFormBaseEx.mUpdateRecord(dbCntrls: array of TDBControl): integer;
@@ -205,7 +205,7 @@ var aryCntl:TDBControlArray;
 var myObject:Tmaskedit;
 begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
-    CloseInputProxy(APanel.Controls[i] as Tmaskedit);
+   result:=_UpdateRecord(aryCntl);
 end;
 
 

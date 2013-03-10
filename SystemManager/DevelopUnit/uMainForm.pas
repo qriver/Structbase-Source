@@ -25,6 +25,8 @@ type
     btn3: TRzToolButton;
     rzpgcntrl1: TRzPageControl;
     codeEngide: TRzToolButton;
+    btnAppSetup: TRzToolButton;
+    btnDataSource: TRzToolButton;
     procedure btn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btn2Click(Sender: TObject);
@@ -32,6 +34,8 @@ type
     procedure rzpgcntrl1Close(Sender: TObject; var AllowClose: Boolean);
     procedure codeEngideClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnAppSetupClick(Sender: TObject);
+    procedure btnDataSourceClick(Sender: TObject);
 
   private
     procedure LoadFormInPage(var aform: TForm);
@@ -47,6 +51,8 @@ type
 
 implementation
 uses
+     uAPP_NAME_MainForm,
+    uAPP_DATASOURCE_MainForm,
     dicManager,
     uDIC_SOURCE_MainForm,
     uCnMainCodeEngine,
@@ -103,10 +109,26 @@ begin
     }
 end;
 
+procedure TMainForm.btnAppSetupClick(Sender: TObject);
+begin
+//APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
+  //APP_NAME_MainForm: TAPP_NAME_MainForm;
+if  not assigned(APP_NAME_MainForm) then
+         APP_NAME_MainForm:=TAPP_NAME_MainForm.create(self);
+    self.LoadFormInPage(TForm(APP_NAME_MainForm));
+end;
+
+procedure TMainForm.btnDataSourceClick(Sender: TObject);
+begin
+//APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
+  //APP_NAME_MainForm: TAPP_NAME_MainForm;
+if  not assigned(APP_DATASOURCE_MainForm) then
+         APP_DATASOURCE_MainForm:=TAPP_DATASOURCE_MainForm.create(self);
+    self.LoadFormInPage(TForm(APP_DATASOURCE_MainForm));
+end;
+
 procedure TMainForm.codeEngideClick(Sender: TObject);
 begin
-
-
 if  not assigned(CnMainCodeEngine) then
          CnMainCodeEngine:=TCnMainCodeEngine.create(self);
     self.LoadFormInPage(TForm(CnMainCodeEngine));
