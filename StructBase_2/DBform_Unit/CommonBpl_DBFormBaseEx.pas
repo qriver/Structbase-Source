@@ -205,7 +205,9 @@ var aryCntl:TDBControlArray;
 var myObject:Tmaskedit;
 begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
+
     result:=_UpdateRecord(aryCntl);
+
 end;
 
 

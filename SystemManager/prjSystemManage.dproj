@@ -82,18 +82,14 @@
 			<DCCReference Include="DicManageUnit\uDIC_SOURCE_MainForm.pas">
 				<Form>DIC_SOURCE_MainForm</Form>
 			</DCCReference>
-			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_MainForm.pas">
-				<Form>APP_DATASOURCE_MainForm</Form>
-			</DCCReference>
-			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_Form.pas">
-				<Form>APP_DATASOURCE_Form</Form>
-			</DCCReference>
 			<DCCReference Include="TableDefineUnit\uAPP_NAME_MainForm.pas">
 				<Form>APP_NAME_MainForm</Form>
 			</DCCReference>
 			<DCCReference Include="TableDefineUnit\uAPP_NAME_Form.pas">
 				<Form>APP_NAME_Form</Form>
 			</DCCReference>
+			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_MainForm.pas"/>
+			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_Form.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

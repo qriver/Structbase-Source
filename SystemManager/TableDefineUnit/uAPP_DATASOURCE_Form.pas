@@ -16,6 +16,8 @@ type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
   TAPP_DATASOURCE_Form = class(TBaseForm)
+    btnClose: TButton;
+    btnSave:  TButton;
     Panel1: TPanel;
     
     lbl1: TStaticText;
@@ -23,15 +25,11 @@ type
     lbl2: TStaticText;
     edtCONNECTIONSTR: TMaskEdit;
     lbl3: TStaticText;
-    edtDBTYPE: TMaskEdit;
-    lbl4: TStaticText;
     edtID: TMaskEdit;
-    lbl5: TStaticText;
+    lbl4: TStaticText;
     edtSOURCE_CHINESE: TMaskEdit;
-    lbl6: TStaticText;
+    lbl5: TStaticText;
     edtSOURCE_NAME: TMaskEdit;
-    btnSave: TButton;
-    btnClose: TButton;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -94,20 +92,15 @@ begin
    if ftype=fAddNew then
    begin
        self.mCleanPanel(panel1);
-       self.mOpenInputProxy(panel1);
-       self.edtID.text:=self.mGetGuid;
        btnSave.visible:=True;
-       panel1.Enabled :=True;
    end;
 
    if ftype=fUpdate then
    begin
        edtID.readonly:=True;
        whereSql:=' where ID ='+ sysutils.QuotedStr(fPkFieldValue);
-       self.mOpenInputProxy(panel1);
        mDisplayRecord(panel1,wheresql);
        btnSave.visible:=True;
-       panel1.Enabled :=True;
    end;
 
    if ftype=fDelete then
@@ -120,9 +113,7 @@ begin
        edtID.readonly:=True;
        whereSql:=' where ID ='+ sysutils.QuotedStr(fPkFieldValue);
        mDisplayRecord(panel1,wheresql);
-       self.mCloseInputProxy(panel1);
        btnSave.visible:=False;
-       panel1.Enabled :=True;
    end;
 
 

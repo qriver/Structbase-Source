@@ -42,20 +42,18 @@ type
    
 APP_DATASOURCEAUTOLOAD:TWideStringField; 
 APP_DATASOURCECONNECTIONSTR:TWideStringField; 
-APP_DATASOURCEDBTYPE:TWideStringField; 
 APP_DATASOURCEID:TWideStringField; 
 APP_DATASOURCESOURCE_CHINESE:TWideStringField; 
 APP_DATASOURCESOURCE_NAME:TWideStringField; 
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
-    lbl6: TStaticText;
-    edtSOURCE_NAME: TMaskEdit;
     cxGrid1DBTableView1AUTOLOAD: TcxGridDBColumn;
     cxGrid1DBTableView1CONNECTIONSTR: TcxGridDBColumn;
-    cxGrid1DBTableView1DBTYPE: TcxGridDBColumn;
     cxGrid1DBTableView1ID: TcxGridDBColumn;
     cxGrid1DBTableView1SOURCE_CHINESE: TcxGridDBColumn;
     cxGrid1DBTableView1SOURCE_NAME: TcxGridDBColumn;
+    edtID: TMaskEdit;
+    lbl3: TStaticText;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -83,7 +81,7 @@ var
 
 implementation
 
-uses uAPP_DATASOURCE_Form;    //
+uses uAPP_DATASOURCE_Form, uDIC_SOURCE_Form;    //
 
 
 {$R *.dfm}
@@ -105,8 +103,8 @@ begin
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
+ // strSql:=self.mGetSqlByPanel(pnlCondition) ;
   strSql:=self.mGetSqlStr(pnlCondition);
-
   if _DBTYPE<>'ACCESS' then
   begin
       strPageSql:='select * from  (';
@@ -120,7 +118,7 @@ begin
    cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
   if _DBTYPE<>'ACCESS' then
-  cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+    cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
   for j := 0 to listFieldDisplay.Count - 2 do
   begin
      cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel:=listFieldDisplay[j];
@@ -139,7 +137,7 @@ procedure TAPP_DATASOURCE_MainForm.btnAddnewClick(Sender: TObject);
 begin
   inherited;
   TabSheetDataModify.Caption:='新增记录';
-  APP_DATASOURCE_Form.actionType:=faddnew;
+  APP_DATASOURCE_Form.actionType:=uAPP_DATASOURCE_Form.faddnew;
   ShowDataModifyForm(0);
 end;
 
@@ -151,7 +149,7 @@ begin
      APP_DATASOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   
-  APP_DATASOURCE_Form.actionType:=fDisplay;
+  APP_DATASOURCE_Form.actionType:=uAPP_DATASOURCE_Form.fDisplay;
   TabSheetDataModify.Caption:='数据浏览';
   ShowDataModifyForm(0);
 end;
@@ -164,7 +162,7 @@ begin
      APP_DATASOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   TabSheetDataModify.Caption:='修改记录';
-  APP_DATASOURCE_Form.actionType:=fupdate;
+  APP_DATASOURCE_Form.actionType:=uAPP_DATASOURCE_Form.fupdate;
   ShowDataModifyForm(0);
 end;
 

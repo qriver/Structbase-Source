@@ -43,7 +43,7 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
         Left = 5
         Top = 5
         Width = 678
-        Height = 44
+        Height = 41
         Align = alTop
         BevelEdges = []
         BevelOuter = bvNone
@@ -52,32 +52,32 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        object lbl6: TStaticText
-          Left = 34
-          Top = 9
-          Width = 103
-          Height = 23
-          Alignment = taCenter
-          AutoSize = False
-          BorderStyle = sbsSingle
-          Caption = #25968#25454#28304#21517#31216
-          TabOrder = 0
-        end
-        object edtSOURCE_NAME: TMaskEdit
-          Left = 136
+        object edtID: TMaskEdit
+          Left = 127
           Top = 9
           Width = 121
-          Height = 23
+          Height = 25
           AutoSize = False
           Ctl3D = False
           ParentCtl3D = False
+          TabOrder = 0
+          Text = 'edtID'
+        end
+        object lbl3: TStaticText
+          Left = 8
+          Top = 9
+          Width = 120
+          Height = 25
+          Alignment = taCenter
+          AutoSize = False
+          BorderStyle = sbsSingle
+          Caption = #21807#19968#26631#35782
           TabOrder = 1
-          Text = 'edtSOURCE_NAME'
         end
       end
       object RzToolbar1: TRzToolbar
         Left = 5
-        Top = 49
+        Top = 46
         Width = 678
         Height = 27
         AutoResize = False
@@ -229,14 +229,14 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
       end
       object cxGrid1: TcxGrid
         Left = 5
-        Top = 76
+        Top = 73
         Width = 678
-        Height = 388
+        Height = 391
         Align = alClient
         TabOrder = 2
         LookAndFeel.Kind = lfOffice11
         RootLevelOptions.DetailFrameColor = clHighlight
-        ExplicitHeight = 379
+        ExplicitHeight = 382
         object cxGrid1DBTableView1: TcxGridDBTableView
           DragMode = dmAutomatic
           NavigatorButtons.ConfirmDelete = False
@@ -279,29 +279,25 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
           Preview.AutoHeight = False
           Preview.MaxLineCount = 2
           Preview.Visible = True
+          object cxGrid1DBTableView1ID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Width = 65
+          end
           object cxGrid1DBTableView1SOURCE_NAME: TcxGridDBColumn
             DataBinding.FieldName = 'SOURCE_NAME'
-            Width = 85
+            Width = 121
           end
           object cxGrid1DBTableView1SOURCE_CHINESE: TcxGridDBColumn
             DataBinding.FieldName = 'SOURCE_CHINESE'
-            Width = 122
-          end
-          object cxGrid1DBTableView1DBTYPE: TcxGridDBColumn
-            DataBinding.FieldName = 'DBTYPE'
-            Width = 103
+            Width = 121
           end
           object cxGrid1DBTableView1AUTOLOAD: TcxGridDBColumn
             DataBinding.FieldName = 'AUTOLOAD'
-            Width = 77
+            Width = 122
           end
           object cxGrid1DBTableView1CONNECTIONSTR: TcxGridDBColumn
             DataBinding.FieldName = 'CONNECTIONSTR'
-            Width = 244
-          end
-          object cxGrid1DBTableView1ID: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-            Visible = False
+            Width = 124
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -406,12 +402,6 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
       FieldName = 'CONNECTIONSTR'
       Size = 500
     end
-    object APP_DATASOURCEDBTYPE: TWideStringField
-      DisplayLabel = #25968#25454#28304#31867#22411
-      DisplayWidth = 20
-      FieldName = 'DBTYPE'
-      Size = 10
-    end
     object APP_DATASOURCEID: TWideStringField
       DisplayLabel = #21807#19968#26631#35782
       DisplayWidth = 20
@@ -428,7 +418,7 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
       DisplayLabel = #25968#25454#28304#21517#31216
       DisplayWidth = 20
       FieldName = 'SOURCE_NAME'
-      Size = 10
+      Size = 32
     end
   end
 end

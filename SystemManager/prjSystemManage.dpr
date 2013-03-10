@@ -17,10 +17,10 @@ uses
   uTableDefine in 'TableDefineUnit\uTableDefine.pas' {frmTableDefine},
   uDIC_SOURCE_Form in 'DicManageUnit\uDIC_SOURCE_Form.pas' {DIC_SOURCE_Form},
   uDIC_SOURCE_MainForm in 'DicManageUnit\uDIC_SOURCE_MainForm.pas' {DIC_SOURCE_MainForm},
-  uAPP_DATASOURCE_MainForm in 'TableDefineUnit\uAPP_DATASOURCE_MainForm.pas' {APP_DATASOURCE_MainForm},
-  uAPP_DATASOURCE_Form in 'TableDefineUnit\uAPP_DATASOURCE_Form.pas' {APP_DATASOURCE_Form},
   uAPP_NAME_MainForm in 'TableDefineUnit\uAPP_NAME_MainForm.pas' {APP_NAME_MainForm},
-  uAPP_NAME_Form in 'TableDefineUnit\uAPP_NAME_Form.pas' {APP_NAME_Form};
+  uAPP_NAME_Form in 'TableDefineUnit\uAPP_NAME_Form.pas' {APP_NAME_Form},
+  uAPP_DATASOURCE_MainForm in 'TableDefineUnit\uAPP_DATASOURCE_MainForm.pas',
+  uAPP_DATASOURCE_Form in 'TableDefineUnit\uAPP_DATASOURCE_Form.pas';
 
 {$R *.res}
 
@@ -30,8 +30,6 @@ begin
   Application.MainFormOnTaskbar := True;
 
   Application.CreateForm(TDbConnectForm, DbConnectForm);
-
- 
   DbConnectForm.ShowModal;
   if DbConnectForm.ModalResult=mrOk  then
   begin
