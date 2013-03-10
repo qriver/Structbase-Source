@@ -18,7 +18,7 @@ type
   public
     Constructor Create; overload;
     Destructor Destroy; override;
-    procedure LoadApplication(uAppName:String);
+    procedure LoadAppInstance(uAppName:String);
     procedure ReadSysConfigFromDb(uDbprovideName:String);
   end;
 
@@ -46,13 +46,13 @@ begin
    inherited;
 end;
 
-procedure TStruct_SysConfigUtils.LoadApplication(uAppName: String);
+procedure TStruct_SysConfigUtils.LoadAppInstance(uAppName: String);
 var strDataSource,strMetaSource:String;
 var uApplication:TStruct_Application;
 begin
     if fApplicationCds=nil then
      begin
-      messagebox(0,pchar('系统数据配置没有装载，必须先执行ReadSysConfigFromDb过程'),'错误',0);
+      messagebox(0,pchar('APP对象配置没有装载，必须先执行ReadConfigFromDb方法'),'错误',0);
       exit;
    end;
 
@@ -62,7 +62,7 @@ begin
        strMetaSource:=fApplicationCds.FieldByName('Meta_DataSource').AsString;;
    end else
    begin
-      messagebox(0,pchar('数据库中没有发有'+uAppName+'的配置项'),'错误',0);
+      messagebox(0,pchar('配置数据库中没有发有APP对象:'+uAppName+'的设置置'),'错误',0);
    end;
 
 
@@ -95,7 +95,7 @@ begin
    if fDataSourceCds=nil then fDataSourceCds:=TClientDataset.Create(nil);
    if structbase.DBProvids.find(uDbprovideName)=nil then
    begin
-      messagebox(0,pchar('系统数据源'+uDbprovideName+'没有装载'),'错误',0);
+      messagebox(0,pchar('数据源'+uDbprovideName+'没有装载'),'错误',0);
       exit;
    end;
    with structbase.DBProvids.find(uDbprovideName)do
@@ -119,7 +119,7 @@ begin
         structbase.DBProvids.AddDBProvide(strDataSource,dbtype,strConnection);
     end else
     begin
-      messagebox(0,pchar('数据库中没有发有数据源'+strDataSource+'的配置项'),'错误',0);
+      messagebox(0,pchar('配置数据库中没有发有数据源'+strDataSource+'的配置项'),'错误',0);
     end;
 end;
 

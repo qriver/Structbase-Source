@@ -10,10 +10,15 @@ uses
 var ConnectionString:String;
 begin
   Application.Initialize;
+
+  //定义获取系统配置的数据源
   ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\db\db.mdb;Persist Security Info=False' ;
   structbase.DBProvids.AddDBProvide('MetaSource','ADO',ConnectionString);
+
  // structbase.DBProvids.AddDBProvide('JAVASAMPLE','JAVA',ConnectionString);
  // structbase.DBProvids.AddDBProvide('ODACSAMPLE','ODAC',ConnectionString);
+
+  //读取系统配置
   StructBase.ReadConfigFromDB('MetaSource');
 
   Application.CreateForm(TMainForm, MainForm);

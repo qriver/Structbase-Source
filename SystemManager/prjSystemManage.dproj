@@ -21,7 +21,7 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_Define>NDEBUG;$(DCC_Define)</DCC_Define>
-			<DCC_UnitSearchPath>E:\StructBase SDK\lib\Odac;E:\workspace\Delphi2010\StructBase_2\dcu;E:\workspace\Delphi2010\StructBase_2\DBform_Unit;E:\workspace\Delphi2010\StructBase_2\Unit;E:\workspace\Delphi2010\StructBase_2\Phprpc_Unit;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>D:\Structbase-Source\StructBase_2\DBform_Unit;D:\Structbase-Source\StructBase_2\Phprpc_Unit;D:\Structbase-Source\StructBase_2\Unit;D:\StructBase SDK\lib\Odac;D:\StructBase SDK\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_DependencyCheckOutputName>bin\prjSystemManage.exe</DCC_DependencyCheckOutputName>
 			<DCC_BplOutput>bin</DCC_BplOutput>
 			<DCC_DcpOutput>bin</DCC_DcpOutput>
@@ -140,59 +140,44 @@
 						<Source Name="MainSource">prjSystemManage.dpr</Source>
 					</Source>
 					<DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="__COMPAT_LAYER">&apos;ElevateCreateProcess&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="1830B7BD-F7A3-4c4d-989B-C004DE465EDE">&apos;95c:5443430&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ALLUSERSPROFILE">&apos;C:\ProgramData&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Users\zck\AppData\Roaming&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDS">&apos;c:\program files (x86)\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="1830B7BD-F7A3-4c4d-989B-C004DE465EDE">&apos;ec8:284388&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="ALLUSERSPROFILE">&apos;C:\Documents and Settings\All Users&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Documents and Settings\Administrator\Application Data&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="asl.log">&apos;Destination=file&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDS">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="BDSAppDataBaseDir">&apos;BDS&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSCOMMONDIR">&apos;C:\Users\Public\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSPROJECTSDIR">&apos;C:\Users\zck\Documents\RAD Studio\Projects&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSUSERDIR">&apos;C:\Users\zck\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CommonProgramFiles(x86)">&apos;C:\Program Files (x86)\Common Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CommonProgramFiles">&apos;C:\Program Files (x86)\Common Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CommonProgramW6432">&apos;C:\Program Files\Common Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="COMMPath">&apos;C:\Program Files\Lenovo\Communications Utility&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="COMPUTERNAME">&apos;ZCK-THINK&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ComSpec">&apos;C:\Windows\system32\cmd.exe&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="configsetroot">&apos;C:\Windows\ConfigSetRoot&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="DELPHI">&apos;c:\program files (x86)\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDSCOMMONDIR">&apos;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDSPROJECTSDIR">&apos;C:\Documents and Settings\Administrator\My Document\RAD Studio\Projects&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDSUSERDIR">&apos;C:\Documents and Settings\Administrator\My Document\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="CLIENTNAME">&apos;Console&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="CommonProgramFiles">&apos;C:\Program Files\Common Files&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="COMPUTERNAME">&apos;PC-201209021625&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="ComSpec">&apos;C:\WINDOWS\system32\cmd.exe&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="DELPHI">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="EL_PATHS">&apos;;C:\Program Files\EurekaLog 6\Delphi14;C:\Program Files\EurekaLog 6\CBuilder14&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="FP_NO_HOST_CHECK">&apos;NO&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="HOMEDRIVE">&apos;C:&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="HOMEPATH">&apos;\Users\zck&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LOCALAPPDATA">&apos;C:\Users\zck\AppData\Local&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LOGONSERVER">&apos;\\ZCK-THINK&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="NUMBER_OF_PROCESSORS">&apos;4&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="HOMEPATH">&apos;\Documents and Settings\Administrator&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="LOGONSERVER">&apos;\\PC-201209021625&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="NUMBER_OF_PROCESSORS">&apos;2&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="OS">&apos;Windows_NT&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="Path">&apos;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\ThinkPad\Bluetooth Software\syswow64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Common Files\Lenovo;C:\Program Files (x86)\Windows Live\Shared;C:\SWTOOLS\ReadyApps;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\Program Files (x86)\Common Files\Lenovo;C:\Program Files (x86)\RemObjects Software\Everwood\Bin;C:\Program Files (x86)\RemObjects Software\RemObjects SDK for Delphi\Dcu\D14;C:\Program Files (x86)\RemObjects Software\Data Abstract (Common)\Bin;C:\Program Files (x86)\RemObjects Software\Data Abstract for Delphi\Dcu\D14;C:\Program Files\TortoiseGit\bin;C:\Users\Public\Documents\RAD Studio\7.0\Bpl&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PATHEXT">&apos;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="Path">&apos;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\TortoiseGit\bin;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl;C:\Documents and Settings\Administrator\My Document\Borland Studio Projects\Bpl;C:\Program Files\StormII\Codec;C:\Program Files\StormII;C:\WebXone\;;C:\Program Files\EurekaLog 6\Delphi14;C:\Program Files\EurekaLog 6\CBuilder14;C:\JwzhptClient\;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl;C:\Documents and Settings\Administrator\My Document\Borland Studio Projects\Bpl;C:\Program Files\StormII\Codec;C:\Program Files\StormII&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PATHEXT">&apos;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="PROCESSOR_ARCHITECTURE">&apos;x86&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_ARCHITEW6432">&apos;AMD64&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_IDENTIFIER">&apos;Intel64 Family 6 Model 58 Stepping 9, GenuineIntel&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PROCESSOR_IDENTIFIER">&apos;x86 Family 6 Model 42 Stepping 7, GenuineIntel&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="PROCESSOR_LEVEL">&apos;6&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_REVISION">&apos;3a09&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramData">&apos;C:\ProgramData&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramFiles(x86)">&apos;C:\Program Files (x86)&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramFiles">&apos;C:\Program Files (x86)&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramW6432">&apos;C:\Program Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PSModulePath">&apos;C:\Windows\system32\WindowsPowerShell\v1.0\Modules\&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PUBLIC">&apos;C:\Users\Public&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="READYAPPS">&apos;C:\SWTOOLS\ReadyApps&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PROCESSOR_REVISION">&apos;2a07&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="ProgramFiles">&apos;C:\Program Files&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="SESSIONNAME">&apos;Console&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SWSHARE">&apos;C:\SWSHARE&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="SystemDrive">&apos;C:&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SystemRoot">&apos;C:\Windows&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TEMP">&apos;C:\Users\zck\AppData\Local\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TFS_DIR">&apos;C:\Program Files\ThinkVantage Fingerprint Software\&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TMP">&apos;C:\Users\zck\AppData\Local\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TVT">&apos;C:\Program Files (x86)\Lenovo&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TVTCOMMON">&apos;C:\Program Files (x86)\Common Files\Lenovo&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERDOMAIN">&apos;zck-THINK&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERNAME">&apos;zck&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERPROFILE">&apos;C:\Users\zck&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windir">&apos;C:\Windows&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windows_tracing_flags">&apos;3&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windows_tracing_logfile">&apos;C:\BVTBin\Tests\installpackage\csilogfile.log&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="SystemRoot">&apos;C:\WINDOWS&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="TEMP">&apos;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="TMP">&apos;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERDOMAIN">&apos;PC-201209021625&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERNAME">&apos;Administrator&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERPROFILE">&apos;C:\Documents and Settings\Administrator&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="VXIPNPPATH">&apos;C:\Program Files\IVI Foundation\VISA\&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="windir">&apos;C:\WINDOWS&apos;</DebugSysEnvironmentVariables>
 					</DebugSysEnvironmentVariables>
 				</Delphi.Personality>
 				<ModelSupport>False</ModelSupport>

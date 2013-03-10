@@ -25,7 +25,7 @@ uses      uStructbaseFrameWork;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-   StructBase.LoadApplication(const_AppName);
+   StructBase.LoadAppInstance(const_AppName);
 end;
 
 end.

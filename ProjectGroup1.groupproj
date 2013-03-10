@@ -18,7 +18,7 @@
 			<Projects Include="SystemManager\prjSystemManage.dproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="demo\MainForm Project\MainForm.dproj">
+			<Projects Include="demo\MainForm Project\MainFormDemo.dproj">
 				<Dependencies/>
 			</Projects>
 		</ItemGroup>
@@ -74,23 +74,23 @@
 		<Target Name="prjSystemManage:Make">
 			<MSBuild Targets="Make" Projects="SystemManager\prjSystemManage.dproj"/>
 		</Target>
-		<Target Name="MainForm">
-			<MSBuild Projects="demo\MainForm Project\MainForm.dproj"/>
+		<Target Name="MainFormDemo">
+			<MSBuild Projects="demo\MainForm Project\MainFormDemo.dproj"/>
 		</Target>
-		<Target Name="MainForm:Clean">
-			<MSBuild Targets="Clean" Projects="demo\MainForm Project\MainForm.dproj"/>
+		<Target Name="MainFormDemo:Clean">
+			<MSBuild Targets="Clean" Projects="demo\MainForm Project\MainFormDemo.dproj"/>
 		</Target>
-		<Target Name="MainForm:Make">
-			<MSBuild Targets="Make" Projects="demo\MainForm Project\MainForm.dproj"/>
+		<Target Name="MainFormDemo:Make">
+			<MSBuild Targets="Make" Projects="demo\MainForm Project\MainFormDemo.dproj"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe;prjSystemManage;MainForm"/>
+			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe;prjSystemManage;MainFormDemo"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean;prjSystemManage:Clean;MainForm:Clean"/>
+			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean;prjSystemManage:Clean;MainFormDemo:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make;prjSystemManage:Make;MainForm:Make"/>
+			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make;prjSystemManage:Make;MainFormDemo:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

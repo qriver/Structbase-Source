@@ -44,7 +44,7 @@ Type
     property  UserAuthList: TStringList read FUserAuthList write FUserAuthList;
     procedure loadDBProvide(uName: String);
     procedure ReadConfigFromDB(uDbProvideName:String);
-    procedure LoadApplication(uAppName:String);
+    procedure LoadAppInstance(uAppName:String);
    // TDBpl_DBProvides
 end;
 
@@ -97,9 +97,9 @@ begin
   FSysCOnfigUtils.Free;
 end;
 
-procedure TStructbase.LoadApplication(uAppName: String);
+procedure TStructbase.LoadAppInstance(uAppName: String);
 begin
-  self.FSysCOnfigUtils.LoadApplication(uappname);
+  self.FSysCOnfigUtils.LoadAppInstance(uappname);
 end;
 
 procedure TStructbase.structInitialization;
