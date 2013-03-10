@@ -175,7 +175,7 @@ object frmTableDefine: TfrmTableDefine
     end
     object btnFieldModify: TButton
       Left = 216
-      Top = 256
+      Top = 255
       Width = 75
       Height = 25
       Caption = #20462#25913

@@ -1,4 +1,4 @@
-unit uTemplateForm;
+unit uAPP_DATASOURCE_MainForm;
 
 interface
 
@@ -12,11 +12,11 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, cxContainer, cxTextEdit,
   cxImageComboBox, cxMaskEdit, cxCalendar, cxSpinEdit,fBaseForm, cxStyles,
   cxCustomData, cxFilter, cxData, DBClient, ImgList,
-  cxPC, Mask;
+  cxPC, Mask, cxLocalization;
 
 
 type
-  TTemplateForm = class(TBaseForm)
+  TAPP_DATASOURCE_MainForm = class(TBaseForm)
     RzToolbar1: TRzToolbar;
     RzBtnLookup: TRzToolButton;
     RzSpacer1: TRzSpacer;
@@ -32,7 +32,6 @@ type
     btnDelete: TRzToolButton;
     btnModify: TRzToolButton;
     btnDisplay: TRzToolButton;
-    edtColName: TMaskEdit;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -40,9 +39,23 @@ type
     cxSpinPageNo: TcxSpinEdit;
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
-   <#AddCdsFieldControl>
+   
+APP_DATASOURCEAUTOLOAD:TWideStringField; 
+APP_DATASOURCECONNECTIONSTR:TWideStringField; 
+APP_DATASOURCEDBTYPE:TWideStringField; 
+APP_DATASOURCEID:TWideStringField; 
+APP_DATASOURCESOURCE_CHINESE:TWideStringField; 
+APP_DATASOURCESOURCE_NAME:TWideStringField; 
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
+    lbl6: TStaticText;
+    edtSOURCE_NAME: TMaskEdit;
+    cxGrid1DBTableView1AUTOLOAD: TcxGridDBColumn;
+    cxGrid1DBTableView1CONNECTIONSTR: TcxGridDBColumn;
+    cxGrid1DBTableView1DBTYPE: TcxGridDBColumn;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    cxGrid1DBTableView1SOURCE_CHINESE: TcxGridDBColumn;
+    cxGrid1DBTableView1SOURCE_NAME: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -55,8 +68,8 @@ type
     { Private declarations }
     listFieldName: TStringList;
     listFieldDisplay:TStringList;
-    Const _TableName='TABLEDEFINE';
-          _PkFieldName='COLID';
+    Const _TableName='APP_DATASOURCE';
+          _PkFieldName='ID';
           _DBTYPE='ACCESS';
     procedure RefreshGrid(Const PageNo:String);
     procedure ShowDataModifyForm(umode:integer) ;
@@ -66,18 +79,18 @@ type
 
 
 var
-  TemplateForm: TTemplateForm;
+  APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm;
 
 implementation
 
-uses uTABLEDEFINEForm;    //
+uses uAPP_DATASOURCE_Form;    //
 
 
 {$R *.dfm}
 
 
 
-procedure TTemplateForm.RefreshGrid(const PageNo: String);
+procedure TAPP_DATASOURCE_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
 var j:integer;
 begin
@@ -122,52 +135,52 @@ end;
 
 
 
-procedure TTemplateForm.btnAddnewClick(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.btnAddnewClick(Sender: TObject);
 begin
   inherited;
   TabSheetDataModify.Caption:='新增记录';
-  TABLEDEFINEForm.actionType:=faddnew;
+  APP_DATASOURCE_Form.actionType:=faddnew;
   ShowDataModifyForm(0);
 end;
 
-procedure TTemplateForm.btnDisplayClick(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.btnDisplayClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     TABLEDEFINEForm.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     APP_DATASOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   
-  TABLEDEFINEForm.actionType:=fDisplay;
+  APP_DATASOURCE_Form.actionType:=fDisplay;
   TabSheetDataModify.Caption:='数据浏览';
   ShowDataModifyForm(0);
 end;
 
-procedure TTemplateForm.btnModifyClick(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.btnModifyClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     TABLEDEFINEForm.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     APP_DATASOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   TabSheetDataModify.Caption:='修改记录';
-  TABLEDEFINEForm.actionType:=fupdate;
+  APP_DATASOURCE_Form.actionType:=fupdate;
   ShowDataModifyForm(0);
 end;
 
-procedure TTemplateForm.cxSpinPageNoClick(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.cxSpinPageNoClick(Sender: TObject);
 begin
   inherited;
   RefreshGrid(cxSpinPageNo.Value);
 end;
 
 
-procedure TTemplateForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TAPP_DATASOURCE_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
-  TemplateForm:=NIL;
+  APP_DATASOURCE_MainForm:=NIL;
   
   listFieldName.free;
   listFieldDisplay.free;
@@ -175,13 +188,13 @@ end;
 
 
 
-procedure TTemplateForm.FormCreate(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.FormCreate(Sender: TObject);
 var i:integer;
 var fieldNames,displayNames:String;
 begin
   inherited;
   
-  TABLEDEFINEForm:=TTABLEDEFINEForm.create(self);
+  APP_DATASOURCE_Form:=TAPP_DATASOURCE_Form.create(self);
   if sysutils.FileExists(GetCurrentDir+'\DevLocal.ini') then
   begin
       cxLocalizer1.FileName:=GetCurrentDir+'\DevLocal.ini';
@@ -213,7 +226,7 @@ begin
   listFieldDisplay.CommaText:= displayNames;
 end;
 
-procedure TTemplateForm.RzBtnLookupClick(Sender: TObject);
+procedure TAPP_DATASOURCE_MainForm.RzBtnLookupClick(Sender: TObject);
 var strSql:String;
 begin
   inherited;
@@ -225,27 +238,27 @@ end;
 
 
 
-procedure TTemplateForm.ShowDataModifyForm(umode:integer);
+procedure TAPP_DATASOURCE_MainForm.ShowDataModifyForm(umode:integer);
 begin
 if umode=0 then   //  显示在本窗体内
 begin
-  TABLEDEFINEForm.Parent:=TabSheetDataModify;
-  TABLEDEFINEForm.Align:=alClient;
-  TABLEDEFINEForm.BorderStyle:=bsnone;
+  APP_DATASOURCE_Form.Parent:=TabSheetDataModify;
+  APP_DATASOURCE_Form.Align:=alClient;
+  APP_DATASOURCE_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=True;
   self.rzPageCondition.ActivePage:=TabSheetDataModify;
 end;
 if umode=1 then   //  独立窗体
 begin
-   TABLEDEFINEForm.Parent:=nil;
- // TABLEDEFINEForm.Align:=alClient;
- // TABLEDEFINEForm.BorderStyle:=bsnone;
+   APP_DATASOURCE_Form.Parent:=nil;
+ // APP_DATASOURCE_Form.Align:=alClient;
+ // APP_DATASOURCE_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=False;
 
   self.rzPageCondition.ActivePage:=TabSheet1;
 end;
 
-TABLEDEFINEForm.Show;
+APP_DATASOURCE_Form.Show;
 
 
 end;

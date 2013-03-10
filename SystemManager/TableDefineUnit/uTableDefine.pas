@@ -171,10 +171,11 @@ end;
 procedure TfrmTableDefine.btnFieldModifyClick(Sender: TObject);
 begin
   self.mRegistCntrl(panel1,'TABLEDEFINE');
+  self.mOpenInputProxy(panel1);
   self.mDisplayRecord(panel1,self.dgColumn.DataSource.DataSet as TClientDataSet);
-    self.edtTableName.ReadOnly:=true;
   self.edtTableName.ReadOnly:=true;
-   action:='MODIFY';
+  self.edtTableName.ReadOnly:=true;
+  action:='MODIFY';
 end;
 
 procedure TfrmTableDefine.btnFieldSaveClick(Sender: TObject);
@@ -199,12 +200,16 @@ begin
   action:='ADDNEW';
 
   self.mRegistCntrl(panel1,'TABLEDEFINE');
+
   self.mCleanPanel(self.Panel1);
+
+  self.mOpenInputProxy(panel1);
   self.edtTableName.Text:=dgtable.DataSource.DataSet.fieldbyname('table_name').AsString;
   self.edtAppId.Text:= cbbAppName.KeyValue;
-
+  self.edtColId.Text:=self.mGetGuid;
   self.edtTableName.ReadOnly:=true;
   self.edtTableName.ReadOnly:=true;
+   self.edtColId.ReadOnly:=true;
 end;
 
 end.

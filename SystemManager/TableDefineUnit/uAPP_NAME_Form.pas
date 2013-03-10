@@ -4,22 +4,32 @@
   2007-03-01 09:48:58
 }
 
-unit <#UnitName>;
+unit uAPP_NAME_Form;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,ExtCtrls,fBaseForm<#AddUseGlobal>;
+  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask, DB;
 
 type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
-  <#TFormName> = class(TBaseForm)
+  TAPP_NAME_Form = class(TBaseForm)
     btnClose: TButton;
     btnSave:  TButton;
     Panel1: TPanel;
-    <#AddControl>
+    
+    lbl1: TStaticText;
+    edtAPPID: TMaskEdit;
+    lbl2: TStaticText;
+    edtAPPNAME: TMaskEdit;
+    lbl3: TStaticText;
+    edtDATASOURCE: TMaskEdit;
+    lbl4: TStaticText;
+    edtDB_SCHEMA: TMaskEdit;
+    lbl5: TStaticText;
+    edtMETA_DATASOURCE: TMaskEdit;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -27,55 +37,55 @@ type
     procedure bttModifyClick(Sender: TObject);
     procedure btnAddNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    <#AddFormFuncHead>
+    
   private
     { Private declarations }
      
      fActionType:actionType;
      fPkFieldValue:String;
      
-    <#AddPrivateData>
-    <#AddPrivateFunc>
+    
+    
      procedure setActionType(ftype:actionType);
   public
     { Public declarations }
-    <#AddPublicData>
-    <#AddPublicFunc>
+    
+    
      property   actionType: actionType read factionType write setActionType;
      property   pkFieldValue: String read fPkFieldValue write fPkFieldValue;
   end;
 
 var
-  <#FormName>: <#TFormName>;
+  APP_NAME_Form: TAPP_NAME_Form;
 
 implementation
-  <#AddUseLocal>
+  
 
 {$R *.dfm}
 
-<#AddGlobalFunc>
 
-procedure <#TFormName>.FormCreate(Sender: TObject);
+
+procedure TAPP_NAME_Form.FormCreate(Sender: TObject);
 begin
-  mRegistCntrl(panel1,'<#TableName>') 
+  mRegistCntrl(panel1,'APP_NAME') 
 end;
 
-procedure <#TFormName>.FormDestroy(Sender: TObject);
-begin
-  //
-end;
-
-procedure <#TFormName>.FormShow(Sender: TObject);
+procedure TAPP_NAME_Form.FormDestroy(Sender: TObject);
 begin
   //
 end;
 
-procedure <#TFormName>.btnCloseClick(Sender: TObject);
+procedure TAPP_NAME_Form.FormShow(Sender: TObject);
+begin
+  //
+end;
+
+procedure TAPP_NAME_Form.btnCloseClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure <#TFormName>.setActionType(ftype: ActionType);
+procedure TAPP_NAME_Form.setActionType(ftype: ActionType);
 var whereSql:String;
 begin
    fActionType:=ftype;
@@ -89,9 +99,9 @@ begin
 
    if ftype=fUpdate then
    begin
-       edt<#PkFieldName>.readonly:=True;
-       whereSql:=' where <#PkFieldName> ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtAPPID.readonly:=True;
        self.mOpenInputProxy(panel1);
+       whereSql:=' where APPID ='+ sysutils.QuotedStr(fPkFieldValue);
        mDisplayRecord(panel1,wheresql);
        btnSave.visible:=True;
        panel1.Enabled :=True;
@@ -104,10 +114,10 @@ begin
 
    if ftype=fDisplay then
    begin
-       edt<#PkFieldName>.readonly:=True;
-       whereSql:=' where <#PkFieldName> ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtAPPID.readonly:=True;
+       whereSql:=' where APPID ='+ sysutils.QuotedStr(fPkFieldValue);
        mDisplayRecord(panel1,wheresql);
-       self.mCloseInputProxy(panel1);
+        self.mCloseInputProxy(panel1);
        btnSave.visible:=False;
        panel1.Enabled :=True;
    end;
@@ -115,15 +125,15 @@ begin
 
 end;
 
-procedure <#TFormName>.btnSaveClick(Sender: TObject);
+procedure TAPP_NAME_Form.btnSaveClick(Sender: TObject);
 var i:integer;
 begin
    if fActionType=fAddNew then
-      i:=mInsertRecord(panel1,'<#TableName>');
+      i:=mInsertRecord(panel1,'APP_NAME');
 
    
    if fActionType=fUpdate then
-      i:= mUpdateRecord(panel1,'<#TableName>');
+      i:= mUpdateRecord(panel1,'APP_NAME');
 
    if i=0 then 
    begin
@@ -134,16 +144,16 @@ begin
    
 end;
 
-procedure <#TFormName>.btnAddNewClick(Sender: TObject);
+procedure TAPP_NAME_Form.btnAddNewClick(Sender: TObject);
 begin
     setActionType(fAddNew);
 end;
 
-procedure <#TFormName>.bttModifyClick(Sender: TObject);
+procedure TAPP_NAME_Form.bttModifyClick(Sender: TObject);
 begin
     setActionType(fUpdate);
 end;
 
-<#AddFormFunc>
+
 
 end.

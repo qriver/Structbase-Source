@@ -6,7 +6,7 @@ uses
   DB,
   Controls,
   variants,
-  cxGridDBTableView ,
+  cxGridDBTableView,
   commonBpl_PublicFun,
   uStructbaseFrameWork,
   DBpl_IDBProvide,
@@ -40,6 +40,7 @@ function _GetSqlStr(dbCntrls: array of TDBControl): String;
 
 procedure _OpenCtrlInputProxy(aForm: TDBFormBase; aControl: TMaskEdit;
   dataInputCntl: TObject);
+
 procedure _CloseInputProxy(aControl: TMaskEdit);
 
 function AnalyseDataStr(ucntl: TDBControl): String;
@@ -51,8 +52,9 @@ procedure _SetUserAuth(aUserId: String; aForm: TDBFormBase);
 function _HaveModuleAuth(authString: String): Boolean;
 function _HaveAppAuth(authString: String): Boolean;
 
-procedure _TranslateGrid( aForm: TDBFormBase;AGrid: TcxGridDBTableView;
+procedure _TranslateGrid(aForm: TDBFormBase; AGrid: TcxGridDBTableView;
   aTableName: String);
+
 implementation
 
 uses
@@ -125,18 +127,23 @@ procedure _OpenCtrlInputProxy(aForm: TDBFormBase; aControl: TMaskEdit;
 var
   dataInput: TStruct_CntlDataInput;
 begin
-  if dataInputCntl = nil then
-    dataInputCntl := structbase.CntlDataInput;
-  if dataInputCntl.ClassName = 'TStruct_CntlDataInput' then
+  with aForm.dbControls.find(aControl.name) do
   begin
-    if aForm.dbControls.find(aControl.name).fieldMetaBase.dicId <> '' then
-      aControl.OnEnter := aForm.DBCntlOnEnterListener;
+    if dataInputCntl = nil then
+      dataInputCntl := structbase.CntlDataInput;
+    if dataInputCntl.ClassName = 'TStruct_CntlDataInput' then
+    begin
+      if aForm.dbControls.find(aControl.name).fieldMetaBase.dicId <> '' then
+        aControl.OnEnter := aForm.DBCntlOnEnterListener;
+    end;
+
+    if dataInputCntl <> nil then
+    begin
+      // 此处增加其它字典输入代理的代码
+    end;
+
   end;
 
-  if dataInputCntl <> nil then
-  begin
-    // 此处增加其它字典输入代理的代码
-  end;
 end;
 
 procedure _CloseInputProxy(aControl: TMaskEdit);
@@ -261,7 +268,7 @@ begin
       begin
         strSql2 := strSql2 + '''' + ucntl.realValue + '''';
       end;
-      if i <> length(dbCntrls) then
+      if (i <>(length(dbCntrls)-1)) then
       begin
         strSql2 := strSql2 + ',';
         strSql1 := strSql1 + ',';
@@ -297,7 +304,8 @@ begin
     begin
       ucntl := dbCntrls[i] as TDBControl;
       strTableName := ucntl.tablename;
-      if ucntl.dicMetaBase.dicId <> '' then
+
+      if (ucntl.fieldMetaBase.dicId<>'') then
         strValue := ucntl.realValue
       else
         strValue := ucntl.cntlObjct.Text;
@@ -367,7 +375,7 @@ begin
       aryCntl[length(aryCntl) - 1] := aForm.dbControls.find(myObject.name);
     end;
   end;
-  result:=TDBControlArray(aryCntl);
+  result := TDBControlArray(aryCntl);
 end;
 
 procedure _SetUserAuth(aUserId: String; aForm: TDBFormBase);
@@ -384,16 +392,16 @@ begin
       ' ( select * from  group_user b where b.user_id=%s and a.group_id=b.group_id) ';
     sql := format(sql, [QuotedStr(aUserId)]);
 
-    with    structbase.Applications.find(aform.getAppId).MetaSource.dbProvide  do
+    with structbase.Applications.find(aForm.getAppId).MetaSource.dbprovide do
     begin
-           SelectCommand(cdsAuth, sql, 0);
+      SelectCommand(cdsAuth, sql, 0);
     end;
 
     cdsAuth.First;
     repeat
       Forms.Application.ProcessMessages;
       authid := uppercase(cdsAuth.fieldbyname('Auth_id').AsString);
-       structbase.UserAuthList.Add(authid);
+      structbase.UserAuthList.Add(authid);
 
       cdsAuth.Next;
     until cdsAuth.eof;
@@ -403,15 +411,15 @@ begin
 
 end;
 
-
 function _HaveAppAuth(authString: String): Boolean;
-var i:integer;
+var
+  i: integer;
 begin
-   {$IFNDEF NDEBUG}
-       for i := 0 to uUserAuthList.Count - 1 do
-            cndebugger.TraceMsg(uUserAuthList.Strings[i]);
-            cndebugger.TraceMsg(authString);
-   {$ENDIF}
+{$IFNDEF NDEBUG}
+  for i := 0 to uUserAuthList.Count - 1 do
+    cndebugger.TraceMsg(uUserAuthList.Strings[i]);
+  cndebugger.TraceMsg(authString);
+{$ENDIF}
   if structbase.UserAuthList.IndexOf(uppercase(authString)) > -1 then
     result := true
   else
@@ -420,124 +428,122 @@ end;
 
 function _HaveModuleAuth(authString: String): Boolean;
 begin
- {$IFNDEF NDEBUG}
-    if  structbase.UserAuthList.IndexOf(Auth_Moudle_Prefix+uppercase(authString)) > -1 then
-      result := true
+{$IFNDEF NDEBUG}
+  if structbase.UserAuthList.IndexOf(Auth_Moudle_Prefix + uppercase(authString)
+    ) > -1 then
+    result := true
   else
-       result := false;
- {$ENDIF}
+    result := false;
+{$ENDIF}
 end;
 
-
-
-procedure _TranslateGrid( aForm: TDBFormBase;AGrid: TcxGridDBTableView;
+procedure _TranslateGrid(aForm: TDBFormBase; AGrid: TcxGridDBTableView;
   aTableName: String);
 var
   i, j: integer;
 var
-  fieldName,fieldTypes, fieldNames, displayNames, dicID: String;
+  fieldname, fieldTypes, fieldNames, displayNames, dicId: String;
   // var dicCDS:array of TClientDataSet;
 var
   uDiccds, uTableDefine: TClientDataSet;
 var
   ACDS: TDataSet;
 var
-  aDBControl: TDbControl;
+  aDBControl: TDBControl;
 var
-  idx : integer;
+  idx: integer;
 var
   T: TStringField;
 var
   tmpField: array of TField;
-var listDisplayName,listFieldName:TStringList;
+var
+  listDisplayName, listFieldName: TStringList;
 var
   strDicId, strDicKey, strDicValue: String;
 
 begin
-  with structbase.Applications.find(aForm.getAppid).MetaSource do
+  with structbase.Applications.find(aForm.getAppId).MetaSource do
   begin
-    uTableDefine := getTableDefineCDS(aForm.getAppid, aTableName);
+    uTableDefine := getTableDefineCDS(aForm.getAppId, aTableName);
   end;
 
   ACDS := AGrid.DataController.DataSet;
   aTableName := uppercase(aTableName);
 
-  setlength(tmpField, acds.FieldDefs.count);
+  setLength(tmpField, ACDS.FieldDefs.Count);
 
-  listFieldName:=TStringList.Create;
-  listDisplayName:=TStringList.Create;
-  for i := 0 to   acds.FieldDefs.count - 1 do
+  listFieldName := TStringList.Create;
+  listDisplayName := TStringList.Create;
+  for i := 0 to ACDS.FieldDefs.Count - 1 do
   begin
-      if acds.FieldList.IndexOf(ACDS.FieldDefs[i].Name)>=0  then
-      begin
-          displayNames := displayNames + ACDS.FieldByName(ACDS.FieldDefs[i].Name)
-              .DisplayLabel + ',';
-          fieldNames := fieldNames+ ACDS.FieldDefs[i].Name + ',';
-      end;
+    if ACDS.FieldList.IndexOf(ACDS.FieldDefs[i].Name) >= 0 then
+    begin
+      displayNames := displayNames + ACDS.fieldbyname(ACDS.FieldDefs[i].Name)
+        .DisplayLabel + ',';
+      fieldNames := fieldNames + ACDS.FieldDefs[i].Name + ',';
+    end;
   end;
   listDisplayName.CommaText := displayNames;
-  listFieldName.CommaText:= fieldNames;
+  listFieldName.CommaText := fieldNames;
 
-
-  acds.close;
-  acds.Fields.Clear;
-  for i := 0 to  acds.FieldDefs.count - 1 do
+  ACDS.close;
+  ACDS.Fields.Clear;
+  for i := 0 to ACDS.FieldDefs.Count - 1 do
   begin
-   fieldName :=acds.FieldDefs[i].DisplayName;
+    fieldname := ACDS.FieldDefs[i].DisplayName;
 
-   tmpField[i]:=acds.FieldDefs[i].CreateField(ACDS,nil,fieldName ) ;
-   if i< listDisplayName.Count-1 then
-        tmpField[i].DisplayLabel:= listDisplayName[listFieldName.IndexOf(fieldName)];
+    tmpField[i] := ACDS.FieldDefs[i].CreateField(ACDS, nil, fieldname);
+    if i < listDisplayName.Count - 1 then
+      tmpField[i].DisplayLabel := listDisplayName[listFieldName.IndexOf
+        (fieldname)];
 
-   uTableDefine.First;
-   uTableDefine.filtered := false;
-    if    uTableDefine.Locate('AppId;TableName;ColName', VarArrayOf
-               ([aForm.getAppId, aTableName, fieldName]), [loCaseInsensitive,
-               loCaseInsensitive, loCaseInsensitive])
-    then
-               strDicId := uTableDefine.FieldByName('dicId').AsString
+    uTableDefine.First;
+    uTableDefine.filtered := false;
+    if uTableDefine.Locate('AppId;TableName;ColName', VarArrayOf
+        ([aForm.getAppId, aTableName, fieldname]), [loCaseInsensitive,
+      loCaseInsensitive, loCaseInsensitive]) then
+      strDicId := uTableDefine.fieldbyname('dicId').AsString
     else
-       strDicId:='';
+      strDicId := '';
 
     if (strDicId <> '') then
     begin
-      with structbase.Applications.find(aForm.getAppid).MetaSource  do
+      with structbase.Applications.find(aForm.getAppId).MetaSource do
       begin
         with getDicDefineCDS do
         begin
           First;
           filtered := false;
           Locate('dicid', VarArrayOf([strDicId]), [loCaseInsensitive]);
-          strDicKey := FieldByName('dicKeyField').AsString;
-          strDicValue := FieldByName('dicValField').AsString;
+          strDicKey := fieldbyname('dicKeyField').AsString;
+          strDicValue := fieldbyname('dicValField').AsString;
         end;
-         uDiccds :=structbase.DicItems.find(strDicId).dicCloneCursorDataSet;
-       // uDiccds := getDicCds(strDicId);
+        uDiccds := structbase.DicItems.find(strDicId).dicCloneCursorDataSet;
+        // uDiccds := getDicCds(strDicId);
       end;
 
       T := TStringField.Create(ACDS);
 
+      // uDiccds :=  StructUtil.getApplication(self.getAppId).MetaSource.getDicCdsCopy(adbcontrol.dicMetaBase.dicId,self);
+      T.LookupDataSet := uDiccds;
+      T.Name := fieldname + '_DIC';
+      T.fieldname := fieldname + '_DIC';
+      T.DataSet := ACDS;
+      T.FieldKind := fklookup;
+      T.KeyFields := fieldname;
+      T.Size := uDiccds.fieldbyname(strDicValue).Size;
+      T.LookupKeyFields := strDicKey;
+      T.LookupResultField := strDicValue;
+      T.Lookup := true;
+      if i < listDisplayName.Count - 1 then
+        T.DisplayLabel := listDisplayName[i];
 
-   //  uDiccds :=  StructUtil.getApplication(self.getAppId).MetaSource.getDicCdsCopy(adbcontrol.dicMetaBase.dicId,self);
-     T.LookupDataSet := uDiccds;
-     T.Name := fieldName + '_DIC';
-     T.fieldName := fieldName + '_DIC';
-     T.DataSet := ACDS;
-     T.FieldKind := fklookup;
-     T.KeyFields := fieldName ;
-     T.Size:=udiccds.FieldByName(strDicValue).Size;
-     T.LookupKeyFields := strDicKey;
-     T.LookupResultField := strDicValue;
-     T.Lookup := true;
-     if i< listDisplayName.Count-1 then
-         T.DisplayLabel:=listDisplayName[i];
-
-     for j := 0 to AGrid.ColumnCount - 1 do
-     begin
-        if AGrid.Columns[j].DataBinding.fieldName = fieldName then
+      for j := 0 to AGrid.ColumnCount - 1 do
+      begin
+        if AGrid.Columns[j].DataBinding.fieldname = fieldname then
         begin
-           AGrid.Columns[j].DataBinding.fieldName := T.fieldName;
-           AGrid.Columns[j].Caption := T.DisplayLabel;
+          AGrid.Columns[j].DataBinding.fieldname := T.fieldname;
+          AGrid.Columns[j].Caption := T.DisplayLabel;
         end;
       end;
 

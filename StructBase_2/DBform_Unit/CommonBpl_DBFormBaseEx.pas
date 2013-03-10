@@ -136,21 +136,21 @@ end;
 
 function TDBFormBaseEx.mInsertRecord(dbCntrls: array of TDBControl): integer;
 begin
-     _insertRecord(dbCntrls);
+     result :=_insertRecord(dbCntrls);
 end;
 
 function TDBFormBaseEx.mInsertRecord(aPanel: TPanel): integer;
 var aryCntl:TDBControlArray;
 begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
-    _insertRecord(aryCntl);
+    result :=_insertRecord(aryCntl);
 end;
 
 function TDBFormBaseEx.mInsertRecord(aPanel: TPanel;aTableName:String): integer;
 var aryCntl:TDBControlArray;
 begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
-    _insertRecord(aryCntl);
+    result :=_insertRecord(aryCntl);
 end;
 
 procedure TDBFormBaseEx.mOpenInputProxy(aPanel: TPanel);
@@ -191,12 +191,12 @@ end;
 function TDBFormBaseEx.mUpdateRecord(aPanel: TPanel;
   uTableName: String): integer;
 begin
-  self.mUpdateRecord(apanel);
+  result:=self.mUpdateRecord(apanel);
 end;
 
 function TDBFormBaseEx.mUpdateRecord(dbCntrls: array of TDBControl): integer;
 begin
-   _UpdateRecord(dbCntrls);
+  result:=_UpdateRecord(dbCntrls);
 end;
 
 function TDBFormBaseEx.mUpdateRecord(aPanel: TPanel): integer;
@@ -205,7 +205,7 @@ var aryCntl:TDBControlArray;
 var myObject:Tmaskedit;
 begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
-    CloseInputProxy(APanel.Controls[i] as Tmaskedit);
+    result:=_UpdateRecord(aryCntl);
 end;
 
 

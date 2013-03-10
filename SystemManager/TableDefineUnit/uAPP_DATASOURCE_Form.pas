@@ -4,22 +4,34 @@
   2007-03-01 09:48:58
 }
 
-unit <#UnitName>;
+unit uAPP_DATASOURCE_Form;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,ExtCtrls,fBaseForm<#AddUseGlobal>;
+  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask, DB;
 
 type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
-  <#TFormName> = class(TBaseForm)
-    btnClose: TButton;
-    btnSave:  TButton;
+  TAPP_DATASOURCE_Form = class(TBaseForm)
     Panel1: TPanel;
-    <#AddControl>
+    
+    lbl1: TStaticText;
+    edtAUTOLOAD: TMaskEdit;
+    lbl2: TStaticText;
+    edtCONNECTIONSTR: TMaskEdit;
+    lbl3: TStaticText;
+    edtDBTYPE: TMaskEdit;
+    lbl4: TStaticText;
+    edtID: TMaskEdit;
+    lbl5: TStaticText;
+    edtSOURCE_CHINESE: TMaskEdit;
+    lbl6: TStaticText;
+    edtSOURCE_NAME: TMaskEdit;
+    btnSave: TButton;
+    btnClose: TButton;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -27,55 +39,55 @@ type
     procedure bttModifyClick(Sender: TObject);
     procedure btnAddNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    <#AddFormFuncHead>
+    
   private
     { Private declarations }
      
      fActionType:actionType;
      fPkFieldValue:String;
      
-    <#AddPrivateData>
-    <#AddPrivateFunc>
+    
+    
      procedure setActionType(ftype:actionType);
   public
     { Public declarations }
-    <#AddPublicData>
-    <#AddPublicFunc>
+    
+    
      property   actionType: actionType read factionType write setActionType;
      property   pkFieldValue: String read fPkFieldValue write fPkFieldValue;
   end;
 
 var
-  <#FormName>: <#TFormName>;
+  APP_DATASOURCE_Form: TAPP_DATASOURCE_Form;
 
 implementation
-  <#AddUseLocal>
+  
 
 {$R *.dfm}
 
-<#AddGlobalFunc>
 
-procedure <#TFormName>.FormCreate(Sender: TObject);
+
+procedure TAPP_DATASOURCE_Form.FormCreate(Sender: TObject);
 begin
-  mRegistCntrl(panel1,'<#TableName>') 
+  mRegistCntrl(panel1,'APP_DATASOURCE') 
 end;
 
-procedure <#TFormName>.FormDestroy(Sender: TObject);
-begin
-  //
-end;
-
-procedure <#TFormName>.FormShow(Sender: TObject);
+procedure TAPP_DATASOURCE_Form.FormDestroy(Sender: TObject);
 begin
   //
 end;
 
-procedure <#TFormName>.btnCloseClick(Sender: TObject);
+procedure TAPP_DATASOURCE_Form.FormShow(Sender: TObject);
+begin
+  //
+end;
+
+procedure TAPP_DATASOURCE_Form.btnCloseClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure <#TFormName>.setActionType(ftype: ActionType);
+procedure TAPP_DATASOURCE_Form.setActionType(ftype: ActionType);
 var whereSql:String;
 begin
    fActionType:=ftype;
@@ -83,14 +95,15 @@ begin
    begin
        self.mCleanPanel(panel1);
        self.mOpenInputProxy(panel1);
+       self.edtID.text:=self.mGetGuid;
        btnSave.visible:=True;
        panel1.Enabled :=True;
    end;
 
    if ftype=fUpdate then
    begin
-       edt<#PkFieldName>.readonly:=True;
-       whereSql:=' where <#PkFieldName> ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtID.readonly:=True;
+       whereSql:=' where ID ='+ sysutils.QuotedStr(fPkFieldValue);
        self.mOpenInputProxy(panel1);
        mDisplayRecord(panel1,wheresql);
        btnSave.visible:=True;
@@ -104,8 +117,8 @@ begin
 
    if ftype=fDisplay then
    begin
-       edt<#PkFieldName>.readonly:=True;
-       whereSql:=' where <#PkFieldName> ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtID.readonly:=True;
+       whereSql:=' where ID ='+ sysutils.QuotedStr(fPkFieldValue);
        mDisplayRecord(panel1,wheresql);
        self.mCloseInputProxy(panel1);
        btnSave.visible:=False;
@@ -115,15 +128,15 @@ begin
 
 end;
 
-procedure <#TFormName>.btnSaveClick(Sender: TObject);
+procedure TAPP_DATASOURCE_Form.btnSaveClick(Sender: TObject);
 var i:integer;
 begin
    if fActionType=fAddNew then
-      i:=mInsertRecord(panel1,'<#TableName>');
+      i:=mInsertRecord(panel1,'APP_DATASOURCE');
 
    
    if fActionType=fUpdate then
-      i:= mUpdateRecord(panel1,'<#TableName>');
+      i:= mUpdateRecord(panel1,'APP_DATASOURCE');
 
    if i=0 then 
    begin
@@ -134,16 +147,16 @@ begin
    
 end;
 
-procedure <#TFormName>.btnAddNewClick(Sender: TObject);
+procedure TAPP_DATASOURCE_Form.btnAddNewClick(Sender: TObject);
 begin
     setActionType(fAddNew);
 end;
 
-procedure <#TFormName>.bttModifyClick(Sender: TObject);
+procedure TAPP_DATASOURCE_Form.bttModifyClick(Sender: TObject);
 begin
     setActionType(fUpdate);
 end;
 
-<#AddFormFunc>
+
 
 end.
