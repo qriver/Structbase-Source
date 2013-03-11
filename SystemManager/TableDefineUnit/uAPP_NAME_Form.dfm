@@ -1,6 +1,7 @@
 object APP_NAME_Form: TAPP_NAME_Form
   Left = 194
   Top = 115
+  Align = alClient
   Caption = #24212#29992#31995#32479#32500#25252
   ClientHeight = 412
   ClientWidth = 631
@@ -16,35 +17,21 @@ object APP_NAME_Form: TAPP_NAME_Form
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object btnClose: TButton
-    Left = 495
-    Top = 184
-    Width = 75
-    Height = 25
-    Caption = 'btnClose'
-    TabOrder = 2
-    OnClick = btnCloseClick
-  end
-  object btnSave: TButton
-    Left = 495
-    Top = 90
-    Width = 75
-    Height = 25
-    Caption = #20445#23384
-    TabOrder = 0
-    OnClick = btnSaveClick
-  end
   object Panel1: TPanel
-    Left = 8
-    Top = 8
-    Width = 400
-    Height = 385
-    Caption = 'Panel1'
-    TabOrder = 1
+    Left = 0
+    Top = 0
+    Width = 631
+    Height = 412
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 400
+    ExplicitHeight = 385
     object lbl1: TStaticText
-      Left = 80
+      Left = 54
       Top = 24
-      Width = 120
+      Width = 101
       Height = 25
       Alignment = taCenter
       AutoSize = False
@@ -53,9 +40,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       TabOrder = 0
     end
     object edtAPPID: TMaskEdit
-      Left = 180
+      Left = 154
       Top = 24
-      Width = 121
+      Width = 418
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -64,9 +51,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       Text = 'edtAPPID'
     end
     object lbl2: TStaticText
-      Left = 80
+      Left = 54
       Top = 48
-      Width = 120
+      Width = 101
       Height = 25
       Alignment = taCenter
       AutoSize = False
@@ -75,9 +62,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       TabOrder = 2
     end
     object edtAPPNAME: TMaskEdit
-      Left = 180
+      Left = 154
       Top = 48
-      Width = 121
+      Width = 418
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -86,9 +73,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       Text = 'edtAPPNAME'
     end
     object lbl3: TStaticText
-      Left = 80
+      Left = 54
       Top = 72
-      Width = 120
+      Width = 101
       Height = 25
       Alignment = taCenter
       AutoSize = False
@@ -97,9 +84,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       TabOrder = 4
     end
     object edtDATASOURCE: TMaskEdit
-      Left = 180
+      Left = 154
       Top = 72
-      Width = 121
+      Width = 418
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -108,9 +95,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       Text = 'edtDATASOURCE'
     end
     object lbl4: TStaticText
-      Left = 80
+      Left = 54
       Top = 96
-      Width = 120
+      Width = 101
       Height = 25
       Alignment = taCenter
       AutoSize = False
@@ -119,9 +106,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       TabOrder = 6
     end
     object edtDB_SCHEMA: TMaskEdit
-      Left = 180
+      Left = 154
       Top = 96
-      Width = 121
+      Width = 418
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -130,9 +117,9 @@ object APP_NAME_Form: TAPP_NAME_Form
       Text = 'edtDB_SCHEMA'
     end
     object lbl5: TStaticText
-      Left = 80
+      Left = 54
       Top = 120
-      Width = 120
+      Width = 101
       Height = 25
       Alignment = taCenter
       AutoSize = False
@@ -141,15 +128,33 @@ object APP_NAME_Form: TAPP_NAME_Form
       TabOrder = 8
     end
     object edtMETA_DATASOURCE: TMaskEdit
-      Left = 180
+      Left = 154
       Top = 120
-      Width = 121
+      Width = 418
       Height = 25
       AutoSize = False
       Ctl3D = False
       ParentCtl3D = False
       TabOrder = 9
       Text = 'edtMETA_DATASOURCE'
+    end
+    object btnSave: TButton
+      Left = 184
+      Top = 170
+      Width = 75
+      Height = 25
+      Caption = #20445#23384
+      TabOrder = 10
+      OnClick = btnSaveClick
+    end
+    object btnClose: TButton
+      Left = 304
+      Top = 170
+      Width = 75
+      Height = 25
+      Caption = 'btnClose'
+      TabOrder = 11
+      OnClick = btnCloseClick
     end
   end
 end

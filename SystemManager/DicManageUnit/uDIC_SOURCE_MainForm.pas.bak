@@ -40,22 +40,34 @@ type
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
 
-DIC_SOURCEAPPID:TWideStringField; 
-DIC_SOURCEDICCHINESENAME:TWideStringField; 
-DIC_SOURCEDICFILENAME:TWideStringField; 
-DIC_SOURCEDICFILTERSQL:TWideStringField; 
-DIC_SOURCEDICID:TWideStringField; 
-DIC_SOURCEDICKEYFIELD:TWideStringField; 
-DIC_SOURCEDICLEVELMODE:TWideStringField; 
-DIC_SOURCEDICNAME:TWideStringField; 
-DIC_SOURCEDICPY:TWideStringField; 
-DIC_SOURCEDICSOURCETABLE:TWideStringField; 
-DIC_SOURCEDICVALFIELD:TWideStringField; 
-DIC_SOURCESTARTUP_LOAD:TWideStringField; 
+DIC_SOURCEAPPID:TStringField; 
+DIC_SOURCEDICCHINESENAME:TStringField; 
+DIC_SOURCEDICFILENAME:TStringField; 
+DIC_SOURCEDICFILTERSQL:TStringField; 
+DIC_SOURCEDICID:TStringField; 
+DIC_SOURCEDICKEYFIELD:TStringField; 
+DIC_SOURCEDICLEVELMODE:TStringField; 
+DIC_SOURCEDICNAME:TStringField; 
+DIC_SOURCEDICPY:TStringField; 
+DIC_SOURCEDICSOURCETABLE:TStringField; 
+DIC_SOURCEDICVALFIELD:TStringField; 
+DIC_SOURCESTARTUP_LOAD:TStringField; 
     TabSheetDataModify: TRzTabSheet;
-    cxLocalizer1: TcxLocalizer;
     edtAPPID: TMaskEdit;
     lbl1: TStaticText;
+    cxGrid1DBTableView1APPID: TcxGridDBColumn;
+    cxGrid1DBTableView1DICCHINESENAME: TcxGridDBColumn;
+    cxGrid1DBTableView1DICFILENAME: TcxGridDBColumn;
+    cxGrid1DBTableView1DICFILTERSQL: TcxGridDBColumn;
+    cxGrid1DBTableView1DICID: TcxGridDBColumn;
+    cxGrid1DBTableView1DICKEYFIELD: TcxGridDBColumn;
+    cxGrid1DBTableView1DICLEVELMODE: TcxGridDBColumn;
+    cxGrid1DBTableView1DICNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1DICPY: TcxGridDBColumn;
+    cxGrid1DBTableView1DICSOURCETABLE: TcxGridDBColumn;
+    cxGrid1DBTableView1DICVALFIELD: TcxGridDBColumn;
+    cxGrid1DBTableView1STARTUP_LOAD: TcxGridDBColumn;
+    cxLocalizer1: TcxLocalizer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -102,8 +114,8 @@ begin
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
-  strSql:=self.mGetSqlByPanel(pnlCondition) ;
-
+  //strSql:=self.mGetSqlByPanel(pnlCondition) ;
+   strSql:=self.mGetSqlStr(pnlCondition) ;
   if _DBTYPE<>'ACCESS' then
   begin
       strPageSql:='select * from  (';
@@ -133,6 +145,10 @@ end;
 procedure TDIC_SOURCE_MainForm.btnDisplayClick(Sender: TObject);
 begin
   inherited;
+  with  cxGrid1DBTableView1.DataController  do
+  begin
+     DIC_SOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+  end;
    DIC_SOURCE_Form.actionType:=fDisplay;
      TabSheetDataModify.Caption:='数据浏览';
    ShowDataModifyForm(0);
@@ -162,7 +178,9 @@ begin
   inherited;
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
-  Application.Terminate;
+  DIC_SOURCE_MainForm:=NIL;
+
+ // Application.Terminate;
 end;
 
 
@@ -174,7 +192,12 @@ begin
 
 
   if sysutils.FileExists(GetCurrentDir+'\DevLocal.ini') then
-       DIC_SOURCE_Form:=TDIC_SOURCE_Form.create(self);
+  begin
+      cxLocalizer1.FileName:=GetCurrentDir+'\DevLocal.ini';
+      cxLocalizer1.Active:=true;
+      cxLocalizer1.Locale:=2052;
+  end;
+  DIC_SOURCE_Form:=TDIC_SOURCE_Form.create(self);
        
   self.btnDelete.Enabled:=false;
   self.btnModify.Enabled:=false;
@@ -204,8 +227,10 @@ begin
   DIC_SOURCE_Form.Parent:=TabSheetDataModify;
   DIC_SOURCE_Form.Align:=alClient;
   DIC_SOURCE_Form.BorderStyle:=bsnone;
+
   TabSheetDataModify.TabVisible:=True;
   self.rzPageCondition.ActivePage:=TabSheetDataModify;
+
 end;
 if umode=1 then   //  独立窗体
 begin
@@ -218,7 +243,7 @@ begin
 end;
 
 DIC_SOURCE_Form.Show;
-
+  DIC_SOURCE_Form.SetFocus;
 
 end;
 

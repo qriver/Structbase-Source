@@ -1,0 +1,42 @@
+object frmFlash: TfrmFlash
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmFlash'
+  ClientHeight = 80
+  ClientWidth = 338
+  Color = clAqua
+  Ctl3D = False
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbl1: TLabel
+    Left = 88
+    Top = 32
+    Width = 94
+    Height = 19
+    Caption = #27491#22312#30331#24405'......'
+    Color = clBlack
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object tmr1: TTimer
+    Interval = 500
+    OnTimer = tmr1Timer
+    Left = 288
+    Top = 24
+  end
+end

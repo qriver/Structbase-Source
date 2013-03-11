@@ -126,6 +126,8 @@ object MainForm: TMainForm
     TabOrder = 2
     TabStyle = tsDoubleSlant
     OnClose = rzpgcntrl1Close
+    ExplicitLeft = 2
+    ExplicitTop = 41
     FixedDimension = 0
   end
   object imlVisualStyles: TImageList

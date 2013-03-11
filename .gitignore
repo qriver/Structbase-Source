@@ -13,6 +13,10 @@
 *.dic
 *.ocx
 *.wxo
+*.class
+*.jar
+*.zip
+
 
 __history
 __history/
@@ -26,5 +30,7 @@ tmp/*.*
 /StructBase_2/dcp 
 /SystemManager/dcu
 /WebRun/debug_www
-web
 /SystemManager/bin/Data/DbLink.udl
+.metadata/
+.settings/
+Servers/

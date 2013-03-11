@@ -101,11 +101,11 @@ begin
       end;
 
         if uppercase(classname) = uppercase('TAccessDBProvide') then
-      (FDBClassChain.Objects[I] as TAccessDBProvide)
-          .free;
+      (FDBClassChain.Objects[I] as TAccessDBProvide).Destroy;
+
 
         if uppercase(classname) = uppercase('TOdacDBProvide') then
-      (FDBClassChain.Objects[I] as TOdacDBProvide) .free;
+      (FDBClassChain.Objects[I] as TOdacDBProvide).Destory;
 
   end;
   FDBClassChain.free;
