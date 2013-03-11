@@ -27,3 +27,4 @@ tmp/*.*
 /SystemManager/dcu
 /WebRun/debug_www
 web
+/SystemManager/bin/Data/DbLink.udl
