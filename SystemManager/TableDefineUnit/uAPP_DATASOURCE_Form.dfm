@@ -1,6 +1,7 @@
 object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
   Left = 194
   Top = 115
+  Align = alClient
   Caption = #25968#25454#24211#36830#25509#31649#29702
   ClientHeight = 412
   ClientWidth = 631
@@ -16,33 +17,19 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object btnClose: TButton
-    Left = 495
-    Top = 184
-    Width = 75
-    Height = 25
-    Caption = 'btnClose'
-    TabOrder = 2
-    OnClick = btnCloseClick
-  end
-  object btnSave: TButton
-    Left = 495
-    Top = 90
-    Width = 75
-    Height = 25
-    Caption = #20445#23384
-    TabOrder = 0
-    OnClick = btnSaveClick
-  end
   object Panel1: TPanel
-    Left = 8
-    Top = 8
-    Width = 400
-    Height = 385
-    Caption = 'Panel1'
-    TabOrder = 1
+    Left = 0
+    Top = 0
+    Width = 631
+    Height = 412
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 400
+    ExplicitHeight = 385
     object lbl1: TStaticText
-      Left = 61
+      Left = 42
       Top = 24
       Width = 120
       Height = 25
@@ -53,9 +40,9 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       TabOrder = 0
     end
     object edtAUTOLOAD: TMaskEdit
-      Left = 180
+      Left = 161
       Top = 24
-      Width = 121
+      Width = 426
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -64,7 +51,7 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       Text = 'edtAUTOLOAD'
     end
     object lbl2: TStaticText
-      Left = 61
+      Left = 42
       Top = 48
       Width = 120
       Height = 25
@@ -75,9 +62,9 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       TabOrder = 2
     end
     object edtCONNECTIONSTR: TMaskEdit
-      Left = 180
+      Left = 161
       Top = 48
-      Width = 121
+      Width = 426
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -86,7 +73,7 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       Text = 'edtCONNECTIONSTR'
     end
     object lbl3: TStaticText
-      Left = 61
+      Left = 42
       Top = 72
       Width = 120
       Height = 25
@@ -97,9 +84,9 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       TabOrder = 4
     end
     object edtID: TMaskEdit
-      Left = 180
+      Left = 161
       Top = 72
-      Width = 121
+      Width = 426
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -108,7 +95,7 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       Text = 'edtID'
     end
     object lbl4: TStaticText
-      Left = 61
+      Left = 42
       Top = 96
       Width = 120
       Height = 25
@@ -119,9 +106,9 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       TabOrder = 6
     end
     object edtSOURCE_CHINESE: TMaskEdit
-      Left = 180
+      Left = 161
       Top = 96
-      Width = 121
+      Width = 426
       Height = 25
       AutoSize = False
       Ctl3D = False
@@ -130,7 +117,7 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       Text = 'edtSOURCE_CHINESE'
     end
     object lbl5: TStaticText
-      Left = 61
+      Left = 42
       Top = 120
       Width = 120
       Height = 25
@@ -141,15 +128,33 @@ object APP_DATASOURCE_Form: TAPP_DATASOURCE_Form
       TabOrder = 8
     end
     object edtSOURCE_NAME: TMaskEdit
-      Left = 180
+      Left = 161
       Top = 120
-      Width = 121
+      Width = 426
       Height = 25
       AutoSize = False
       Ctl3D = False
       ParentCtl3D = False
       TabOrder = 9
       Text = 'edtSOURCE_NAME'
+    end
+    object btnSave: TButton
+      Left = 229
+      Top = 162
+      Width = 75
+      Height = 25
+      Caption = #20445#23384
+      TabOrder = 10
+      OnClick = btnSaveClick
+    end
+    object btnClose: TButton
+      Left = 310
+      Top = 162
+      Width = 75
+      Height = 25
+      Caption = 'btnClose'
+      TabOrder = 11
+      OnClick = btnCloseClick
     end
   end
 end

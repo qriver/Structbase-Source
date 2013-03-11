@@ -100,7 +100,7 @@ type
     procedure DoDestroy; override;//释放的代码写在这里面
     procedure Load; stdcall;
     procedure DoDownLoad;
-    procedure ImportOuterDllForm;
+    procedure ImportDllForm;
     procedure Initialize; override;
     procedure UpgraderFinish(Sender: TObject);
     procedure DownloadFinish(var msg:TMSG);Message WM_DownloadFinish;
@@ -129,7 +129,7 @@ begin
   inherited EventSinkChanged(EventSink);
 end;
 
-procedure TWebXFormBase.ImportOuterDllForm;
+procedure TWebXFormBase.ImportDllForm;
 var  iTmp: Integer;
 var  LoadWebXoneForm: TLoadWebXoneForm;
 begin
@@ -153,7 +153,7 @@ begin
   begin
 
        // messagebox(0,pchar('装入'+gsMainDir+'\'+sDll+'文件失败'),'错误',mb_ok);
-       messagebox(0,'装入'+gsMainDir+'\'+FDllFileName+'文件失败','',0);
+       messagebox(0,pchar('装入'+gsMainDir+'\'+FDllFileName+'文件失败'),'',0);
        exit;
   end;
   // 表示载入成功
@@ -422,7 +422,7 @@ end;
 procedure TWebXFormBase.DoDownLoad;
 begin
      self.FDllFileName:='struct_download.dll';
-     self.ImportOuterDllForm;
+     self.ImportDllForm;
 end;
 
 procedure TWebXFormBase.DownloadFinish(var msg: TMSG);
@@ -451,7 +451,7 @@ var t:TStringList;
          FDllFileName:='';
 
     t.Free;
-    self.ImportOuterDllForm;
+    self.ImportDllForm;
   //  downloadform.Hide;
 end;
 

@@ -6,9 +6,6 @@
 			<Projects Include="StructBase_2\StructBase.dproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="WebRun\ActivexForm\WebXForm.dproj">
-				<Dependencies/>
-			</Projects>
 			<Projects Include="WebRun\Webapp\webapp.dproj">
 				<Dependencies/>
 			</Projects>
@@ -19,6 +16,9 @@
 				<Dependencies/>
 			</Projects>
 			<Projects Include="demo\MainForm Project\MainFormDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WebRun\Webapp_Iphone\PrjWebApp_IPhone.dproj">
 				<Dependencies/>
 			</Projects>
 		</ItemGroup>
@@ -37,15 +37,6 @@
 		</Target>
 		<Target Name="StructBase:Make">
 			<MSBuild Targets="Make" Projects="StructBase_2\StructBase.dproj"/>
-		</Target>
-		<Target Name="WebXForm">
-			<MSBuild Projects="WebRun\ActivexForm\WebXForm.dproj"/>
-		</Target>
-		<Target Name="WebXForm:Clean">
-			<MSBuild Targets="Clean" Projects="WebRun\ActivexForm\WebXForm.dproj"/>
-		</Target>
-		<Target Name="WebXForm:Make">
-			<MSBuild Targets="Make" Projects="WebRun\ActivexForm\WebXForm.dproj"/>
 		</Target>
 		<Target Name="webapp">
 			<MSBuild Projects="WebRun\Webapp\webapp.dproj"/>
@@ -83,14 +74,23 @@
 		<Target Name="MainFormDemo:Make">
 			<MSBuild Targets="Make" Projects="demo\MainForm Project\MainFormDemo.dproj"/>
 		</Target>
+		<Target Name="PrjWebApp_IPhone">
+			<MSBuild Projects="WebRun\Webapp_Iphone\PrjWebApp_IPhone.dproj"/>
+		</Target>
+		<Target Name="PrjWebApp_IPhone:Clean">
+			<MSBuild Targets="Clean" Projects="WebRun\Webapp_Iphone\PrjWebApp_IPhone.dproj"/>
+		</Target>
+		<Target Name="PrjWebApp_IPhone:Make">
+			<MSBuild Targets="Make" Projects="WebRun\Webapp_Iphone\PrjWebApp_IPhone.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="StructBase;WebXForm;webapp;webappExe;prjSystemManage;MainFormDemo"/>
+			<CallTarget Targets="StructBase;webapp;webappExe;prjSystemManage;MainFormDemo;PrjWebApp_IPhone"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="StructBase:Clean;WebXForm:Clean;webapp:Clean;webappExe:Clean;prjSystemManage:Clean;MainFormDemo:Clean"/>
+			<CallTarget Targets="StructBase:Clean;webapp:Clean;webappExe:Clean;prjSystemManage:Clean;MainFormDemo:Clean;PrjWebApp_IPhone:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="StructBase:Make;WebXForm:Make;webapp:Make;webappExe:Make;prjSystemManage:Make;MainFormDemo:Make"/>
+			<CallTarget Targets="StructBase:Make;webapp:Make;webappExe:Make;prjSystemManage:Make;MainFormDemo:Make;PrjWebApp_IPhone:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

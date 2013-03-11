@@ -49,7 +49,7 @@ var loginForm:TForm1;
 
 {$R *.dfm}
 implementation
-uses dbclient,IniFiles,uFlashForm,WxoUnit,uStructbaseFrameWork;
+uses dbclient,IniFiles,uFlashForm,uStructbaseFrameWork;
 
 var  flashForm:TfrmFlash;
       FLoadStop:Boolean;

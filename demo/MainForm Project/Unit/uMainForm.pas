@@ -4,11 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs;
+  Dialogs, RzTabs;
 
 Const const_AppName='SYSTEM';
 type
   TMainForm = class(TForm)
+    RzPageControl1: TRzPageControl;
+    TabSheet1: TRzTabSheet;
+    RzPageControl2: TRzPageControl;
+    RzTabSheet1: TRzTabSheet;
+    TabSheet2: TRzTabSheet;
+    TabSheet3: TRzTabSheet;
+    TabSheet4: TRzTabSheet;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

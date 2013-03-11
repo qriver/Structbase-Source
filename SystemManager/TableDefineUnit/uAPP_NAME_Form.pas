@@ -16,8 +16,6 @@ type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
   TAPP_NAME_Form = class(TBaseForm)
-    btnClose: TButton;
-    btnSave:  TButton;
     Panel1: TPanel;
     
     lbl1: TStaticText;
@@ -30,6 +28,8 @@ type
     edtDB_SCHEMA: TMaskEdit;
     lbl5: TStaticText;
     edtMETA_DATASOURCE: TMaskEdit;
+    btnSave: TButton;
+    btnClose: TButton;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
