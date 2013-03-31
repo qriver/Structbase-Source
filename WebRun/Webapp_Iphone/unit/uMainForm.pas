@@ -6,6 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RzTabs,DBClient,ImageViewYM;
 
+const gMasterDir='c:\jwzhptClient\';
+
 type
   TMainForm = class(TForm)
     RzPageControl1: TRzPageControl;
@@ -23,6 +25,7 @@ type
     { Private declarations }
     APP_CDS:TCLientDataSet;
     App_List:TStringList;
+    procedure PageControlResize(Sender: TObject);
   public
     { Public declarations }
         dvym : TImageViewYM;//DragViewYM
@@ -112,7 +115,7 @@ begin
           oTab.PageControl    := RzPageControl1;
           oTab.TabVisible     := true;
           oTab.Caption        := sCaption;
-
+          otab.OnResize       := PageControlResize;
          RzPageControl1.ActivePage := oTab;
           //下面的白色容器框
           oPanel              := TPanel.Create(self);
@@ -132,9 +135,16 @@ begin
                end;
           end;
      end;
+        if strDllFileName=''  then iDll:=0;
 
+      if  not FileExists(gMasterDir+strDllFileName) then
+      begin
+        messagebox(0,pchar(gMasterDir+ strDllFileName+'文件不存在!'),'',0);
+        iDll:=0;
+      end;
 
-        iDLL := Loadlibrary(PChar('c:\jwzhptClient\DataPickup.dll'));
+   //   if iDll<>0  then
+             iDLL := Loadlibrary(PChar(gMasterDir+strDllFileName));
 
      if iDLL > 32 then begin
           oLabel    := TLabel.Create(Self);
@@ -145,9 +155,9 @@ begin
           oLabel.Visible   := True;
 
           oLabel.Update;
-
+            sysutils.SetCurrentDir(gMasterDir);
           // 表示载入成功
-          @ShowForm := GetProcAddress(iDLL, PChar('ShowDLLForm'));
+          @ShowForm := GetProcAddress(iDLL, PChar('LoadWebXoneForm'));
           if Assigned(ShowForm) then begin
                // 生成子模块
                try
@@ -181,7 +191,7 @@ begin
           //oLabel.Font.Style   := [fsItalic];
           oLabel.Left         := (oTab.Width-oLabel.Width) Div 2;
           oLabel.Top          := (oTab.Height-oLabel.Height) Div 2;
-          oLabel.Caption      := sDLL+' is building ...  ';
+          oLabel.Caption      := 'Dll文件：'+strDllFileName+'装载不成功 ...  ';
           oLabel.Visible      := True;
           oLabel.Update;
      end;
@@ -192,8 +202,12 @@ procedure TMainForm.RzPageControl1Close(Sender: TObject;
   var AllowClose: Boolean);
 begin
    if rzPageControl1.ActivePageIndex=0 then  exit;
+  //发消息，通知子窗口关闭
+   if rzPageControl1.ActivePage.Hint<>'' then
+         SendMESSAGE( strtoint(rzPageControl1.ActivePage.Hint),WM_CLOSE,0,0);
 
     rzPageControl1.ActivePage.Free;
+        rzPageControl1.ActivePage:=rzPageControl1.Pages[0];
 end;
 
 procedure TMainForm.RzPageControl2Change(Sender: TObject);
@@ -222,6 +236,22 @@ begin
 
    dvym.OnItemClick:=self.LoadApplication;
    // dvym.loadBackPic(sysutils.getCurrentDir+ '\1.jpg');
+end;
+
+
+procedure TMainForm.PageControlResize(Sender: TObject);
+var
+     I         : Integer;
+const
+     iTmp = 10;
+begin
+     for I:=0 to rzPageControl1.PageCount-1 do begin
+          MoveWindow(StrToIntDef(rzPageControl1.Pages[I].Hint,0),
+               iTmp,iTmp,
+               rzPageControl1.Pages[I].Width-2*iTmp,
+               rzPageControl1.Pages[I].Height-2*iTmp,True);
+     end;
+
 end;
 
 end.
