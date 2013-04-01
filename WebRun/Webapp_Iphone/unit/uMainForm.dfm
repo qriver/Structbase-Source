@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = #24212#29992#36229#24066
-  ClientHeight = 475
-  ClientWidth = 955
+  ClientHeight = 617
+  ClientWidth = 943
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,15 +11,16 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object RzPageControl1: TRzPageControl
     Left = 0
     Top = 0
-    Width = 955
-    Height = 475
+    Width = 943
+    Height = 617
     ActivePage = TabSheet1
     Align = alClient
     ShowCloseButtonOnActiveTab = True
@@ -33,8 +34,8 @@ object MainForm: TMainForm
       object RzPageControl2: TRzPageControl
         Left = 0
         Top = 0
-        Width = 951
-        Height = 451
+        Width = 939
+        Height = 593
         ActivePage = TabSheet2
         ActivePageDefault = TabSheet2
         Align = alClient

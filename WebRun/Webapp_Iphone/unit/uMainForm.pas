@@ -19,13 +19,16 @@ type
     TabSheet5: TRzTabSheet;
     procedure FormCreate(Sender: TObject);
     procedure RzPageControl2Change(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure RzPageControl1Close(Sender: TObject; var AllowClose: Boolean);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     APP_CDS:TCLientDataSet;
     App_List:TStringList;
     procedure PageControlResize(Sender: TObject);
+     procedure Applicationrun(Sender: TObject);
+       procedure ExitApplication(Sender: TObject);
   public
     { Public declarations }
         dvym : TImageViewYM;//DragViewYM
@@ -43,11 +46,53 @@ var
   MainForm: TMainForm;
 
 implementation
-uses uStructbaseFrameWork,DB,comctrls,extctrls,stdctrls;
+uses uStructbaseFrameWork,DB,comctrls,extctrls,stdctrls,uDataModule,
+ IniFiles,
+ uLoginForm;
 {$R *.dfm}
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure TMainForm.Applicationrun(Sender: TObject);
 begin
+  loginform.Close;
+end;
+
+procedure TMainForm.ExitApplication(Sender: TObject);
+begin
+   //self.Close;
+   self.RzPageControl1.Visible:=false;
+    application.Terminate;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   dvym.ClearItem;
+ // App_List.Clear;
+    app_cds.Close;
+   // loginform.Free;
+    App_List.Free;
+    structbase.Destroy;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var strConn,dbtype:String;
+var
+  myIni: TIniFile;
+begin
+     //Application.CreateForm(TMyDataModule, MyDataModule);
+     loginForm:=TForm1.Create(self);
+
+     MyDataModule:=TMyDataModule.create(self);
+     self.Height:=768;
+     self.Width:=1024;
+
+     myIni := TIniFile.Create(sysutils.GetCurrentDir + '\profile.ini');
+     strConn:= myIni.ReadString('METADATASOURCE', 'CONN', '');
+     dbtype:= myIni.ReadString('METADATASOURCE', 'DBTYPE', '');
+     freeandnil(myIni);
+
+   //  strConn:='Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\db\db1.mdb;Persist Security Info=False';
+     structbase.DBProvids.AddDBProvide('MetaSource',DBTYPE,strconn);
+
      APP_CDS:=TClientDataSet.Create(self);
      StructBase.DBProvids.find('MetaSource').SelectCommand(app_Cds,'select * from app_name',0);
      App_List:=TStringList.Create;
@@ -64,15 +109,17 @@ end;
 
 
 
-procedure TMainForm.FormDestroy(Sender: TObject);
+procedure TMainForm.FormShow(Sender: TObject);
 begin
-  dvym.ClearItem;
- // App_List.Clear;
-//  app_cds.Close;
-  App_List.Free;
-   structbase.Destroy;
+   loginform.OnLoginSuccess:=ApplicationRun;
+    loginform.OnCancelLogin:=ExitApplication;
+     loginForm.ShowModal;
+     //
+    // if loginForm.Tag=0 then begin
+   //       application.Terminate;
+    //      Exit;
+   //  end;
 end;
-
 
 procedure TMainForm.LoadApplication(Sender: TObject);
 var strAppId,strDllFileName,gsMainDir :String;

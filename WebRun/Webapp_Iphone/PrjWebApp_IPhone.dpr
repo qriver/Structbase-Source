@@ -12,16 +12,18 @@ uses
   uFlashForm in '..\Webapp\unit\uFlashForm.pas' {frmFlash},
   uStructbaseFrameWork,
   auUtils in '..\Webapp\unit\auUtils.pas',
-  pngimage in 'IPhoneForm\pngimage.pas';
+  pngimage in 'IPhoneForm\pngimage.pas',
+  uLoginForm in 'unit\uLoginForm.pas' {Form1},
+  WxoUnit in 'unit\WxoUnit.pas';
 
 {$R *.res}
 var strConn:String;
 begin
   ReportMemoryLeaksOnShutdown := Boolean(DebugHook);
   Application.Initialize;
-  strConn:='Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\db\db1.mdb;Persist Security Info=False';
-  structbase.DBProvids.AddDBProvide('MetaSource','ADO',strconn);
-  //structbase.structInitialization;
+ // strConn:='Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\db\db1.mdb;Persist Security Info=False';
+ // structbase.DBProvids.AddDBProvide('MetaSource','ADO',strconn);
+
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMyDataModule, MyDataModule);
   Application.CreateForm(TMainForm, MainForm);

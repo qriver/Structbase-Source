@@ -26,7 +26,7 @@ function LoadWebXoneForm(
 begin
      try
           mainform := tmainform.Create(nil);
-          loginForm := TForm1.Create(nil);
+       //   loginForm := TForm1.Create(nil);
           giCtrl    := CtrlHandle;
           giApp     := ApplicationHandle;
           giIE      := IEHandle;

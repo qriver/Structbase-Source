@@ -66,30 +66,34 @@ begin
     showmessage(' 用户名不能为空!');
     exit;
   end;
-   if not assigned(flashForm) then
-        flashForm:=TfrmFlash.Create(self);
+ //  if not assigned(flashForm) then
+  //      flashForm:=TfrmFlash.Create(self);
 
-    flashForm.Show;
+  //  flashForm.Show;
 
-   mthread:=TauCustomThread.Create(self);
-   mthread.OnExecute:=threadExecute;
-   mthread.Execute;
+  // mthread:=TauCustomThread.Create(self);
+  // mthread.OnExecute:=threadExecute;
+  // mthread.Execute;
 
 
     username:=self.UserName.Text;
     password:=self.Password.Text;
     Forms.Application.ProcessMessages;
 
-   // loadDBProvide(FLogonDataSource);
-  //   structbase.loadDBProvide(FLogonDataSource);
-    Coinitialize(nil);
-    structbase.structInitialization;
-    CoUninitialize;
+
+    //Coinitialize(nil);
+    //structbase.structInitialization;
+   // CoUninitialize;
+
+    // structbase.DBProvids.AddDBProvide();
+     structbase.ReadConfigFromDB('MetaSource');
+     structbase.LoadAppInstance('APP_LOGON');
+
     cds:=TClientDataSet.Create(self);
     sql:='select * from user_list where user_name='''+username+'''';
     try
         //    Self.DBUtil.getDBProvide(FLogonDataSource).SelectCommand(cds,sql,0);
-        structbase.DBProvids.find(FLogonDataSource).SelectCommand(cds,sql,0);
+        structbase.DBProvids.find('LOGON_DATASOURCE').SelectCommand(cds,sql,0);
             cds.First;
             if (cds.RecordCount>0)  and
                (cds.FieldByName('password').AsString=password ) then
@@ -103,8 +107,8 @@ begin
                 self.mGetLoginUser.lxdh:=cds.FieldByName('user_lxfs').AsString;
                 self.mGetLoginUser.realusername:=cds.FieldByName('user_realname').AsString;
                 self.Tag := 1;
-
-                self.FLoginSuccess(self);
+             if assigned(FLoginSuccess) then
+                                self.FLoginSuccess(self);
                // Coinitialize(nil);
               //  structbase.structInitialization;
                // CoUninitialize;
@@ -135,10 +139,10 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   // showmessage('flashForm.Close;');
+  // showmessage('flashForm.Close;');
   // flashForm.Close;
   // flashForm.Free;
-  // self.Hide;
+  self.Hide;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
