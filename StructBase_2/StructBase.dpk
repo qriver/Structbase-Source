@@ -77,7 +77,8 @@ contains
   Struct_DBControls in 'DBform_Unit\Struct_DBControls.pas',
   Struct_Filter in 'DBform_Unit\Struct_Filter.pas',
   CnDebug in 'Unit\CnDebug.pas',
-  Struct_SysConfigUtils in 'Unit\Struct_SysConfigUtils.pas';
+  Struct_SysConfigUtils in 'Unit\Struct_SysConfigUtils.pas',
+  uDicFunction in 'Unit\uDicFunction.pas';
 
 end.
 

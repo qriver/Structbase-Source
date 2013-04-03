@@ -86,6 +86,7 @@ type
     FdicDataInput:TObject;
     FallowDataInputProxy:Boolean;
     procedure setDicCodeValue(strCode:String);
+
   public
     property appName: string read FappName write FappName;
     property cntlObjct: TMaskEdit read FcntlObjct write FcntlObjct;
@@ -102,12 +103,13 @@ type
     property allowDataInputProxy: Boolean read FallowDataInputProxy write FallowDataInputProxy;
     property dicCodeValue: String read FrealValue write setDicCodeValue;
     property dicCodeDisplayValue: String read FdisplayValue write FdisplayValue;
+    procedure setLevelRootValue(strValue: String);
   end;
 implementation
 
 
 
-
+uses uDicFunction;
 
 { TDbControl }
 
@@ -117,5 +119,19 @@ begin
   self.FdisplayValue:=self.FdicMetaBase.translateDicValue(strCode);
   self.FcntlObjct.Text:=dicCodeDisplayValue;
 end;
+
+procedure TDbControl.setLevelRootValue( strValue:String);
+{根据字典过滤模式符,通过初始值计算过滤字符串
+  输入:  42050251000000     模式符: ******,**,**
+  输出:  42050251******
+}
+begin
+    if self.dicMetaBase.dicLevelMode<>'' then
+    begin
+        filterLevelRootValue:=GetCurLevelFilterStr(strvalue, dicMetaBase.dicLevelMode);
+     end;
+end;
+
+
 
 end.

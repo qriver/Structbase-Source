@@ -17,7 +17,7 @@ object ChildMainForm: TChildMainForm
   object RzGroupBar1: TRzGroupBar
     Left = 0
     Top = 0
-    Width = 129
+    Width = 185
     Height = 468
     GradientColorStyle = gcsCustom
     GradientColorStart = clHighlight
@@ -87,18 +87,32 @@ object ChildMainForm: TChildMainForm
       ParentColor = False
       OnMouseMove = over
     end
+    object RzGroup5: TRzGroup
+      Color = clInactiveCaptionText
+      ColorDefault = False
+      Items = <
+        item
+          Caption = #25968#25454#36164#28304#31867#21035#32500#25252
+          OnClick = RzGroup5Items0Click
+        end>
+      Opened = True
+      OpenedHeight = 47
+      DividerVisible = False
+      Caption = #25968#25454#32500#25252
+      ParentColor = False
+    end
   end
   object Panel1: TPanel
-    Left = 129
+    Left = 185
     Top = 0
-    Width = 637
+    Width = 581
     Height = 468
     Align = alClient
     TabOrder = 1
     object rzpgcntrl1: TRzPageControl
       Left = 1
       Top = 1
-      Width = 635
+      Width = 579
       Height = 466
       Align = alClient
       Color = clGradientInactiveCaption
@@ -106,6 +120,7 @@ object ChildMainForm: TChildMainForm
       ShowCloseButtonOnActiveTab = True
       TabOrder = 0
       TabStyle = tsDoubleSlant
+      OnClose = rzpgcntrl1Close
       FixedDimension = 0
     end
   end

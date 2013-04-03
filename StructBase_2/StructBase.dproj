@@ -106,6 +106,7 @@
 			<DCCReference Include="DBform_Unit\Struct_Filter.pas"/>
 			<DCCReference Include="Unit\CnDebug.pas"/>
 			<DCCReference Include="Unit\Struct_SysConfigUtils.pas"/>
+			<DCCReference Include="Unit\uDicFunction.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

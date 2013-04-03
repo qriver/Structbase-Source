@@ -14,9 +14,12 @@ type
     RzGroup3: TRzGroup;
     RzGroup4: TRzGroup;
     rzpgcntrl1: TRzPageControl;
+    RzGroup5: TRzGroup;
     procedure over(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure FormCreate(Sender: TObject);
+    procedure RzGroup5Items0Click(Sender: TObject);
+    procedure rzpgcntrl1Close(Sender: TObject; var AllowClose: Boolean);
     procedure RzGroup1Items0Click(Sender: TObject);
   private
     procedure RzGroupBar1MouseMove(Sender: TObject; Shift: TShiftState;
@@ -35,7 +38,11 @@ uses
 uProfile,
 dbClient,
 fDataResForm,
-uStructbaseFrameWork;
+//ufrmUpLoadRes,
+uStructbaseFrameWork,
+     uGRIDDING_JC_MainForm,
+     uGRIDDING_SP_MainForm,
+     uGRIDDING_DJ_MainForm;
 {$R *.dfm}
 
 procedure TChildMainForm.FormCreate(Sender: TObject);
@@ -78,8 +85,18 @@ begin
 end;
 
 procedure TChildMainForm.RzGroup1Items0Click(Sender: TObject);
+var strSql:String;
 begin
-    if not assigned(frmDataRes) then
+       if not assigned(GRIDDING_DJ_MainForm) then
+              GRIDDING_DJ_MainForm:= TGRIDDING_DJ_MainForm.create(self);
+              self.LoadFormInPage(TForm(GRIDDING_DJ_MainForm));
+
+end;
+
+procedure TChildMainForm.RzGroup5Items0Click(Sender: TObject);
+//数据资源类别
+begin
+   if not assigned(frmDataRes) then
               frmDataRes:= TfrmDataRes.create(self);
 
     self.LoadFormInPage(TForm(frmDataRes));
@@ -108,6 +125,20 @@ begin
   end;
 end;
 
+
+procedure TChildMainForm.rzpgcntrl1Close(Sender: TObject;
+  var AllowClose: Boolean);
+  var i:integer;
+  var clsType:String;
+begin
+ inherited;
+     clsType:=(sender as TRzPageControl).ActivePage.Controls[0].ClassName;
+    TForm((sender as TRzPageControl).ActivePage.Controls[0]).close;
+    (sender as TRzPageControl).ActivePage.Controls[0].Free;
+    (sender as TRzPageControl).ActivePage.Data:=nil;
+    (sender as TRzPageControl).ActivePage.Free;
+
+end;
 
 procedure TChildMainForm.LoadFormInPage(var aform : TForm);
 var i:integer;

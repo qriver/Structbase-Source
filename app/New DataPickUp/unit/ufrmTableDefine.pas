@@ -91,7 +91,7 @@ begin
   edtFIELD_CHNNAME.Text:='';
   edtFIELD_ENGNAME.Text:='';
   edtXH.Text:='';
-  edtLSH.Text:='';
+  edtLSH.Text:=self.mGetGuid;
   flag:='ADD';
 end;
 

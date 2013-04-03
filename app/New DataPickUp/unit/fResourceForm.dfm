@@ -23,10 +23,6 @@ object ResourceForm: TResourceForm
     TabOrder = 0
     object ts1: TTabSheet
       Caption = #25968#25454#36164#28304#32534#36753
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl3: TPanel
         Left = 3
         Top = 16

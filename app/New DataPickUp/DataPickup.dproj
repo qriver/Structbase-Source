@@ -68,6 +68,26 @@
 			<DCCReference Include="unit\ufrmTableDefine.pas">
 				<Form>frmTableDefine</Form>
 			</DCCReference>
+			<DCCReference Include="QuanjUnit\uDataModule.pas">
+				<Form>MyDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uGRIDDING_DJ_Form.pas">
+				<Form>GRIDDING_DJ_Form</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uGRIDDING_DJ_MainForm.pas"/>
+			<DCCReference Include="QuanjUnit\uGRIDDING_JC_MainForm.pas">
+				<Form>Gridding_JC_MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uGRIDDING_SP_MainForm.pas">
+				<Form>GRIDDING_SP_MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uGRIDDING_TJ_MainForm.pas">
+				<Form>GRIDDING_TJ_MAINFORM</Form>
+			</DCCReference>
+			<DCCReference Include="unit\ufrmDJCheck.pas">
+				<Form>frmDJCheck</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

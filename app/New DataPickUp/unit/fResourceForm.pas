@@ -64,15 +64,18 @@ begin
   begin
      self.edtResource_id.Enabled:=true;
      self.mCleanPanel(pnl3);
+     self.edtResource_id.text:=self.mGetGuid;
      if self.parentId<>'' then    self.mSetDbControlDefaultValue('edtParent_id',parentId);
      //    mgetDbControl('edtParent_id').setDefaultValue(parentId);
      parentId:='';
+     self.mOpenInputProxy(pnl3,self);
   end;
   if state='UPDATE' then
   begin
      self.edtResource_id.Enabled:=false;
      sql:=' where resource_id='''+primaryId+'''';
      self.mDisplayRecord(pnl3,sql);
+     self.mOpenInputProxy(pnl3,self);
      self.memo1.Lines.Text:=self.edtFORMATSTR.Text;
      primaryId:='';
   end;
