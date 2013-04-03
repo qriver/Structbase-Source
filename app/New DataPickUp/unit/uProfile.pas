@@ -1,7 +1,7 @@
 unit uProfile;
 
 interface
-
+uses dbclient;
 Const Const_AppId='DATACOLLECT';
 Const Const_FormWidth=850;
 Const Const_FormHeight=610;
@@ -17,6 +17,7 @@ const 审批网格信息='APP03_003';
 const 社会资源上传='APP03_001';
 const 社会资源审批='APP03_005';
 
+var CDSGriddingPOlice:TClientDataSet;
 implementation
 
 end.

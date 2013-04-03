@@ -21,6 +21,7 @@ type
     procedure RzGroup5Items0Click(Sender: TObject);
     procedure rzpgcntrl1Close(Sender: TObject; var AllowClose: Boolean);
     procedure RzGroup1Items0Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure RzGroupBar1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
@@ -39,25 +40,38 @@ uProfile,
 dbClient,
 fDataResForm,
 //ufrmUpLoadRes,
-uStructbaseFrameWork,
+     uStructbaseFrameWork,
      uGRIDDING_JC_MainForm,
      uGRIDDING_SP_MainForm,
      uGRIDDING_DJ_MainForm;
 {$R *.dfm}
 
+procedure TChildMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var i:integer;
+begin
+  CDSGriddingPOlice.free;
+  for i := 0 to rzpgcntrl1.PageCount - 1 do
+           (rzpgcntrl1.Pages[i].Controls[0] as TForm).Close;
+
+
+end;
+
 procedure TChildMainForm.FormCreate(Sender: TObject);
 var cds:TCLIENTDATASET;
 var sql:String;
 begin
+
    structbase.LoadAppInstance('DATACOLLECT');
 
-   cds:=TclientDataset.Create(nil);
+   cds:=TclientDataset.Create(self);
    sql:='select * from resource_list where zxbs=''0''';
   // StructUtil.getApplication(uProfile.Const_AppId).
   //            DBProvide.SelectCommand(cds,sql,0);
+
+  //资源列表字典，因为与metadatasource不在同一个数据源，因此只能在app装载时手工load
   structbase.Applications.find(uProfile.Const_AppId).DBProvide.SelectCommand(cds,sql,0);
   // StructUtil.registDicCDS(Const_AppId,Const_DicId_Resource,cds);
- structbase.DicItems.find(Const_DicId_Resource).dicDataSet:=cds;
+  structbase.DicItems.find(Const_DicId_Resource).dicDataSet:=cds;
 
 end;
 
@@ -133,7 +147,7 @@ procedure TChildMainForm.rzpgcntrl1Close(Sender: TObject;
 begin
  inherited;
      clsType:=(sender as TRzPageControl).ActivePage.Controls[0].ClassName;
-    TForm((sender as TRzPageControl).ActivePage.Controls[0]).close;
+     TForm((sender as TRzPageControl).ActivePage.Controls[0]).close;
     (sender as TRzPageControl).ActivePage.Controls[0].Free;
     (sender as TRzPageControl).ActivePage.Data:=nil;
     (sender as TRzPageControl).ActivePage.Free;

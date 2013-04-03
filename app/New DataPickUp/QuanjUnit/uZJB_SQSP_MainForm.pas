@@ -1,4 +1,4 @@
-unit uAPP_NAME_MainForm;
+unit uZJB_SQSP_MainForm;
 
 interface
 
@@ -16,7 +16,7 @@ uses
 
 
 type
-  TAPP_NAME_MainForm = class(TBaseForm)
+  TZJB_SQSP_MainForm = class(TBaseForm)
     RzToolbar1: TRzToolbar;
     RzBtnLookup: TRzToolButton;
     RzSpacer1: TRzSpacer;
@@ -40,20 +40,35 @@ type
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
    
-APP_NAMEAPPID:TWideStringField; 
-APP_NAMEAPPNAME:TWideStringField; 
-APP_NAMEDATASOURCE:TWideStringField; 
-APP_NAMEDB_SCHEMA:TWideStringField; 
-APP_NAMEMETA_DATASOURCE:TWideStringField; 
+ZJB_SQSPBGYY:TWideStringField; 
+ZJB_SQSPBGZT:TWideStringField; 
+ZJB_SQSPBZLDBH:TWideStringField; 
+ZJB_SQSPFH:TWideStringField; 
+ZJB_SQSPFHHZ:TWideStringField; 
+ZJB_SQSPID:TWideStringField; 
+ZJB_SQSPJLTS:TWideStringField; 
+ZJB_SQSPJLX:TWideStringField; 
+ZJB_SQSPLDH:TWideStringField; 
+ZJB_SQSPMAP_X:TWideStringField; 
+ZJB_SQSPMAP_Y:TWideStringField; 
+ZJB_SQSPMPH:TWideStringField; 
+ZJB_SQSPMPHZ:TWideStringField; 
+ZJB_SQSPMPQZ:TWideStringField; 
+ZJB_SQSPSPDW:TWideStringField; 
+ZJB_SQSPSPR:TWideStringField; 
+ZJB_SQSPSPSJ:TWideStringField; 
+ZJB_SQSPSPTHYY:TWideStringField; 
+ZJB_SQSPSPZT:TWideStringField; 
+ZJB_SQSPSQDW:TWideStringField; 
+ZJB_SQSPSQLB:TWideStringField; 
+ZJB_SQSPSQR:TWideStringField; 
+ZJB_SQSPSQSJ:TWideStringField; 
+ZJB_SQSPSSJWQ:TWideStringField; 
+ZJB_SQSPSSXQ:TWideStringField; 
+ZJB_SQSPZLHZ:TWideStringField; 
+ZJB_SQSPZLQZ:TWideStringField; 
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
-    cxGrid1DBTableView1APPID: TcxGridDBColumn;
-    cxGrid1DBTableView1APPNAME: TcxGridDBColumn;
-    cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn;
-    cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn;
-    cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn;
-    lbl1: TStaticText;
-    edtAPPID: TMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -64,10 +79,8 @@ APP_NAMEMETA_DATASOURCE:TWideStringField;
 
   private
     { Private declarations }
-    listFieldName: TStringList;
-    listFieldDisplay:TStringList;
-    Const _TableName='APP_NAME';
-          _PkFieldName='APPID';
+    Const _TableName='ZJB_SQSP';
+          _PkFieldName='ID';
           _DBTYPE='ACCESS';
     procedure RefreshGrid(Const PageNo:String);
     procedure ShowDataModifyForm(umode:integer) ;
@@ -77,20 +90,19 @@ APP_NAMEMETA_DATASOURCE:TWideStringField;
 
 
 var
-  APP_NAME_MainForm: TAPP_NAME_MainForm;
+  ZJB_SQSP_MainForm: TZJB_SQSP_MainForm;
 
 implementation
 
-uses uAPP_NAME_Form;    //
+uses uZJB_SQSP_Form;    //
 
 
 {$R *.dfm}
 
 
 
-procedure TAPP_NAME_MainForm.RefreshGrid(const PageNo: String);
+procedure TZJB_SQSP_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
-var j:integer;
 begin
 
   self.btnAddnew.Enabled:=true;
@@ -103,7 +115,7 @@ begin
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
-  strSql:=self.mGetSqlStr(pnlCondition);
+  strSql:=self.mGetSqlByPanel(pnlCondition) ;
 
   if _DBTYPE<>'ACCESS' then
   begin
@@ -114,17 +126,7 @@ begin
       strSql:=format(strPageSql,[strSql,strLast,strFrist]);
   end;
   screen.Cursor:= crHourGlass;
-     cds_table.Close;
-   cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
-    if _DBTYPE<>'ACCESS' then
-  cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
-  for j := 0 to listFieldDisplay.Count - 2 do
-  begin
-     cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel:=listFieldDisplay[j];
-  end;
-
- 
   screen.Cursor:= crDefault;
   cxGrid1DBTableView1.DataController.KeyFieldNames:=self._PkFieldName;
  // RzPageMain.Enabled:=true;
@@ -133,66 +135,61 @@ end;
 
 
 
-procedure TAPP_NAME_MainForm.btnAddnewClick(Sender: TObject);
+procedure TZJB_SQSP_MainForm.btnAddnewClick(Sender: TObject);
 begin
   inherited;
   TabSheetDataModify.Caption:='新增记录';
-  APP_NAME_Form.actionType:=faddnew;
+  ZJB_SQSP_Form.actionType:=faddnew;
   ShowDataModifyForm(0);
 end;
 
-procedure TAPP_NAME_MainForm.btnDisplayClick(Sender: TObject);
+procedure TZJB_SQSP_MainForm.btnDisplayClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     APP_NAME_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     DIC_SOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   
-  APP_NAME_Form.actionType:=fDisplay;
+  ZJB_SQSP_Form.actionType:=fDisplay;
   TabSheetDataModify.Caption:='数据浏览';
   ShowDataModifyForm(0);
 end;
 
-procedure TAPP_NAME_MainForm.btnModifyClick(Sender: TObject);
+procedure TZJB_SQSP_MainForm.btnModifyClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     APP_NAME_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     ZJB_SQSP_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   TabSheetDataModify.Caption:='修改记录';
-  APP_NAME_Form.actionType:=fupdate;
+  ZJB_SQSP_Form.actionType:=fupdate;
   ShowDataModifyForm(0);
 end;
 
-procedure TAPP_NAME_MainForm.cxSpinPageNoClick(Sender: TObject);
+procedure TZJB_SQSP_MainForm.cxSpinPageNoClick(Sender: TObject);
 begin
   inherited;
   RefreshGrid(cxSpinPageNo.Value);
 end;
 
 
-procedure TAPP_NAME_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TZJB_SQSP_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
-  APP_NAME_MainForm:=NIL;
-  
-  listFieldName.free;
-  listFieldDisplay.free;
+  ZJB_SQSP_MainForm:=NIL;
 end;
 
 
 
-procedure TAPP_NAME_MainForm.FormCreate(Sender: TObject);
-var i:integer;
-var fieldNames,displayNames:String;
+procedure TZJB_SQSP_MainForm.FormCreate(Sender: TObject);
 begin
   inherited;
   
-  APP_NAME_Form:=TAPP_NAME_Form.create(self);
+  ZJB_SQSP_Form:=TZJB_SQSP_Form.create(self);
   if sysutils.FileExists(GetCurrentDir+'\DevLocal.ini') then
   begin
       cxLocalizer1.FileName:=GetCurrentDir+'\DevLocal.ini';
@@ -209,22 +206,9 @@ begin
   self.mRegistCntrl(pnlCondition,_TableName);
   self.rzPageCondition.ActivePage:=TabSheet1;
   TabSheetDataModify.TabVisible:=False;
-  
-  //记录记录集的原始定义
-  listFieldName:=TStringList.Create;
-  listFieldDisplay:=TStringList.Create;
-  for i := 0 to cds_table.Fields.Count - 1 do
-  begin
-       fieldNames := fieldNames + cds_table.fields[i].FieldName + ',';
-       displayNames:= displayNames +  cds_table.fields[i].DisplayLabel + ',';
-  end;
-
-
-  listFieldName.CommaText := fieldNames;
-  listFieldDisplay.CommaText:= displayNames;
 end;
 
-procedure TAPP_NAME_MainForm.RzBtnLookupClick(Sender: TObject);
+procedure TZJB_SQSP_MainForm.RzBtnLookupClick(Sender: TObject);
 var strSql:String;
 begin
   inherited;
@@ -236,27 +220,27 @@ end;
 
 
 
-procedure TAPP_NAME_MainForm.ShowDataModifyForm(umode:integer);
+procedure TZJB_SQSP_MainForm.ShowDataModifyForm(umode:integer);
 begin
 if umode=0 then   //  显示在本窗体内
 begin
-  APP_NAME_Form.Parent:=TabSheetDataModify;
-  APP_NAME_Form.Align:=alClient;
-  APP_NAME_Form.BorderStyle:=bsnone;
+  ZJB_SQSP_Form.Parent:=TabSheetDataModify;
+  ZJB_SQSP_Form.Align:=alClient;
+  ZJB_SQSP_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=True;
   self.rzPageCondition.ActivePage:=TabSheetDataModify;
 end;
 if umode=1 then   //  独立窗体
 begin
-   APP_NAME_Form.Parent:=nil;
- // APP_NAME_Form.Align:=alClient;
- // APP_NAME_Form.BorderStyle:=bsnone;
+   ZJB_SQSP_Form.Parent:=nil;
+ // ZJB_SQSP_Form.Align:=alClient;
+ // ZJB_SQSP_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=False;
 
   self.rzPageCondition.ActivePage:=TabSheet1;
 end;
 
-APP_NAME_Form.Show;
+ZJB_SQSP_Form.Show;
 
 
 end;

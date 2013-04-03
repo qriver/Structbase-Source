@@ -27,7 +27,7 @@ var
   myIni: TIniFile;
 begin
 
-
+       ReportMemoryLeaksOnShutdown := Boolean(DebugHook);
     // if structbase=nil then  Structbase :=TStructbase.Create;
 
 
@@ -49,5 +49,7 @@ begin
     Application.CreateForm(TMyDataModule, MyDataModule);
 
     Application.CreateForm(TChildMainForm, ChildMainForm);
-  application.Run;
+    application.Run;
+
+    structbase.Destroy;
 end.

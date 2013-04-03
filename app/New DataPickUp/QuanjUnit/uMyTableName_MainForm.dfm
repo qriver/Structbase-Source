@@ -1,7 +1,7 @@
-object APP_NAME_MainForm: TAPP_NAME_MainForm
+object MyTableName_MainForm: TMyTableName_MainForm
   Left = 0
   Top = 0
-  Caption = #24212#29992#31995#32479#32500#25252
+  Caption = #31034#33539'Form'
   ClientHeight = 515
   ClientWidth = 692
   Color = clBtnFace
@@ -21,14 +21,14 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Top = 0
     Width = 692
     Height = 515
-    ActivePage = TabSheet1
+    ActivePage = TabSheetDataModify
     Align = alClient
     Color = 16119543
     FlatColor = 10263441
     ParentColor = False
     ShowCloseButton = True
     TabColors.HighlightBar = 1350640
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     TabStyle = tsBackSlant
     FixedDimension = 19
@@ -43,7 +43,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Left = 5
         Top = 5
         Width = 678
-        Height = 36
+        Height = 84
         Align = alTop
         BevelEdges = []
         BevelOuter = bvNone
@@ -52,31 +52,10 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        object lbl1: TStaticText
-          Left = 13
-          Top = 8
-          Width = 120
-          Height = 21
-          Alignment = taCenter
-          AutoSize = False
-          BorderStyle = sbsSingle
-          Caption = #31995#32479#32534#21495
-          TabOrder = 0
-        end
-        object edtAPPID: TMaskEdit
-          Left = 113
-          Top = 8
-          Width = 121
-          Height = 21
-          AutoSize = False
-          Ctl3D = False
-          ParentCtl3D = False
-          TabOrder = 1
-        end
       end
       object RzToolbar1: TRzToolbar
         Left = 5
-        Top = 41
+        Top = 89
         Width = 678
         Height = 27
         AutoResize = False
@@ -228,14 +207,14 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       end
       object cxGrid1: TcxGrid
         Left = 5
-        Top = 68
+        Top = 116
         Width = 678
-        Height = 396
+        Height = 348
         Align = alClient
         TabOrder = 2
         LookAndFeel.Kind = lfOffice11
         RootLevelOptions.DetailFrameColor = clHighlight
-        ExplicitHeight = 387
+        ExplicitHeight = 339
         object cxGrid1DBTableView1: TcxGridDBTableView
           DragMode = dmAutomatic
           NavigatorButtons.ConfirmDelete = False
@@ -278,26 +257,6 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Preview.AutoHeight = False
           Preview.MaxLineCount = 2
           Preview.Visible = True
-          object cxGrid1DBTableView1APPID: TcxGridDBColumn
-            DataBinding.FieldName = 'APPID'
-            Width = 123
-          end
-          object cxGrid1DBTableView1APPNAME: TcxGridDBColumn
-            DataBinding.FieldName = 'APPNAME'
-            Width = 129
-          end
-          object cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn
-            DataBinding.FieldName = 'DB_SCHEMA'
-            Width = 77
-          end
-          object cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'DATASOURCE'
-            Width = 122
-          end
-          object cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'META_DATASOURCE'
-            Width = 120
-          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -376,44 +335,19 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Left = 176
     Top = 248
   end
+
   object cxLocalizer1: TcxLocalizer
+    Active = True
+    FileName = '.\bin\DevLocal.ini'
+    Locale = 2052
     Left = 480
     Top = 232
   end
+
   object CDS_TABLE: TClientDataSet
     Aggregates = <>
     Params = <>
     Left = 352
     Top = 248
-    object APP_NAMEAPPID: TWideStringField
-      DisplayLabel = #31995#32479#32534#21495
-      DisplayWidth = 20
-      FieldName = 'APPID'
-      Size = 32
-    end
-    object APP_NAMEAPPNAME: TWideStringField
-      DisplayLabel = #31995#32479#35828#26126
-      DisplayWidth = 20
-      FieldName = 'APPNAME'
-      Size = 100
-    end
-    object APP_NAMEDATASOURCE: TWideStringField
-      DisplayLabel = #25968#25454#28304#23450#20041
-      DisplayWidth = 20
-      FieldName = 'DATASOURCE'
-      Size = 50
-    end
-    object APP_NAMEDB_SCHEMA: TWideStringField
-      DisplayLabel = #34920#27169#24335#21517
-      DisplayWidth = 20
-      FieldName = 'DB_SCHEMA'
-      Size = 50
-    end
-    object APP_NAMEMETA_DATASOURCE: TWideStringField
-      DisplayLabel = #20803#25968#25454#25968#25454#28304
-      DisplayWidth = 20
-      FieldName = 'META_DATASOURCE'
-      Size = 200
-    end
-  end
+     
 end

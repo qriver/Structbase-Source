@@ -1,7 +1,7 @@
-object APP_NAME_MainForm: TAPP_NAME_MainForm
+object ZJB_SQSP_MainForm: TZJB_SQSP_MainForm
   Left = 0
   Top = 0
-  Caption = #24212#29992#31995#32479#32500#25252
+  Caption = #31034#33539'Form'
   ClientHeight = 515
   ClientWidth = 692
   Color = clBtnFace
@@ -21,14 +21,14 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Top = 0
     Width = 692
     Height = 515
-    ActivePage = TabSheet1
+    ActivePage = TabSheetDataModify
     Align = alClient
     Color = 16119543
     FlatColor = 10263441
     ParentColor = False
     ShowCloseButton = True
     TabColors.HighlightBar = 1350640
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     TabStyle = tsBackSlant
     FixedDimension = 19
@@ -43,7 +43,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Left = 5
         Top = 5
         Width = 678
-        Height = 36
+        Height = 84
         Align = alTop
         BevelEdges = []
         BevelOuter = bvNone
@@ -52,31 +52,10 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        object lbl1: TStaticText
-          Left = 13
-          Top = 8
-          Width = 120
-          Height = 21
-          Alignment = taCenter
-          AutoSize = False
-          BorderStyle = sbsSingle
-          Caption = #31995#32479#32534#21495
-          TabOrder = 0
-        end
-        object edtAPPID: TMaskEdit
-          Left = 113
-          Top = 8
-          Width = 121
-          Height = 21
-          AutoSize = False
-          Ctl3D = False
-          ParentCtl3D = False
-          TabOrder = 1
-        end
       end
       object RzToolbar1: TRzToolbar
         Left = 5
-        Top = 41
+        Top = 89
         Width = 678
         Height = 27
         AutoResize = False
@@ -228,14 +207,14 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       end
       object cxGrid1: TcxGrid
         Left = 5
-        Top = 68
+        Top = 116
         Width = 678
-        Height = 396
+        Height = 348
         Align = alClient
         TabOrder = 2
         LookAndFeel.Kind = lfOffice11
         RootLevelOptions.DetailFrameColor = clHighlight
-        ExplicitHeight = 387
+        ExplicitHeight = 339
         object cxGrid1DBTableView1: TcxGridDBTableView
           DragMode = dmAutomatic
           NavigatorButtons.ConfirmDelete = False
@@ -278,26 +257,6 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Preview.AutoHeight = False
           Preview.MaxLineCount = 2
           Preview.Visible = True
-          object cxGrid1DBTableView1APPID: TcxGridDBColumn
-            DataBinding.FieldName = 'APPID'
-            Width = 123
-          end
-          object cxGrid1DBTableView1APPNAME: TcxGridDBColumn
-            DataBinding.FieldName = 'APPNAME'
-            Width = 129
-          end
-          object cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn
-            DataBinding.FieldName = 'DB_SCHEMA'
-            Width = 77
-          end
-          object cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'DATASOURCE'
-            Width = 122
-          end
-          object cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'META_DATASOURCE'
-            Width = 120
-          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -385,35 +344,166 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Params = <>
     Left = 352
     Top = 248
-    object APP_NAMEAPPID: TWideStringField
-      DisplayLabel = #31995#32479#32534#21495
+    object ZJB_SQSPBGYY: TWideStringField
+      DisplayLabel = #21464#26356#21407#22240
       DisplayWidth = 20
-      FieldName = 'APPID'
-      Size = 32
-    end
-    object APP_NAMEAPPNAME: TWideStringField
-      DisplayLabel = #31995#32479#35828#26126
-      DisplayWidth = 20
-      FieldName = 'APPNAME'
+      FieldName = 'BGYY'
       Size = 100
     end
-    object APP_NAMEDATASOURCE: TWideStringField
-      DisplayLabel = #25968#25454#28304#23450#20041
+    object ZJB_SQSPBGZT: TWideStringField
+      DisplayLabel = #21464#26356#29366#24577
       DisplayWidth = 20
-      FieldName = 'DATASOURCE'
-      Size = 50
+      FieldName = 'BGZT'
+      Size = 1
     end
-    object APP_NAMEDB_SCHEMA: TWideStringField
-      DisplayLabel = #34920#27169#24335#21517
+    object ZJB_SQSPBZLDBH: TWideStringField
+      DisplayLabel = #26631#20934#27004#26635#32534#21495
       DisplayWidth = 20
-      FieldName = 'DB_SCHEMA'
-      Size = 50
+      FieldName = 'BZLDBH'
+      Size = 1
     end
-    object APP_NAMEMETA_DATASOURCE: TWideStringField
-      DisplayLabel = #20803#25968#25454#25968#25454#28304
+    object ZJB_SQSPFH: TWideStringField
+      DisplayLabel = #21103#21495
       DisplayWidth = 20
-      FieldName = 'META_DATASOURCE'
-      Size = 200
+      FieldName = 'FH'
+      Size = 4
+    end
+    object ZJB_SQSPFHHZ: TWideStringField
+      DisplayLabel = #21103#21495#21518#32512
+      DisplayWidth = 20
+      FieldName = 'FHHZ'
+      Size = 1
+    end
+    object ZJB_SQSPID: TWideStringField
+      DisplayLabel = #21807#19968#32534#21495
+      DisplayWidth = 20
+      FieldName = 'ID'
+      Size = 32
+    end
+    object ZJB_SQSPJLTS: TWideStringField
+      DisplayLabel = #35760#24405#26465#25968
+      DisplayWidth = 20
+      FieldName = 'JLTS'
+    end
+    object ZJB_SQSPJLX: TWideStringField
+      DisplayLabel = #34903#36335#24055
+      DisplayWidth = 20
+      FieldName = 'JLX'
+      Size = 12
+    end
+    object ZJB_SQSPLDH: TWideStringField
+      DisplayLabel = #27004#26635#21495
+      DisplayWidth = 20
+      FieldName = 'LDH'
+      Size = 5
+    end
+    object ZJB_SQSPMAP_X: TWideStringField
+      DisplayLabel = 'X'#22352#26631
+      DisplayWidth = 20
+      FieldName = 'MAP_X'
+      Size = 30
+    end
+    object ZJB_SQSPMAP_Y: TWideStringField
+      DisplayLabel = 'Y'#22352#26631
+      DisplayWidth = 20
+      FieldName = 'MAP_Y'
+      Size = 30
+    end
+    object ZJB_SQSPMPH: TWideStringField
+      DisplayLabel = #38376#29260#21495
+      DisplayWidth = 20
+      FieldName = 'MPH'
+      Size = 4
+    end
+    object ZJB_SQSPMPHZ: TWideStringField
+      DisplayLabel = #38376#29260#21518#32512
+      DisplayWidth = 20
+      FieldName = 'MPHZ'
+      Size = 1
+    end
+    object ZJB_SQSPMPQZ: TWideStringField
+      DisplayLabel = #38376#29260#21069#32512
+      DisplayWidth = 20
+      FieldName = 'MPQZ'
+      Size = 1
+    end
+    object ZJB_SQSPSPDW: TWideStringField
+      DisplayLabel = #23457#25209#21333#20301
+      DisplayWidth = 20
+      FieldName = 'SPDW'
+      Size = 12
+    end
+    object ZJB_SQSPSPR: TWideStringField
+      DisplayLabel = #23457#25209#20154
+      DisplayWidth = 20
+      FieldName = 'SPR'
+      Size = 10
+    end
+    object ZJB_SQSPSPSJ: TWideStringField
+      DisplayLabel = #23457#25209#26102#38388
+      DisplayWidth = 20
+      FieldName = 'SPSJ'
+      Size = 14
+    end
+    object ZJB_SQSPSPTHYY: TWideStringField
+      DisplayLabel = #23457#25209#36864#22238#21407#22240
+      DisplayWidth = 20
+      FieldName = 'SPTHYY'
+      Size = 100
+    end
+    object ZJB_SQSPSPZT: TWideStringField
+      DisplayLabel = #23457#25209#29366#24577
+      DisplayWidth = 20
+      FieldName = 'SPZT'
+      Size = 1
+    end
+    object ZJB_SQSPSQDW: TWideStringField
+      DisplayLabel = #30003#35831#21333#20301
+      DisplayWidth = 20
+      FieldName = 'SQDW'
+      Size = 12
+    end
+    object ZJB_SQSPSQLB: TWideStringField
+      DisplayLabel = #30003#35831#31867#21035
+      DisplayWidth = 20
+      FieldName = 'SQLB'
+      Size = 1
+    end
+    object ZJB_SQSPSQR: TWideStringField
+      DisplayLabel = #30003#35831#20154
+      DisplayWidth = 20
+      FieldName = 'SQR'
+      Size = 10
+    end
+    object ZJB_SQSPSQSJ: TWideStringField
+      DisplayLabel = #30003#35831#26102#38388
+      DisplayWidth = 20
+      FieldName = 'SQSJ'
+      Size = 14
+    end
+    object ZJB_SQSPSSJWQ: TWideStringField
+      DisplayLabel = #35686#21153#36131#20219#21306
+      DisplayWidth = 20
+      FieldName = 'SSJWQ'
+      Size = 12
+    end
+    object ZJB_SQSPSSXQ: TWideStringField
+      DisplayLabel = #34892#25919#21306#21010
+      DisplayWidth = 20
+      FieldName = 'SSXQ'
+      Size = 6
+    end
+    object ZJB_SQSPZLHZ: TWideStringField
+      DisplayLabel = #27004#26635#21518#32512
+      DisplayWidth = 20
+      FieldName = 'ZLHZ'
+      Size = 1
+    end
+    object ZJB_SQSPZLQZ: TWideStringField
+      DisplayLabel = #27004#26635#21069#32512
+      DisplayWidth = 20
+      FieldName = 'ZLQZ'
+      Size = 2
     end
   end
 end

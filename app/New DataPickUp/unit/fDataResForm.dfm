@@ -3,7 +3,7 @@ object frmDataRes: TfrmDataRes
   Top = 334
   Caption = #25968#25454#36164#28304#31649#29702
   ClientHeight = 607
-  ClientWidth = 979
+  ClientWidth = 875
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,7 @@ object frmDataRes: TfrmDataRes
   OldCreateOrder = False
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inline TreeViewFrame1: TTreeViewFrame
@@ -26,18 +27,24 @@ object frmDataRes: TfrmDataRes
     ExplicitWidth = 321
     ExplicitHeight = 561
     inherited tvResource: TTreeView
+      Width = 233
       PopupMenu = pm1
+      ExplicitWidth = 233
+    end
+    inherited ilMain: TImageList
+      Left = 148
+      Top = 340
     end
   end
   object pnl2: TPanel
-    Left = 335
+    Left = 263
     Top = 16
     Width = 593
-    Height = 561
+    Height = 545
     TabOrder = 1
   end
   object pm1: TPopupMenu
-    Left = 192
+    Left = 144
     Top = 232
     object menuDraw: TMenuItem
       Caption = #21047#26032

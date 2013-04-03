@@ -1,7 +1,7 @@
-object APP_NAME_MainForm: TAPP_NAME_MainForm
+object GRIDDING_DJ_MainForm: TGRIDDING_DJ_MainForm
   Left = 0
   Top = 0
-  Caption = #24212#29992#31995#32479#32500#25252
+  Caption = #32593#26684#25968#25454#30331#35760
   ClientHeight = 515
   ClientWidth = 692
   Color = clBtnFace
@@ -43,7 +43,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Left = 5
         Top = 5
         Width = 678
-        Height = 36
+        Height = 84
         Align = alTop
         BevelEdges = []
         BevelOuter = bvNone
@@ -52,31 +52,76 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        object lbl1: TStaticText
-          Left = 13
-          Top = 8
-          Width = 120
-          Height = 21
+        object txt4: TStaticText
+          Left = -1
+          Top = 9
+          Width = 92
+          Height = 26
           Alignment = taCenter
           AutoSize = False
           BorderStyle = sbsSingle
-          Caption = #31995#32479#32534#21495
+          Caption = #25152#23646#32593#26684
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
         end
-        object edtAPPID: TMaskEdit
-          Left = 113
-          Top = 8
-          Width = 121
-          Height = 21
+        object edtSSWG: TMaskEdit
+          Left = 90
+          Top = 9
+          Width = 247
+          Height = 26
           AutoSize = False
           Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
           ParentCtl3D = False
+          ParentFont = False
           TabOrder = 1
+        end
+        object txt3: TStaticText
+          Left = 335
+          Top = 9
+          Width = 100
+          Height = 26
+          Alignment = taCenter
+          AutoSize = False
+          BorderStyle = sbsSingle
+          Caption = #23457#25209#29366#24577
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object edtSHZT: TMaskEdit
+          Left = 432
+          Top = 9
+          Width = 231
+          Height = 26
+          AutoSize = False
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 3
         end
       end
       object RzToolbar1: TRzToolbar
         Left = 5
-        Top = 41
+        Top = 89
         Width = 678
         Height = 27
         AutoResize = False
@@ -228,14 +273,14 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       end
       object cxGrid1: TcxGrid
         Left = 5
-        Top = 68
+        Top = 116
         Width = 678
-        Height = 396
+        Height = 348
         Align = alClient
         TabOrder = 2
         LookAndFeel.Kind = lfOffice11
         RootLevelOptions.DetailFrameColor = clHighlight
-        ExplicitHeight = 387
+        ExplicitHeight = 339
         object cxGrid1DBTableView1: TcxGridDBTableView
           DragMode = dmAutomatic
           NavigatorButtons.ConfirmDelete = False
@@ -278,26 +323,6 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Preview.AutoHeight = False
           Preview.MaxLineCount = 2
           Preview.Visible = True
-          object cxGrid1DBTableView1APPID: TcxGridDBColumn
-            DataBinding.FieldName = 'APPID'
-            Width = 123
-          end
-          object cxGrid1DBTableView1APPNAME: TcxGridDBColumn
-            DataBinding.FieldName = 'APPNAME'
-            Width = 129
-          end
-          object cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn
-            DataBinding.FieldName = 'DB_SCHEMA'
-            Width = 77
-          end
-          object cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'DATASOURCE'
-            Width = 122
-          end
-          object cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'META_DATASOURCE'
-            Width = 120
-          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -377,6 +402,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Top = 248
   end
   object cxLocalizer1: TcxLocalizer
+    FileName = '.\bin\DevLocal.ini'
     Left = 480
     Top = 232
   end
@@ -385,35 +411,114 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Params = <>
     Left = 352
     Top = 248
-    object APP_NAMEAPPID: TWideStringField
-      DisplayLabel = #31995#32479#32534#21495
+    object GRIDDING_DJDESCRIPTION: TWideStringField
+      DisplayLabel = #20449#24687#25551#36848#20449#24687
       DisplayWidth = 20
-      FieldName = 'APPID'
+      FieldName = 'DESCRIPTION'
+      Size = 500
+    end
+    object GRIDDING_DJDWBM: TWideStringField
+      DisplayLabel = #21333#20301#32534#30721
+      DisplayWidth = 20
+      FieldName = 'DWBM'
+      Size = 12
+    end
+    object GRIDDING_DJDWMC: TWideStringField
+      DisplayLabel = #21333#20301#21517#31216
+      DisplayWidth = 20
+      FieldName = 'DWMC'
+      Size = 50
+    end
+    object GRIDDING_DJGLDW: TWideStringField
+      DisplayLabel = #31649#29702#21333#20301
+      DisplayWidth = 20
+      FieldName = 'GLDW'
+      Size = 12
+    end
+    object GRIDDING_DJLSH: TWideStringField
+      DisplayLabel = #27969#27700#21495
+      DisplayWidth = 20
+      FieldName = 'LSH'
       Size = 32
     end
-    object APP_NAMEAPPNAME: TWideStringField
-      DisplayLabel = #31995#32479#35828#26126
+    object GRIDDING_DJLXDH: TWideStringField
+      DisplayLabel = #32852#31995#30005#35805
       DisplayWidth = 20
-      FieldName = 'APPNAME'
-      Size = 100
-    end
-    object APP_NAMEDATASOURCE: TWideStringField
-      DisplayLabel = #25968#25454#28304#23450#20041
-      DisplayWidth = 20
-      FieldName = 'DATASOURCE'
+      FieldName = 'LXDH'
       Size = 50
     end
-    object APP_NAMEDB_SCHEMA: TWideStringField
-      DisplayLabel = #34920#27169#24335#21517
+    object GRIDDING_DJPOLICE_ID: TWideStringField
+      DisplayLabel = #35686#21592#32534#21495
       DisplayWidth = 20
-      FieldName = 'DB_SCHEMA'
-      Size = 50
+      FieldName = 'POLICE_ID'
+      Size = 6
     end
-    object APP_NAMEMETA_DATASOURCE: TWideStringField
-      DisplayLabel = #20803#25968#25454#25968#25454#28304
+    object GRIDDING_DJPOLICE_NAME: TWideStringField
+      DisplayLabel = #35686#21592#22995#21517
       DisplayWidth = 20
-      FieldName = 'META_DATASOURCE'
+      FieldName = 'POLICE_NAME'
+    end
+    object GRIDDING_DJRESOURCE_ID: TWideStringField
+      DisplayLabel = #36164#28304#32534#21495
+      DisplayWidth = 20
+      FieldName = 'RESOURCE_ID'
+      Size = 32
+    end
+    object GRIDDING_DJSHDW: TWideStringField
+      DisplayLabel = #23457#26680#21333#20301
+      DisplayWidth = 20
+      FieldName = 'SHDW'
+      Size = 12
+    end
+    object GRIDDING_DJSHSJ: TWideStringField
+      DisplayLabel = #23457#26680#26102#38388
+      DisplayWidth = 20
+      FieldName = 'SHSJ'
+    end
+    object GRIDDING_DJSHSM: TWideStringField
+      DisplayLabel = #23457#26680#35828#26126
+      DisplayWidth = 20
+      FieldName = 'SHSM'
       Size = 200
+    end
+    object GRIDDING_DJSHZT: TWideStringField
+      DisplayLabel = #23457#26680#29366#24577
+      DisplayWidth = 20
+      FieldName = 'SHZT'
+      Size = 1
+    end
+    object GRIDDING_DJSH_RYBH: TWideStringField
+      DisplayLabel = #23457#26680#20154#21592#32534#21495
+      DisplayWidth = 20
+      FieldName = 'SH_RYBH'
+    end
+    object GRIDDING_DJSH_RYXM: TWideStringField
+      DisplayLabel = #23457#26680#20154#21592#20449#24687
+      DisplayWidth = 20
+      FieldName = 'SH_RYXM'
+    end
+    object GRIDDING_DJSJZT: TWideStringField
+      DisplayLabel = #25968#25454#29366#24577
+      DisplayWidth = 20
+      FieldName = 'SJZT'
+      Size = 1
+    end
+    object GRIDDING_DJSSWG: TWideStringField
+      DisplayLabel = #25152#23646#32593#26684
+      DisplayWidth = 20
+      FieldName = 'SSWG'
+      Size = 50
+    end
+    object GRIDDING_DJTITLE: TWideStringField
+      DisplayLabel = #26631#39064
+      DisplayWidth = 20
+      FieldName = 'TITLE'
+      Size = 500
+    end
+    object GRIDDING_DJUPLOAD_TIME: TWideStringField
+      DisplayLabel = #19978#20256#26102#38388
+      DisplayWidth = 20
+      FieldName = 'UPLOAD_TIME'
     end
   end
 end

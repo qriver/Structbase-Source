@@ -29,6 +29,7 @@ type
     procedure addNewClick(Sender: TObject);
     procedure defineResourceClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
@@ -69,7 +70,8 @@ begin
   TreeViewFrame1.displayField:='Resource_name';
   TreeViewFrame1.keyField:='Resource_id';
   TreeViewFrame1.parentField:='Parent_id';
-  TreeViewFrame1.DrawTreeView;
+   TreeViewFrame1.DrawTreeView;
+  acds.Free;
 end;
 
 procedure TfrmDataRes.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -90,7 +92,17 @@ begin
   frmResource.Align:=alclient;
   frmResource.Show;
   frmResource.Visible:=false;
-  menuDrawClick(self);
+   menuDrawClick(self);
+end;
+
+procedure TfrmDataRes.FormDestroy(Sender: TObject);
+var i:integer;
+begin
+  inherited;
+
+  self.TreeViewFrame1.destroy;
+  resList.Free;
+  self.Close;
 end;
 
 procedure TfrmDataRes.mnuEditClick(Sender: TObject);
@@ -106,6 +118,8 @@ begin
     //frmResource.primaryId:=TNodeCls( TreeViewFrame1.tvResource.Items[0].Data).keyField;
     frmResource.setState('UPDATE');
     frmResource.OnInputOver:=menuDrawClick;
+
+
 end;
 
 procedure TfrmDataRes.addNewClick(Sender: TObject);
@@ -123,6 +137,8 @@ begin
    end;
    frmResource.setState('ADDNEW');
    frmResource.OnInputOver:=menuDrawClick;
+
+
 end;
 
 procedure TfrmDataRes.defineResourceClick(Sender: TObject);

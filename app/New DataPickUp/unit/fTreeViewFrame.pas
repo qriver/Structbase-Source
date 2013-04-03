@@ -43,6 +43,7 @@ type
      function   getNodeKeyValue():String;
      procedure  setDataSource(uDataSource:TClientDataSet) ;
      constructor Create;
+     destructor destroy;   overload;
   end;
 
 implementation
@@ -72,25 +73,38 @@ begin
     myNode.keyField:=strKey;
     newNode:=tvResource.Items.AddChildObject(getParentNode(strKey),strDisplay,myNode) ;
     myNode.itemId:=newNode.ItemId;
-   
+
     resList.Objects[resList.IndexOf(strKey)]:= myNode;
+
 
 end;
 
 
 constructor TTreeViewFrame.Create;
 begin
-   resList:=TStringList.Create;
+   // resList:=TStringList.Create;
 end;
 
 
 
+destructor TTreeViewFrame.destroy;
+var i:integer;
+begin
+    inherited;
+    for I := 0 to resList.Count - 1 do
+       TNodeCls(resList.Objects[i]).Free;
+
+    reslist.Free;
+end;
+
 procedure TTreeViewFrame.DrawTreeView;
 var i:integer;
 begin
-  if not assigned(resList) then
+ if not assigned(resList) then
+ begin
+         freeandnil(reslist);
          resList:=TStringList.Create;
-
+ end;
   resList.Clear;
   tvResource.Items.Clear;
   while not fDataSource.Eof do

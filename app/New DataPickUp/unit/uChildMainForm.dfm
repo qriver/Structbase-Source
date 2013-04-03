@@ -2,8 +2,8 @@ object ChildMainForm: TChildMainForm
   Left = 0
   Top = 0
   Caption = #32593#26684#24212#29992
-  ClientHeight = 468
-  ClientWidth = 766
+  ClientHeight = 517
+  ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,14 +11,15 @@ object ChildMainForm: TChildMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object RzGroupBar1: TRzGroupBar
     Left = 0
     Top = 0
-    Width = 185
-    Height = 468
+    Width = 153
+    Height = 517
     GradientColorStyle = gcsCustom
     GradientColorStart = clHighlight
     GradientColorStop = clGradientInactiveCaption
@@ -103,17 +104,17 @@ object ChildMainForm: TChildMainForm
     end
   end
   object Panel1: TPanel
-    Left = 185
+    Left = 153
     Top = 0
-    Width = 581
-    Height = 468
+    Width = 849
+    Height = 517
     Align = alClient
     TabOrder = 1
     object rzpgcntrl1: TRzPageControl
       Left = 1
       Top = 1
-      Width = 579
-      Height = 466
+      Width = 847
+      Height = 515
       Align = alClient
       Color = clGradientInactiveCaption
       ParentColor = False

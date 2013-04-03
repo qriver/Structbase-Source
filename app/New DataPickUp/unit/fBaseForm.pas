@@ -29,7 +29,7 @@ type
 
   end;
 
-var CDSGriddingPOlice:TClientDataSet;
+
 
 implementation
 
@@ -90,10 +90,14 @@ end;
 
 
 function TBaseForm.getResouceManger(var id:String): String;
+var gldw:variant;
 begin
 //  pub_resource_list:=StructUtil.getApplication(self.getAppId).MetaSource.getDicCds('DC_RESOURCE');
   pub_resource_list:= structbase.DicItems.find('DC_RESOURCE').dicDataSet;
-  result:= pub_resource_list.Lookup('resource_id',id,'gldw') ;
+  gldw:= pub_resource_list.Lookup('resource_id',id,'gldw') ;
+  if varisnull(gldw) then gldw:='';
+
+  result:=gldw;
 end;
 
 

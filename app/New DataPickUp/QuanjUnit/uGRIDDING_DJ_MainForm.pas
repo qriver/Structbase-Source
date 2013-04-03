@@ -1,4 +1,4 @@
-unit uAPP_NAME_MainForm;
+unit uGRIDDING_DJ_MainForm;
 
 interface
 
@@ -16,7 +16,7 @@ uses
 
 
 type
-  TAPP_NAME_MainForm = class(TBaseForm)
+  TGRIDDING_DJ_MainForm = class(TBaseForm)
     RzToolbar1: TRzToolbar;
     RzBtnLookup: TRzToolButton;
     RzSpacer1: TRzSpacer;
@@ -39,21 +39,49 @@ type
     cxSpinPageNo: TcxSpinEdit;
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
-   
-APP_NAMEAPPID:TWideStringField; 
-APP_NAMEAPPNAME:TWideStringField; 
-APP_NAMEDATASOURCE:TWideStringField; 
-APP_NAMEDB_SCHEMA:TWideStringField; 
-APP_NAMEMETA_DATASOURCE:TWideStringField; 
+    GRIDDING_DJDESCRIPTION:TStringField;
+    GRIDDING_DJDWBM:TStringField;
+    GRIDDING_DJDWMC:TStringField;
+    GRIDDING_DJGLDW:TStringField;
+    GRIDDING_DJLSH:TStringField;
+    GRIDDING_DJLXDH:TStringField;
+    GRIDDING_DJPOLICE_ID:TStringField;
+    GRIDDING_DJPOLICE_NAME:TStringField;
+    GRIDDING_DJRESOURCE_ID:TStringField;
+    GRIDDING_DJSHDW:TStringField;
+    GRIDDING_DJSHSJ:TStringField;
+    GRIDDING_DJSHSM:TStringField;
+    GRIDDING_DJSHZT:TStringField;
+    GRIDDING_DJSH_RYBH:TStringField;
+    GRIDDING_DJSH_RYXM:TStringField;
+    GRIDDING_DJSSWG:TStringField;
+    GRIDDING_DJTITLE:TStringField;
+    GRIDDING_DJUPLOAD_TIME:TStringField;
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
-    cxGrid1DBTableView1APPID: TcxGridDBColumn;
-    cxGrid1DBTableView1APPNAME: TcxGridDBColumn;
-    cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn;
-    cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn;
-    cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn;
-    lbl1: TStaticText;
-    edtAPPID: TMaskEdit;
+    txt4: TStaticText;
+    edtSSWG: TMaskEdit;
+    txt3: TStaticText;
+    edtSHZT: TMaskEdit;
+    cxGrid1DBTableView1DWBM: TcxGridDBColumn;
+    cxGrid1DBTableView1DWMC: TcxGridDBColumn;
+    cxGrid1DBTableView1GLDW: TcxGridDBColumn;
+    cxGrid1DBTableView1LXDH: TcxGridDBColumn;
+    cxGrid1DBTableView1POLICE_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1RESOURCE_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1SHDW: TcxGridDBColumn;
+    cxGrid1DBTableView1SHSJ: TcxGridDBColumn;
+    cxGrid1DBTableView1SHSM: TcxGridDBColumn;
+    cxGrid1DBTableView1SHZT: TcxGridDBColumn;
+    cxGrid1DBTableView1SH_RYBH: TcxGridDBColumn;
+    cxGrid1DBTableView1SH_RYXM: TcxGridDBColumn;
+    cxGrid1DBTableView1SSWG: TcxGridDBColumn;
+    cxGrid1DBTableView1TITLE: TcxGridDBColumn;
+    cxGrid1DBTableView1UPLOAD_TIME: TcxGridDBColumn;
+    cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGrid1DBTableView1LSH: TcxGridDBColumn;
+    cxGrid1DBTableView1POLICE_ID: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -61,34 +89,38 @@ APP_NAMEMETA_DATASOURCE:TWideStringField;
     procedure btnAddnewClick(Sender: TObject);
     procedure btnModifyClick(Sender: TObject);
     procedure btnDisplayClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
-    listFieldName: TStringList;
     listFieldDisplay:TStringList;
-    Const _TableName='APP_NAME';
-          _PkFieldName='APPID';
+    listFieldName :TStringList;
+
+    Const _TableName='GRIDDING_DJ';
+          _PkFieldName='LSH';
           _DBTYPE='ACCESS';
+
     procedure RefreshGrid(Const PageNo:String);
     procedure ShowDataModifyForm(umode:integer) ;
+
   public
     { Public declarations }
   end;
 
 
 var
-  APP_NAME_MainForm: TAPP_NAME_MainForm;
+  GRIDDING_DJ_MainForm: TGRIDDING_DJ_MainForm;
 
 implementation
 
-uses uAPP_NAME_Form;    //
+uses uGRIDDING_DJ_Form,uProfile;    //
 
 
 {$R *.dfm}
 
 
 
-procedure TAPP_NAME_MainForm.RefreshGrid(const PageNo: String);
+procedure TGRIDDING_DJ_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
 var j:integer;
 begin
@@ -97,13 +129,13 @@ begin
   self.btnDelete.Enabled:=true;
   self.btnModify.Enabled:=true;
   self.btnDisplay.Enabled:=true;
-  cds_table.Close;
+
 
 
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
-  strSql:=self.mGetSqlStr(pnlCondition);
+  strSql:=self.mGetSqlStr(pnlCondition) ;
 
   if _DBTYPE<>'ACCESS' then
   begin
@@ -114,17 +146,21 @@ begin
       strSql:=format(strPageSql,[strSql,strLast,strFrist]);
   end;
   screen.Cursor:= crHourGlass;
-     cds_table.Close;
-   cds_table.Fields.Clear;
+  cds_table.Close;
+  cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
-    if _DBTYPE<>'ACCESS' then
-  cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+
+  if _DBTYPE<>'ACCESS' then
+    cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+
+
   for j := 0 to listFieldDisplay.Count - 2 do
   begin
      cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel:=listFieldDisplay[j];
   end;
 
- 
+ // cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+
   screen.Cursor:= crDefault;
   cxGrid1DBTableView1.DataController.KeyFieldNames:=self._PkFieldName;
  // RzPageMain.Enabled:=true;
@@ -133,75 +169,100 @@ end;
 
 
 
-procedure TAPP_NAME_MainForm.btnAddnewClick(Sender: TObject);
+procedure TGRIDDING_DJ_MainForm.btnAddnewClick(Sender: TObject);
 begin
   inherited;
   TabSheetDataModify.Caption:='新增记录';
-  APP_NAME_Form.actionType:=faddnew;
+  GRIDDING_DJ_Form.actionType:=faddnew;
   ShowDataModifyForm(0);
 end;
 
-procedure TAPP_NAME_MainForm.btnDisplayClick(Sender: TObject);
+procedure TGRIDDING_DJ_MainForm.btnDisplayClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     APP_NAME_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+      GRIDDING_DJ_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
-  
-  APP_NAME_Form.actionType:=fDisplay;
+
+  GRIDDING_DJ_Form.actionType:=fDisplay;
   TabSheetDataModify.Caption:='数据浏览';
   ShowDataModifyForm(0);
 end;
 
-procedure TAPP_NAME_MainForm.btnModifyClick(Sender: TObject);
+procedure TGRIDDING_DJ_MainForm.btnModifyClick(Sender: TObject);
+var str:string;
 begin
-  inherited;
-  with  cxGrid1DBTableView1.DataController  do
+
+  if cds_table.Active = true  then
   begin
-     APP_NAME_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+    if cds_table.FieldByName('SHZT').AsString='0'  then
+    begin
+          with  cxGrid1DBTableView1.DataController  do
+          begin
+             GRIDDING_DJ_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+          end;
+          TabSheetDataModify.Caption:='修改记录';
+          GRIDDING_DJ_Form.actionType:=fupdate;
+          ShowDataModifyForm(0);
+    end
+    else
+    Application.messagebox('该资源已审批或已退回,无法修改！','提示',mb_ok);
+  end
+  else
+  begin
+     Application.messagebox('请先查询！','提示',mb_ok);
   end;
-  TabSheetDataModify.Caption:='修改记录';
-  APP_NAME_Form.actionType:=fupdate;
-  ShowDataModifyForm(0);
+
+
+
+
+
+
+
 end;
 
-procedure TAPP_NAME_MainForm.cxSpinPageNoClick(Sender: TObject);
+procedure TGRIDDING_DJ_MainForm.cxSpinPageNoClick(Sender: TObject);
 begin
   inherited;
   RefreshGrid(cxSpinPageNo.Value);
 end;
 
 
-procedure TAPP_NAME_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TGRIDDING_DJ_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
+  listFieldDisplay.Free;
+  listFieldName.Free;
+
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
-  APP_NAME_MainForm:=NIL;
-  
-  listFieldName.free;
-  listFieldDisplay.free;
+  GRIDDING_DJ_MainForm:=NIL;
+
 end;
 
 
 
-procedure TAPP_NAME_MainForm.FormCreate(Sender: TObject);
+procedure TGRIDDING_DJ_MainForm.FormCreate(Sender: TObject);
+var cds:TClientDataSet;
 var i:integer;
 var fieldNames,displayNames:String;
 begin
   inherited;
-  
-  APP_NAME_Form:=TAPP_NAME_Form.create(self);
+
+  GRIDDING_DJ_Form:=TGRIDDING_DJ_Form.create(self);
+
   if sysutils.FileExists(GetCurrentDir+'\DevLocal.ini') then
   begin
       cxLocalizer1.FileName:=GetCurrentDir+'\DevLocal.ini';
       cxLocalizer1.Active:=true;
       cxLocalizer1.Locale:=2052;
   end;
-  
- 
-       
+
+  cds:=Self.getCdsGriddingPolice(mGetLoginUser.userid);
+  edtSSWG.Text:=cds.FieldByName('GRIDDING_NAME').AsString;
+
+
   self.btnDelete.Enabled:=false;
   self.btnModify.Enabled:=false;
   self.btnDisplay.Enabled:=false;
@@ -209,8 +270,8 @@ begin
   self.mRegistCntrl(pnlCondition,_TableName);
   self.rzPageCondition.ActivePage:=TabSheet1;
   TabSheetDataModify.TabVisible:=False;
-  
-  //记录记录集的原始定义
+
+    //记录记录集的原始定义
   listFieldName:=TStringList.Create;
   listFieldDisplay:=TStringList.Create;
   for i := 0 to cds_table.Fields.Count - 1 do
@@ -224,39 +285,51 @@ begin
   listFieldDisplay.CommaText:= displayNames;
 end;
 
-procedure TAPP_NAME_MainForm.RzBtnLookupClick(Sender: TObject);
+
+
+procedure TGRIDDING_DJ_MainForm.FormDestroy(Sender: TObject);
+begin
+
+  inherited;
+ // self.Close;
+end;
+
+procedure TGRIDDING_DJ_MainForm.RzBtnLookupClick(Sender: TObject);
 var strSql:String;
 begin
   inherited;
   cxSpinPageNo.Value:=1;
   RefreshGrid(cxSpinPageNo.Value);
   TabSheetDataModify.TabVisible:=False;
+ // self.mTranslateCDS(cds_table,_TableName);
+ self.mTranslateGrid(cxGrid1DBTableView1,_TableName);
+//  self.mTranslateCDS(cds_table,_TableName);
 end;
 
 
 
 
-procedure TAPP_NAME_MainForm.ShowDataModifyForm(umode:integer);
+procedure TGRIDDING_DJ_MainForm.ShowDataModifyForm(umode:integer);
 begin
 if umode=0 then   //  显示在本窗体内
 begin
-  APP_NAME_Form.Parent:=TabSheetDataModify;
-  APP_NAME_Form.Align:=alClient;
-  APP_NAME_Form.BorderStyle:=bsnone;
+  GRIDDING_DJ_Form.Parent:=TabSheetDataModify;
+  GRIDDING_DJ_Form.Align:=alClient;
+  GRIDDING_DJ_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=True;
   self.rzPageCondition.ActivePage:=TabSheetDataModify;
 end;
 if umode=1 then   //  独立窗体
 begin
-   APP_NAME_Form.Parent:=nil;
- // APP_NAME_Form.Align:=alClient;
- // APP_NAME_Form.BorderStyle:=bsnone;
+   GRIDDING_DJ_Form.Parent:=nil;
+ // GRIDDING_DJ_Form.Align:=alClient;
+ // GRIDDING_DJ_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=False;
 
   self.rzPageCondition.ActivePage:=TabSheet1;
 end;
 
-APP_NAME_Form.Show;
+GRIDDING_DJ_Form.Show;
 
 
 end;

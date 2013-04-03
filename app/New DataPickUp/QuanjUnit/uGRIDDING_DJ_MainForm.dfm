@@ -1,9 +1,9 @@
-object APP_NAME_MainForm: TAPP_NAME_MainForm
+object GRIDDING_DJ_MainForm: TGRIDDING_DJ_MainForm
   Left = 0
   Top = 0
-  Caption = #24212#29992#31995#32479#32500#25252
+  Caption = #32593#26684#25968#25454#30331#35760
   ClientHeight = 515
-  ClientWidth = 692
+  ClientWidth = 700
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,12 +14,13 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
   Position = poDesigned
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object rzPageCondition: TRzPageControl
     Left = 0
     Top = 0
-    Width = 692
+    Width = 700
     Height = 515
     ActivePage = TabSheet1
     Align = alClient
@@ -30,7 +31,8 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     TabColors.HighlightBar = 1350640
     TabIndex = 0
     TabOrder = 0
-    TabStyle = tsBackSlant
+    TextAlignment = haRight
+    TextAlignmentVertical = vaTop
     FixedDimension = 19
     object TabSheet1: TRzTabSheet
       Color = 16119543
@@ -42,7 +44,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       object pnlCondition: TPanel
         Left = 5
         Top = 5
-        Width = 678
+        Width = 686
         Height = 36
         Align = alTop
         BevelEdges = []
@@ -52,32 +54,77 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        object lbl1: TStaticText
-          Left = 13
-          Top = 8
-          Width = 120
+        object txt4: TStaticText
+          Left = 15
+          Top = 7
+          Width = 92
           Height = 21
           Alignment = taCenter
           AutoSize = False
           BorderStyle = sbsSingle
-          Caption = #31995#32479#32534#21495
+          Caption = #25152#23646#32593#26684
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
         end
-        object edtAPPID: TMaskEdit
-          Left = 113
-          Top = 8
-          Width = 121
+        object edtSSWG: TMaskEdit
+          Left = 106
+          Top = 7
+          Width = 191
           Height = 21
           AutoSize = False
           Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
           ParentCtl3D = False
+          ParentFont = False
           TabOrder = 1
+        end
+        object txt3: TStaticText
+          Left = 295
+          Top = 7
+          Width = 100
+          Height = 21
+          Alignment = taCenter
+          AutoSize = False
+          BorderStyle = sbsSingle
+          Caption = #23457#25209#29366#24577
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object edtSHZT: TMaskEdit
+          Left = 392
+          Top = 7
+          Width = 231
+          Height = 21
+          AutoSize = False
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 3
         end
       end
       object RzToolbar1: TRzToolbar
         Left = 5
         Top = 41
-        Width = 678
+        Width = 686
         Height = 27
         AutoResize = False
         AutoStyle = False
@@ -161,7 +208,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         object btnAddnew: TRzToolButton
           Left = 169
           Top = 1
-          Width = 52
+          Width = 71
           Alignment = taLeftJustify
           GradientColorStyle = gcsMSOffice
           ImageIndex = 58
@@ -172,13 +219,13 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           UseToolbarShowCaption = False
           UseToolbarVisualStyle = False
           VisualStyle = vsGradient
-          Caption = #26032#22686
+          Caption = #20449#24687#30331#35760
           OnClick = btnAddnewClick
         end
         object btnDelete: TRzToolButton
-          Left = 221
+          Left = 240
           Top = 1
-          Width = 52
+          Width = 57
           Alignment = taLeftJustify
           GradientColorStyle = gcsMSOffice
           ImageIndex = 133
@@ -192,9 +239,9 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Caption = #21024#38500
         end
         object btnModify: TRzToolButton
-          Left = 273
+          Left = 297
           Top = 1
-          Width = 52
+          Width = 80
           Alignment = taLeftJustify
           GradientColorStyle = gcsMSOffice
           ImageIndex = 137
@@ -205,11 +252,11 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           UseToolbarShowCaption = False
           UseToolbarVisualStyle = False
           VisualStyle = vsGradient
-          Caption = #20462#25913
+          Caption = #20449#24687#20462#25913
           OnClick = btnModifyClick
         end
         object btnDisplay: TRzToolButton
-          Left = 325
+          Left = 377
           Top = 1
           Width = 52
           Alignment = taLeftJustify
@@ -229,7 +276,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       object cxGrid1: TcxGrid
         Left = 5
         Top = 68
-        Width = 678
+        Width = 686
         Height = 396
         Align = alClient
         TabOrder = 2
@@ -278,25 +325,69 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Preview.AutoHeight = False
           Preview.MaxLineCount = 2
           Preview.Visible = True
-          object cxGrid1DBTableView1APPID: TcxGridDBColumn
-            DataBinding.FieldName = 'APPID'
-            Width = 123
+          object cxGrid1DBTableView1TITLE: TcxGridDBColumn
+            DataBinding.FieldName = 'TITLE'
+            Width = 141
           end
-          object cxGrid1DBTableView1APPNAME: TcxGridDBColumn
-            DataBinding.FieldName = 'APPNAME'
-            Width = 129
+          object cxGrid1DBTableView1DWBM: TcxGridDBColumn
+            DataBinding.FieldName = 'DWBM'
+            Width = 155
           end
-          object cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn
-            DataBinding.FieldName = 'DB_SCHEMA'
-            Width = 77
+          object cxGrid1DBTableView1DWMC: TcxGridDBColumn
+            DataBinding.FieldName = 'DWMC'
+            Width = 130
           end
-          object cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'DATASOURCE'
-            Width = 122
+          object cxGrid1DBTableView1GLDW: TcxGridDBColumn
+            DataBinding.FieldName = 'GLDW'
+            Width = 133
           end
-          object cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn
-            DataBinding.FieldName = 'META_DATASOURCE'
-            Width = 120
+          object cxGrid1DBTableView1LXDH: TcxGridDBColumn
+            DataBinding.FieldName = 'LXDH'
+          end
+          object cxGrid1DBTableView1POLICE_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'POLICE_NAME'
+          end
+          object cxGrid1DBTableView1RESOURCE_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'RESOURCE_ID'
+          end
+          object cxGrid1DBTableView1SHDW: TcxGridDBColumn
+            DataBinding.FieldName = 'SHDW'
+          end
+          object cxGrid1DBTableView1SHSJ: TcxGridDBColumn
+            DataBinding.FieldName = 'SHSJ'
+          end
+          object cxGrid1DBTableView1SHSM: TcxGridDBColumn
+            DataBinding.FieldName = 'SHSM'
+            Width = 132
+          end
+          object cxGrid1DBTableView1SHZT: TcxGridDBColumn
+            DataBinding.FieldName = 'SHZT'
+          end
+          object cxGrid1DBTableView1SH_RYBH: TcxGridDBColumn
+            DataBinding.FieldName = 'SH_RYBH'
+          end
+          object cxGrid1DBTableView1SH_RYXM: TcxGridDBColumn
+            DataBinding.FieldName = 'SH_RYXM'
+          end
+          object cxGrid1DBTableView1SSWG: TcxGridDBColumn
+            DataBinding.FieldName = 'SSWG'
+          end
+          object cxGrid1DBTableView1UPLOAD_TIME: TcxGridDBColumn
+            DataBinding.FieldName = 'UPLOAD_TIME'
+          end
+          object cxGrid1DBTableView1Column1: TcxGridDBColumn
+          end
+          object cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn
+            DataBinding.FieldName = 'DESCRIPTION'
+            Visible = False
+          end
+          object cxGrid1DBTableView1LSH: TcxGridDBColumn
+            DataBinding.FieldName = 'LSH'
+            Visible = False
+          end
+          object cxGrid1DBTableView1POLICE_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'POLICE_ID'
+            Visible = False
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -308,7 +399,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
       object RzToolbar3: TRzToolbar
         Left = 5
         Top = 464
-        Width = 678
+        Width = 686
         Height = 23
         Align = alBottom
         AutoResize = False
@@ -368,7 +459,11 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     end
     object TabSheetDataModify: TRzTabSheet
       Color = 16119543
-      Caption = 'TabSheetDataModify'
+      Caption = #25968#25454#32500#25252
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object DataSource1: TDataSource
@@ -377,6 +472,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Top = 248
   end
   object cxLocalizer1: TcxLocalizer
+    FileName = '.\bin\DevLocal.ini'
     Left = 480
     Top = 232
   end
@@ -385,35 +481,108 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     Params = <>
     Left = 352
     Top = 248
-    object APP_NAMEAPPID: TWideStringField
-      DisplayLabel = #31995#32479#32534#21495
+    object GRIDDING_DJDESCRIPTION: TStringField
+      DisplayLabel = #20449#24687#25551#36848#20449#24687
       DisplayWidth = 20
-      FieldName = 'APPID'
+      FieldName = 'DESCRIPTION'
+      Size = 500
+    end
+    object GRIDDING_DJDWBM: TStringField
+      DisplayLabel = #21333#20301#32534#30721
+      DisplayWidth = 20
+      FieldName = 'DWBM'
+      Size = 12
+    end
+    object GRIDDING_DJDWMC: TStringField
+      DisplayLabel = #21333#20301#21517#31216
+      DisplayWidth = 20
+      FieldName = 'DWMC'
+      Size = 50
+    end
+    object GRIDDING_DJGLDW: TStringField
+      DisplayLabel = #31649#29702#21333#20301
+      DisplayWidth = 20
+      FieldName = 'GLDW'
+      Size = 12
+    end
+    object GRIDDING_DJLSH: TStringField
+      DisplayLabel = #27969#27700#21495
+      DisplayWidth = 20
+      FieldName = 'LSH'
       Size = 32
     end
-    object APP_NAMEAPPNAME: TWideStringField
-      DisplayLabel = #31995#32479#35828#26126
+    object GRIDDING_DJLXDH: TStringField
+      DisplayLabel = #32852#31995#30005#35805
       DisplayWidth = 20
-      FieldName = 'APPNAME'
-      Size = 100
-    end
-    object APP_NAMEDATASOURCE: TWideStringField
-      DisplayLabel = #25968#25454#28304#23450#20041
-      DisplayWidth = 20
-      FieldName = 'DATASOURCE'
+      FieldName = 'LXDH'
       Size = 50
     end
-    object APP_NAMEDB_SCHEMA: TWideStringField
-      DisplayLabel = #34920#27169#24335#21517
+    object GRIDDING_DJPOLICE_ID: TStringField
+      DisplayLabel = #35686#21592#32534#21495
       DisplayWidth = 20
-      FieldName = 'DB_SCHEMA'
-      Size = 50
+      FieldName = 'POLICE_ID'
+      Size = 6
     end
-    object APP_NAMEMETA_DATASOURCE: TWideStringField
-      DisplayLabel = #20803#25968#25454#25968#25454#28304
+    object GRIDDING_DJPOLICE_NAME: TStringField
+      DisplayLabel = #35686#21592#22995#21517
       DisplayWidth = 20
-      FieldName = 'META_DATASOURCE'
+      FieldName = 'POLICE_NAME'
+    end
+    object GRIDDING_DJRESOURCE_ID: TStringField
+      DisplayLabel = #36164#28304#32534#21495
+      DisplayWidth = 20
+      FieldName = 'RESOURCE_ID'
+      Size = 32
+    end
+    object GRIDDING_DJSHDW: TStringField
+      DisplayLabel = #23457#26680#21333#20301
+      DisplayWidth = 20
+      FieldName = 'SHDW'
+      Size = 12
+    end
+    object GRIDDING_DJSHSJ: TStringField
+      DisplayLabel = #23457#26680#26102#38388
+      DisplayWidth = 20
+      FieldName = 'SHSJ'
+    end
+    object GRIDDING_DJSHSM: TStringField
+      DisplayLabel = #23457#26680#35828#26126
+      DisplayWidth = 20
+      FieldName = 'SHSM'
       Size = 200
+    end
+    object GRIDDING_DJSHZT: TStringField
+      DisplayLabel = #23457#26680#29366#24577
+      DisplayWidth = 20
+      FieldName = 'SHZT'
+      Size = 1
+    end
+    object GRIDDING_DJSH_RYBH: TStringField
+      DisplayLabel = #23457#26680#20154#21592#32534#21495
+      DisplayWidth = 20
+      FieldName = 'SH_RYBH'
+    end
+    object GRIDDING_DJSH_RYXM: TStringField
+      DisplayLabel = #23457#26680#20154#21592#20449#24687
+      DisplayWidth = 20
+      FieldName = 'SH_RYXM'
+    end
+    object GRIDDING_DJSSWG: TStringField
+      DisplayLabel = #25152#23646#32593#26684
+      DisplayWidth = 20
+      FieldName = 'SSWG'
+      Size = 50
+    end
+    object GRIDDING_DJTITLE: TStringField
+      DisplayLabel = #26631#39064
+      DisplayWidth = 20
+      FieldName = 'TITLE'
+      Size = 500
+    end
+    object GRIDDING_DJUPLOAD_TIME: TStringField
+      DisplayLabel = #19978#20256#26102#38388
+      DisplayWidth = 20
+      FieldName = 'UPLOAD_TIME'
     end
   end
 end
