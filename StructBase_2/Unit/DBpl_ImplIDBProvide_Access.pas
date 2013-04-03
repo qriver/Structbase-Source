@@ -7,6 +7,7 @@ Type
 
   TAccessDBProvide=Class(TInterfacedObject,IDBProvideInterface)      // IDBProvideInterface接口的全江版本实现
   private
+      adoConnect: TADOConnection;
       function GetData(ADataSet:TDataSet):OleVariant;
 
   public
@@ -33,7 +34,7 @@ Type
 
 var
     strUrl:String ;
-    adoConnect: TADOConnection;
+
 
 implementation
 uses Windows,SysUtils,Dialogs,Variants,Base64 ;
@@ -146,6 +147,7 @@ end;
 
 destructor TAccessDBProvide.Destroy ;
 begin
+
    adoConnect.CLOSE;
    adoConnect.Free;
 

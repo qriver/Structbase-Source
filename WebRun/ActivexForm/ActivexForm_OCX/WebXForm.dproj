@@ -22,14 +22,14 @@
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_OldDosFileNames>true</DCC_OldDosFileNames>
 			<DCC_OutputDependencies>true</DCC_OutputDependencies>
-			<DCC_ExeOutput>..\output</DCC_ExeOutput>
+			<DCC_ExeOutput>c:\jwzhptClient</DCC_ExeOutput>
 			<DCC_DcuOutput>dcu</DCC_DcuOutput>
-			<DCC_BplOutput>..\output</DCC_BplOutput>
+			<DCC_BplOutput>c:\jwzhptClient</DCC_BplOutput>
 			<DCC_Define>OCX;$(DCC_Define)</DCC_Define>
 			<DCC_DcpOutput>dcp</DCC_DcpOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_E>false</DCC_E>
-			<DCC_DependencyCheckOutputName>..\output\WebXForm.ocx</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>c:\jwzhptClient\WebXForm.ocx</DCC_DependencyCheckOutputName>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_Platform>x86</DCC_Platform>
 			<DCC_S>false</DCC_S>

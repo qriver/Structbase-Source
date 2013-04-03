@@ -39,12 +39,11 @@ type
     cxSpinPageNo: TcxSpinEdit;
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
-   
-APP_DATASOURCEAUTOLOAD:TWideStringField; 
-APP_DATASOURCECONNECTIONSTR:TWideStringField; 
-APP_DATASOURCEID:TWideStringField; 
-APP_DATASOURCESOURCE_CHINESE:TWideStringField; 
-APP_DATASOURCESOURCE_NAME:TWideStringField; 
+    APP_DATASOURCEAUTOLOAD: TStringField;
+    APP_DATASOURCECONNECTIONSTR: TStringField;
+    APP_DATASOURCEID: TStringField;
+    APP_DATASOURCESOURCE_CHINESE: TStringField;
+    APP_DATASOURCESOURCE_NAME: TStringField;
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
     cxGrid1DBTableView1AUTOLOAD: TcxGridDBColumn;

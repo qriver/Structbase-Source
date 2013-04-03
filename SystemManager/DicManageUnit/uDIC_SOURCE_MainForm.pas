@@ -39,19 +39,18 @@ type
     cxSpinPageNo: TcxSpinEdit;
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
-
-DIC_SOURCEAPPID:TStringField; 
-DIC_SOURCEDICCHINESENAME:TStringField; 
-DIC_SOURCEDICFILENAME:TStringField; 
-DIC_SOURCEDICFILTERSQL:TStringField; 
-DIC_SOURCEDICID:TStringField; 
-DIC_SOURCEDICKEYFIELD:TStringField; 
-DIC_SOURCEDICLEVELMODE:TStringField; 
-DIC_SOURCEDICNAME:TStringField; 
-DIC_SOURCEDICPY:TStringField; 
-DIC_SOURCEDICSOURCETABLE:TStringField; 
-DIC_SOURCEDICVALFIELD:TStringField; 
-DIC_SOURCESTARTUP_LOAD:TStringField; 
+    DIC_SOURCEAPPID:TStringField; 
+    DIC_SOURCEDICCHINESENAME:TStringField; 
+    DIC_SOURCEDICFILENAME:TStringField; 
+    DIC_SOURCEDICFILTERSQL:TStringField; 
+    DIC_SOURCEDICID:TStringField; 
+    DIC_SOURCEDICKEYFIELD:TStringField; 
+    DIC_SOURCEDICLEVELMODE:TStringField; 
+    DIC_SOURCEDICNAME:TStringField; 
+    DIC_SOURCEDICPY:TStringField; 
+    DIC_SOURCEDICSOURCETABLE:TStringField; 
+    DIC_SOURCEDICVALFIELD:TStringField; 
+    DIC_SOURCESTARTUP_LOAD:TStringField; 
     TabSheetDataModify: TRzTabSheet;
     edtAPPID: TMaskEdit;
     lbl1: TStaticText;
@@ -102,6 +101,8 @@ uses uDIC_SOURCE_Form;    //
 
 procedure TDIC_SOURCE_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
+var i:integer;
+var stream:TMemoryStream;
 begin
 
   self.btnAddnew.Enabled:=true;
@@ -125,7 +126,17 @@ begin
       strSql:=format(strPageSql,[strSql,strLast,strFrist]);
   end;
   screen.Cursor:= crHourGlass;
+
+
+  cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
+
+
+  if _DBTYPE<>'ACCESS' then
+    cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+
+ // self.mTranslateGrid(cxGrid1DBTableView1,_TABLENAME);
+
   screen.Cursor:= crDefault;
   cxGrid1DBTableView1.DataController.KeyFieldNames:=self._PkFieldName;
  // RzPageMain.Enabled:=true;
@@ -186,6 +197,7 @@ end;
 
 
 procedure TDIC_SOURCE_MainForm.FormCreate(Sender: TObject);
+var i:integer;
 begin
   inherited;
   DIC_SOURCE_Form:=TDIC_SOURCE_Form.create(self);
@@ -206,6 +218,8 @@ begin
   self.mRegistCntrl(pnlCondition,_TableName);
   self.rzPageCondition.ActivePage:=TabSheet1;
   TabSheetDataModify.TabVisible:=False;
+
+
 end;
 
 procedure TDIC_SOURCE_MainForm.RzBtnLookupClick(Sender: TObject);

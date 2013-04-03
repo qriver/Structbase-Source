@@ -61,7 +61,6 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 0
-          Text = 'edtID'
         end
         object lbl3: TStaticText
           Left = 8
@@ -297,7 +296,7 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
           end
           object cxGrid1DBTableView1CONNECTIONSTR: TcxGridDBColumn
             DataBinding.FieldName = 'CONNECTIONSTR'
-            Width = 124
+            Width = 336
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -390,31 +389,31 @@ object APP_DATASOURCE_MainForm: TAPP_DATASOURCE_MainForm
     Params = <>
     Left = 352
     Top = 248
-    object APP_DATASOURCEAUTOLOAD: TWideStringField
+    object APP_DATASOURCEAUTOLOAD: TStringField
       DisplayLabel = #33258#21160#35013#36733
       DisplayWidth = 20
       FieldName = 'AUTOLOAD'
       Size = 1
     end
-    object APP_DATASOURCECONNECTIONSTR: TWideStringField
+    object APP_DATASOURCECONNECTIONSTR: TStringField
       DisplayLabel = #25968#25454#24211#36830#25509#20018
       DisplayWidth = 20
       FieldName = 'CONNECTIONSTR'
       Size = 500
     end
-    object APP_DATASOURCEID: TWideStringField
+    object APP_DATASOURCEID: TStringField
       DisplayLabel = #21807#19968#26631#35782
       DisplayWidth = 20
       FieldName = 'ID'
       Size = 32
     end
-    object APP_DATASOURCESOURCE_CHINESE: TWideStringField
+    object APP_DATASOURCESOURCE_CHINESE: TStringField
       DisplayLabel = #25968#25454#28304#20013#25991#21517#31216
       DisplayWidth = 20
       FieldName = 'SOURCE_CHINESE'
       Size = 32
     end
-    object APP_DATASOURCESOURCE_NAME: TWideStringField
+    object APP_DATASOURCESOURCE_NAME: TStringField
       DisplayLabel = #25968#25454#28304#21517#31216
       DisplayWidth = 20
       FieldName = 'SOURCE_NAME'

@@ -1,4 +1,4 @@
-program prjSystemManage;
+  program prjSystemManage;
 
 uses
   Forms,
@@ -20,7 +20,12 @@ uses
   uAPP_NAME_MainForm in 'TableDefineUnit\uAPP_NAME_MainForm.pas' {APP_NAME_MainForm},
   uAPP_NAME_Form in 'TableDefineUnit\uAPP_NAME_Form.pas' {APP_NAME_Form},
   uAPP_DATASOURCE_MainForm in 'TableDefineUnit\uAPP_DATASOURCE_MainForm.pas',
-  uAPP_DATASOURCE_Form in 'TableDefineUnit\uAPP_DATASOURCE_Form.pas';
+  uAPP_DATASOURCE_Form in 'TableDefineUnit\uAPP_DATASOURCE_Form.pas',
+  zlibpas in 'IPhoneForm\zlibpas.pas',
+  ImageViewYM in 'IPhoneForm\ImageViewYM.pas',
+  pngextra in 'IPhoneForm\pngextra.pas',
+  pnglang in 'IPhoneForm\pnglang.pas',
+  uIPhoneMainForm in 'DevelopUnit\uIPhoneMainForm.pas' {IPhoneMainForm};
 
 {$R *.res}
 
@@ -30,14 +35,20 @@ begin
   Application.MainFormOnTaskbar := True;
 
   Application.CreateForm(TDbConnectForm, DbConnectForm);
+ // Application.CreateForm(TIPhoneMainForm, IPhoneMainForm);
   DbConnectForm.ShowModal;
   if DbConnectForm.ModalResult=mrOk  then
   begin
     DbConnectForm.Free;
-    structbase.structInitialization;
-    Application.CreateForm(TMainForm, MainForm);
+  //  structbase.structInitialization;
+    StructBase.ReadConfigFromDB('MetaSource');
+    StructBase.LoadAppInstance('SYSTEM');
+    //Application.CreateForm(TMainForm, MainForm);
     Application.CreateForm(TMyDataModule, MyDataModule);
-    MainForm.Show;
+    Application.CreateForm(TIPhoneMainForm, IPhoneMainForm);
+
+    IPhoneMainForm.Show;
+   // MainForm.Show;
     Application.Run;
 
   end else

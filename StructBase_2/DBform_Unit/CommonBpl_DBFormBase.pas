@@ -66,7 +66,7 @@ function TDbFormBase.mDbProvide: IDBProvideInterface;
 begin
 if fDbProvide=nil then
   with structbase.Applications.find(self.getAppId)do
-       fDbProvide:=MetaSource.dbProvide;
+       fDbProvide:=dbProvide;
 
   result:= fDbProvide;
 end;

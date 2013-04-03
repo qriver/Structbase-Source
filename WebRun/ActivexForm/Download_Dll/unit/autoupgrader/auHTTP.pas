@@ -981,6 +981,7 @@ rep     movsb             // restoring Password
       HTTPStartTime := GetTickCount;
       HTTPContinueDownload := True;
 
+
       ParseURL(FURL, ProtocolName, HostName, ObjectName, URLUsername,
         URLPassword, URLExtraInfo, PortNumber);
       if URLUsername = '' then

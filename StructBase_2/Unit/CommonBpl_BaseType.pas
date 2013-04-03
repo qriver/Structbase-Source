@@ -113,8 +113,8 @@ implementation
 
 procedure TDbControl.setDicCodeValue(strCode: String);
 begin
-  self.dicCodeValue:=strCode;
-  self.dicCodeDisplayValue:=self.FdicMetaBase.translateDicValue(strCode);
+  self.FrealValue:=strCode;
+  self.FdisplayValue:=self.FdicMetaBase.translateDicValue(strCode);
   self.FcntlObjct.Text:=dicCodeDisplayValue;
 end;
 

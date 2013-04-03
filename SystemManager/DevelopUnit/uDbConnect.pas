@@ -43,7 +43,7 @@ begin
   try
     LinkFile := SysUtils.GetCurrentDir +'\'+ cnDBLinkUdl;
     ConnectionString := 'File name=' + LinkFile;
-    structbase.DBProvids.AddDBProvide('ADOSAMPLE','ADO',ConnectionString);
+    structbase.DBProvids.AddDBProvide('MetaSource','ADO',ConnectionString);
     //DBUtil.registDBProvide('ADOSAMPLE','ADO',ConnectionString);
     self.ModalResult:=mrOk  ;
   except

@@ -72,7 +72,6 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 1
-          Text = 'edtAPPID'
         end
       end
       object RzToolbar1: TRzToolbar
@@ -97,7 +96,6 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         GradientColorStyle = gcsMSOffice
         TabOrder = 1
         VisualStyle = vsGradient
-        ExplicitTop = 89
         ToolbarControls = (
           RzSpacer1
           RzBtnLookup
@@ -237,8 +235,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
         TabOrder = 2
         LookAndFeel.Kind = lfOffice11
         RootLevelOptions.DetailFrameColor = clHighlight
-        ExplicitTop = 116
-        ExplicitHeight = 339
+        ExplicitHeight = 387
         object cxGrid1DBTableView1: TcxGridDBTableView
           DragMode = dmAutomatic
           NavigatorButtons.ConfirmDelete = False
@@ -287,10 +284,11 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           end
           object cxGrid1DBTableView1APPNAME: TcxGridDBColumn
             DataBinding.FieldName = 'APPNAME'
-            Width = 134
+            Width = 129
           end
           object cxGrid1DBTableView1DB_SCHEMA: TcxGridDBColumn
             DataBinding.FieldName = 'DB_SCHEMA'
+            Width = 77
           end
           object cxGrid1DBTableView1DATASOURCE: TcxGridDBColumn
             DataBinding.FieldName = 'DATASOURCE'
@@ -298,7 +296,7 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
           end
           object cxGrid1DBTableView1META_DATASOURCE: TcxGridDBColumn
             DataBinding.FieldName = 'META_DATASOURCE'
-            Width = 125
+            Width = 120
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -371,6 +369,10 @@ object APP_NAME_MainForm: TAPP_NAME_MainForm
     object TabSheetDataModify: TRzTabSheet
       Color = 16119543
       Caption = 'TabSheetDataModify'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object DataSource1: TDataSource

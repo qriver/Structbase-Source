@@ -51,7 +51,10 @@ var
 procedure TForm1.CheckUpdate;
 // 检查struct运行环境升级信息
 begin
-  //  messagebox(0,'upgrade_start',0,0);
+ //  messagebox(0,'upgrade_start',0,0);
+ //self.UpgraderFinish(self);
+ //exit;
+
   AutoUpgrader1.ShowMessages := [mConnLost, mHostUnreachable, mLostFile,
     mNoInfoFile];
   // AutoUpgrader1.ShowMessages:=[mAskUpgrade,mConnLost,mHostUnreachable,mLostFile,mNoInfoFile,mNoUpdateAvailable];
@@ -118,7 +121,8 @@ begin
   //showmessage(pchar(url));
  // url:='http://127.0.0.1:8080/index?webrun';
 //  gotoIEUrl(pchar(pansichar(ansistring(url))),false);
-  //messagebox(0,'upgrade_end',0,0);
+
+
   self.Close;
   SendMESSAGE(giCtrl,WM_DownloadFinish,0,0);
 

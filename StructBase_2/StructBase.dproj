@@ -23,11 +23,11 @@
 			<DCC_DcuOutput>DCU</DCC_DcuOutput>
 			<DCC_Define>NDEBUG;$(DCC_Define)</DCC_Define>
 			<DCC_DcpOutput>D:\StructBase SDK\lib\</DCC_DcpOutput>
-			<DCC_BplOutput>D:\StructBase SDK\BPL</DCC_BplOutput>
+			<DCC_BplOutput>C:\JwzhptClient</DCC_BplOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DesignOnlyPackage>false</DesignOnlyPackage>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DependencyCheckOutputName>D:\StructBase SDK\BPL\StructBase.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>C:\JwzhptClient\StructBase.bpl</DCC_DependencyCheckOutputName>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_Platform>x86</DCC_Platform>
 			<DCC_UnitSearchPath>D:\StructBase SDK\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -160,6 +160,9 @@
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dxSkinscxSchedulerPainterD14.bpl">File C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dxSkinscxSchedulerPainterD14.bpl not found</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dxSkinsdxNavBarPainterD14.bpl">File C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dxSkinsdxNavBarPainterD14.bpl not found</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dcldxPSdxLCLnkD14.bpl">File C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\dcldxPSdxLCLnkD14.bpl not found</Excluded_Packages>
 						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
 						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
 					</Excluded_Packages>
@@ -177,7 +180,7 @@ Activate Handle=1
 Save Log File=1
 Foreground Tab=0
 Freeze Activate=0
-Freeze Timeout=60
+Freeze Timeout=1
 SMTP From=eurekalog@email.com
 SMTP Host=
 SMTP Port=25
@@ -324,7 +327,7 @@ boSaveCompressedCopyInCaseOfError=0
 boHandleSafeCallExceptions=1
 boCallRTLExceptionEvent=0
 boCatchHandledExceptions=0
-loCatchLeaks=0
+loCatchLeaks=1
 loGroupsSonLeaks=1
 loHideBorlandLeaks=1
 loFreeAllLeaks=1
@@ -650,5 +653,5 @@ Count mtException_AntiFreeze=1
 mtException_AntiFreeze0="The application seems to be frozen."
 Count mtInvalidEmailMsg=1
 mtInvalidEmailMsg0="Invalid email."
-TextsCollection=English
+TextsCollection=
 EurekaLog Last Line -->

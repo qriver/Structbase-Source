@@ -280,43 +280,51 @@ object DIC_SOURCE_MainForm: TDIC_SOURCE_MainForm
           Preview.Visible = True
           object cxGrid1DBTableView1APPID: TcxGridDBColumn
             DataBinding.FieldName = 'APPID'
-            Width = 73
+            Width = 77
           end
           object cxGrid1DBTableView1DICID: TcxGridDBColumn
             DataBinding.FieldName = 'DICID'
-            Width = 86
+            Width = 87
           end
           object cxGrid1DBTableView1DICNAME: TcxGridDBColumn
             DataBinding.FieldName = 'DICNAME'
-            Width = 66
+            Width = 68
           end
           object cxGrid1DBTableView1DICCHINESENAME: TcxGridDBColumn
             DataBinding.FieldName = 'DICCHINESENAME'
+            Width = 91
           end
           object cxGrid1DBTableView1DICSOURCETABLE: TcxGridDBColumn
             DataBinding.FieldName = 'DICSOURCETABLE'
-            Width = 95
+            Width = 92
           end
           object cxGrid1DBTableView1DICFILTERSQL: TcxGridDBColumn
             DataBinding.FieldName = 'DICFILTERSQL'
+            Width = 116
           end
           object cxGrid1DBTableView1DICKEYFIELD: TcxGridDBColumn
             DataBinding.FieldName = 'DICKEYFIELD'
+            Width = 74
           end
           object cxGrid1DBTableView1DICVALFIELD: TcxGridDBColumn
             DataBinding.FieldName = 'DICVALFIELD'
+            Width = 79
           end
           object cxGrid1DBTableView1DICFILENAME: TcxGridDBColumn
             DataBinding.FieldName = 'DICFILENAME'
+            Width = 89
           end
           object cxGrid1DBTableView1DICLEVELMODE: TcxGridDBColumn
             DataBinding.FieldName = 'DICLEVELMODE'
+            Width = 109
           end
           object cxGrid1DBTableView1DICPY: TcxGridDBColumn
             DataBinding.FieldName = 'DICPY'
+            Width = 64
           end
           object cxGrid1DBTableView1STARTUP_LOAD: TcxGridDBColumn
             DataBinding.FieldName = 'STARTUP_LOAD'
+            Width = 81
           end
         end
         object cxGrid1Level1: TcxGridLevel

@@ -21,7 +21,7 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_Define>NDEBUG;$(DCC_Define)</DCC_Define>
-			<DCC_UnitSearchPath>D:\Structbase-Source\StructBase_2\DBform_Unit;D:\Structbase-Source\StructBase_2\Phprpc_Unit;D:\Structbase-Source\StructBase_2\Unit;D:\StructBase SDK\lib\Odac;D:\StructBase SDK\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>..\StructBase_2\DBform_Unit;..\StructBase_2\Phprpc_Unit;..\StructBase_2\Unit;D:\StructBase SDK\lib\Odac;D:\StructBase SDK\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_DependencyCheckOutputName>bin\prjSystemManage.exe</DCC_DependencyCheckOutputName>
 			<DCC_BplOutput>bin</DCC_BplOutput>
 			<DCC_DcpOutput>bin</DCC_DcpOutput>
@@ -90,6 +90,13 @@
 			</DCCReference>
 			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_MainForm.pas"/>
 			<DCCReference Include="TableDefineUnit\uAPP_DATASOURCE_Form.pas"/>
+			<DCCReference Include="IPhoneForm\zlibpas.pas"/>
+			<DCCReference Include="IPhoneForm\ImageViewYM.pas"/>
+			<DCCReference Include="IPhoneForm\pngextra.pas"/>
+			<DCCReference Include="IPhoneForm\pnglang.pas"/>
+			<DCCReference Include="DevelopUnit\uIPhoneMainForm.pas">
+				<Form>IPhoneMainForm</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -147,54 +154,55 @@
 					<Source>
 						<Source Name="MainSource">prjSystemManage.dpr</Source>
 					</Source>
-					<DebugEnvironmentVariables>
-						<DebugEnvironmentVariables Name="1830B7BD-F7A3-4c4d-989B-C004DE465EDE">&apos;ec8:284388&apos;</DebugEnvironmentVariables>
-					</DebugEnvironmentVariables>
 					<DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="_ExceptModuleDesc">&apos;Delphi Core Integrated Development Environment&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="_ExceptModuleName">&apos;delphicoreide140.bpl&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptModuleDesc">&apos;DBK Debugger IDE Package&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptModuleName">&apos;dbkdebugide140.bpl&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="_ExceptModuleVer">&apos;14.0.3513.24210&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="_ExceptMsg">&apos;Access violation at address 21916CE9 in module &apos;&apos;delphicoreide140.bpl&apos;&apos;. Read of address 4FF02634.&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="_ExceptMsg">&apos;Cannot run project unless a host application is defined.  Use the Run|Parameters... dialog box.&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="_LineBreak">&apos;&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="_MainModuleDesc">&apos;Embarcadero RAD Studio for Windows&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="_MainModuleName">&apos;bds.exe&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="_MainModuleVer">&apos;14.0.3513.24210&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="ALLUSERSPROFILE">&apos;C:\Documents and Settings\All Users&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Documents and Settings\Administrator\Application Data&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="asl.log">&apos;Destination=file&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Documents and Settings\ycjj\Application Data&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="BDS">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="BDSAppDataBaseDir">&apos;BDS&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="BDSCOMMONDIR">&apos;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSPROJECTSDIR">&apos;C:\Documents and Settings\Administrator\My Document\RAD Studio\Projects&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSUSERDIR">&apos;C:\Documents and Settings\Administrator\My Document\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CLIENTNAME">&apos;Console&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDSPROJECTSDIR">&apos;D:\My Documents\RAD Studio\Projects&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="BDSUSERDIR">&apos;D:\My Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="CLXBase7">&apos;E:\CLXBase7\CLXBase7&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="CommonProgramFiles">&apos;C:\Program Files\Common Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="COMPUTERNAME">&apos;PC-201209021625&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="COMPUTERNAME">&apos;全江&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="ComSpec">&apos;C:\WINDOWS\system32\cmd.exe&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="DELPHI">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="EL_PATHS">&apos;;C:\Program Files\EurekaLog 6\Delphi14;C:\Program Files\EurekaLog 6\CBuilder14&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="FP_NO_HOST_CHECK">&apos;NO&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="HOMEDRIVE">&apos;C:&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="HOMEPATH">&apos;\Documents and Settings\Administrator&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LOGONSERVER">&apos;\\PC-201209021625&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="HOMEPATH">&apos;\Documents and Settings\ycjj&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="JAVA_HOME">&apos;C:\Program Files\Java\jdk1.6.0_10&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="LD_LIBRARY_PATH">&apos;C:\oracle\ora92\lib&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="LOGONSERVER">&apos;\\全江&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="NLS_LANG">&apos;SIMPLIFIED CHINESE_CHINA.ZHS16GBK&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="NUMBER_OF_PROCESSORS">&apos;2&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="OS">&apos;Windows_NT&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="Path">&apos;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\TortoiseGit\bin;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl;C:\Documents and Settings\Administrator\My Document\Borland Studio Projects\Bpl;C:\Program Files\StormII\Codec;C:\Program Files\StormII;C:\WebXone\;;C:\Program Files\EurekaLog 6\Delphi14;C:\Program Files\EurekaLog 6\CBuilder14;C:\JwzhptClient\;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl;C:\Documents and Settings\Administrator\My Document\Borland Studio Projects\Bpl;C:\Program Files\StormII\Codec;C:\Program Files\StormII&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PATHEXT">&apos;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="Path">&apos;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\pmis\;C:\WebXone\;%EL_PATHS%;C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PATHEXT">&apos;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.py;.pyw&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="PROCESSOR_ARCHITECTURE">&apos;x86&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_IDENTIFIER">&apos;x86 Family 6 Model 42 Stepping 7, GenuineIntel&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PROCESSOR_IDENTIFIER">&apos;x86 Family 6 Model 23 Stepping 10, GenuineIntel&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="PROCESSOR_LEVEL">&apos;6&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_REVISION">&apos;2a07&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="PROCESSOR_REVISION">&apos;170a&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="ProgramFiles">&apos;C:\Program Files&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="SESSIONNAME">&apos;Console&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="SQLANY">&apos;C:\Sybase\SQLANY~1.0\Win32;;C:\Sybase\SQLANY~1.0\Win32;&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="SystemDrive">&apos;C:&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="SystemRoot">&apos;C:\WINDOWS&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TEMP">&apos;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TMP">&apos;C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERDOMAIN">&apos;PC-201209021625&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERNAME">&apos;Administrator&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERPROFILE">&apos;C:\Documents and Settings\Administrator&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="TEMP">&apos;C:\DOCUME~1\ycjj\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="TMP">&apos;C:\DOCUME~1\ycjj\LOCALS~1\Temp&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERDOMAIN">&apos;全江&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERNAME">&apos;ycjj&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="USERPROFILE">&apos;C:\Documents and Settings\ycjj&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="VXIPNPPATH">&apos;C:\Program Files\IVI Foundation\VISA\&apos;</DebugSysEnvironmentVariables>
+						<DebugSysEnvironmentVariables Name="WF_RESOURCES">&apos;c:\oracle\ora92\WF\RES\WFus.RES&apos;</DebugSysEnvironmentVariables>
 						<DebugSysEnvironmentVariables Name="windir">&apos;C:\WINDOWS&apos;</DebugSysEnvironmentVariables>
 					</DebugSysEnvironmentVariables>
 				</Delphi.Personality>

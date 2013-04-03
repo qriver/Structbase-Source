@@ -16,8 +16,6 @@ type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
   TAPP_DATASOURCE_Form = class(TBaseForm)
-    btnClose: TButton;
-    btnSave:  TButton;
     Panel1: TPanel;
     
     lbl1: TStaticText;
@@ -30,6 +28,8 @@ type
     edtSOURCE_CHINESE: TMaskEdit;
     lbl5: TStaticText;
     edtSOURCE_NAME: TMaskEdit;
+    btnSave: TButton;
+    btnClose: TButton;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);

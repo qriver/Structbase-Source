@@ -42,7 +42,7 @@ end;
 destructor TStruct_SysConfigUtils.Destroy;
 begin
    if fApplicationCds<>nil then fApplicationCds.Free;
-   if fDataSourceCds<>nil then fApplicationCds.Free;
+   if fDataSourceCds<>nil then fDataSourceCds.Free;
    inherited;
 end;
 

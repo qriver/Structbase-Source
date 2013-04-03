@@ -95,6 +95,7 @@ begin
   FUserAuthList.Free;
   FDBProvidItems.Destroy;
   FSysCOnfigUtils.Free;
+
 end;
 
 procedure TStructbase.LoadAppInstance(uAppName: String);
@@ -226,6 +227,7 @@ begin
 
 initialization
   Structbase :=TStructbase.Create;
+
 finalization
 //  Structbase.Free;
 end.

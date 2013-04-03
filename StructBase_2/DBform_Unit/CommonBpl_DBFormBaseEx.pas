@@ -5,15 +5,17 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,
+  DB,
+  DBCLIENT,
   Mask,
   strUtils,
   extctrls,
-  DBClient,
   DBpl_IDBProvide,
   Struct_LoginUser,
   uStructbaseFrameWork,
   CommonBpl_DBFormBase,
   CommonBpl_BaseType,
+  cxGridDBTableView,
   Struct_BaseForm_Function,
   Struct_BaseForm_FunctionEx;
 
@@ -22,12 +24,14 @@ type
   private
 
 
+
     { Private declarations }
 
 
 
   public
     { Public declarations }
+     procedure mTranslateGrid(AGrid: TcxGridDBTableView; aTableName: String);
 
     procedure mRegistCntrl(aPanel: TPanel; aTableName: String); overload;
     procedure mRegistCntrl(regMaskeditList: TStringList; aTableName: String);overload;
@@ -72,7 +76,9 @@ var
   DBFormBaseEx: TDBFormBaseEx;
 
 implementation
-uses ActiveX;
+uses
+
+ActiveX;
 {$R *.dfm}
 
 { TDBFormBaseEx }
@@ -282,5 +288,127 @@ begin
     aryCntl:= _GetDBControlArrayFromPanel(self,apanel);
     displayRecord(ucds,aryCntl);
 end;
+
+
+procedure TDBFormBaseEx.mTranslateGrid(AGrid: TcxGridDBTableView;
+  aTableName: String);
+var
+  i, j: integer;
+var
+  fieldName,fieldTypes, fieldNames, displayNames, dicID: String;
+  // var dicCDS:array of TClientDataSet;
+var
+  uDiccds, uTableDefine: TClientDataSet;
+var
+  ACDS: TDataSet;
+var
+  aDBControl: TDbControl;
+var
+  idx : integer;
+var
+  T: TStringField;
+var
+  tmpField: array of TField;
+var listDisplayName,listFieldName:TStringList;
+var
+  strDicId, strDicKey, strDicValue: String;
+
+begin
+  with Structbase.Applications.find(self.getAppId).MetaSource do
+  begin
+     uTableDefine := getTableDefineCDS(self.getAppId, aTableName);
+  end;
+
+  ACDS := AGrid.DataController.DataSet;
+  aTableName := uppercase(aTableName);
+
+  setlength(tmpField, acds.FieldDefs.count);
+
+  listFieldName:=TStringList.Create;
+  listDisplayName:=TStringList.Create;
+  for i := 0 to   acds.FieldDefs.count - 1 do
+  begin
+      if acds.FieldList.IndexOf(ACDS.FieldDefs[i].Name)>=0  then
+      begin
+          displayNames := displayNames + ACDS.FieldByName(ACDS.FieldDefs[i].Name)
+              .DisplayLabel + ',';
+          fieldNames := fieldNames+ ACDS.FieldDefs[i].Name + ',';
+      end;
+  end;
+  listDisplayName.CommaText := displayNames;
+  listFieldName.CommaText:= fieldNames;
+
+
+  acds.close;
+  acds.Fields.Clear;
+  for i := 0 to  acds.FieldDefs.count - 1 do
+  begin
+   fieldName :=acds.FieldDefs[i].DisplayName;
+
+   tmpField[i]:=acds.FieldDefs[i].CreateField(ACDS,nil,fieldName ) ;
+   if i< listDisplayName.Count-1 then
+        tmpField[i].DisplayLabel:= listDisplayName[listFieldName.IndexOf(fieldName)];
+
+   uTableDefine.First;
+   uTableDefine.filtered := false;
+    if    uTableDefine.Locate('AppId;TableName;ColName', VarArrayOf
+               ([self.getAppId, aTableName, fieldName]), [loCaseInsensitive,
+               loCaseInsensitive, loCaseInsensitive])
+    then
+               strDicId := uTableDefine.FieldByName('dicId').AsString
+    else
+       strDicId:='';
+
+    if (strDicId <> '') then
+    begin
+      with Structbase.Applications.find(self.getAppId).MetaSource do
+      begin
+        with getDicDefineCDS do
+        begin
+          First;
+          filtered := false;
+          Locate('dicid', VarArrayOf([strDicId]), [loCaseInsensitive]);
+          strDicKey := FieldByName('dicKeyField').AsString;
+          strDicValue := FieldByName('dicValField').AsString;
+        end;
+//        uDiccds := getDicCds(strDicId);
+         uDiccds :=structbase.DicItems.find(strDicId).dicDataSet;
+      end;
+
+      T := TStringField.Create(ACDS);
+
+
+   //  uDiccds :=  StructUtil.getApplication(self.getAppId).MetaSource.getDicCdsCopy(adbcontrol.dicMetaBase.dicId,self);
+     T.LookupDataSet := uDiccds;
+     T.Name := fieldName + '_DIC';
+     T.fieldName := fieldName + '_DIC';
+     T.DataSet := ACDS;
+     T.FieldKind := fklookup;
+     T.KeyFields := fieldName ;
+     T.Size:=udiccds.FieldByName(strDicValue).Size;
+     T.LookupKeyFields := strDicKey;
+     T.LookupResultField := strDicValue;
+     T.Lookup := true;
+     if i< listDisplayName.Count-1 then
+         T.DisplayLabel:=listDisplayName[i];
+
+     for j := 0 to AGrid.ColumnCount - 1 do
+     begin
+        if AGrid.Columns[j].DataBinding.fieldName = fieldName then
+        begin
+           AGrid.Columns[j].DataBinding.fieldName := T.fieldName;
+           AGrid.Columns[j].Caption := T.DisplayLabel;
+        end;
+      end;
+
+    end;
+    aDBControl.Free;
+  end;
+
+  ACDS.Open;
+  listDisplayName.Free;
+  listFieldName.Free;
+end;
+
 
 end.
