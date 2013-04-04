@@ -22,6 +22,8 @@ type
     procedure rzpgcntrl1Close(Sender: TObject; var AllowClose: Boolean);
     procedure RzGroup1Items0Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure RzGroup1Items1Click(Sender: TObject);
+    procedure RzGroup1Items2Click(Sender: TObject);
   private
     procedure RzGroupBar1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
@@ -36,10 +38,14 @@ var
 
 implementation
 uses
-uProfile,
-dbClient,
-fDataResForm,
-//ufrmUpLoadRes,
+     uProfile,
+     dbClient,
+     fDataResForm,
+      //ufrmUpLoadRes,
+      uUPLOAD_LIST_MainForm,
+     ufrmUpLoadDoc,
+     uImportExcelFile,
+     ufrmDJRegister ,
      uStructbaseFrameWork,
      uGRIDDING_JC_MainForm,
      uGRIDDING_SP_MainForm,
@@ -105,6 +111,31 @@ begin
               GRIDDING_DJ_MainForm:= TGRIDDING_DJ_MainForm.create(self);
               self.LoadFormInPage(TForm(GRIDDING_DJ_MainForm));
 
+end;
+
+procedure TChildMainForm.RzGroup1Items1Click(Sender: TObject);
+begin
+
+       if not assigned(frmDJRegister) then
+              frmDJRegister:= TfrmDJRegister.create(self);
+
+    self.LoadFormInPage(TForm(frmDJRegister));
+end;
+
+procedure TChildMainForm.RzGroup1Items2Click(Sender: TObject);
+//社会数据资源采)集
+begin
+{
+   if not assigned(ImportExcelFile) then
+              ImportExcelFile:= TImportExcelFile.create(self);
+
+    self.LoadFormInPage(TForm(ImportExcelFile    ));
+ }
+   if not assigned(UPLOAD_LIST_MainForm) then
+              UPLOAD_LIST_MainForm:= TUPLOAD_LIST_MainForm.create(self);
+
+    self.LoadFormInPage(TForm(UPLOAD_LIST_MainForm    ));
+   // frmUpLoadDoc: TfrmUpLoadDoc;
 end;
 
 procedure TChildMainForm.RzGroup5Items0Click(Sender: TObject);

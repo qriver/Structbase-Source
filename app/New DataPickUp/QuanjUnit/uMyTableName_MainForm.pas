@@ -53,6 +53,8 @@ type
 
   private
     { Private declarations }
+    listFieldName: TStringList;
+    listFieldDisplay:TStringList;
     Const _TableName='MyTableName';
           _PkFieldName='PK_FieldName';
           _DBTYPE='ACCESS';
@@ -77,6 +79,7 @@ uses uMyTableName_Form;    //
 
 procedure TMyTableName_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
+var j:integer;
 begin
 
   self.btnAddnew.Enabled:=true;
@@ -89,7 +92,7 @@ begin
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
-  strSql:=self.mGetSqlByPanel(pnlCondition) ;
+  strSql:=self.mGetSqlStr(pnlCondition);
 
   if _DBTYPE<>'ACCESS' then
   begin
@@ -100,7 +103,17 @@ begin
       strSql:=format(strPageSql,[strSql,strLast,strFrist]);
   end;
   screen.Cursor:= crHourGlass;
+  
+   cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
+  if _DBTYPE<>'ACCESS' then
+  cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
+  for j := 0 to listFieldDisplay.Count - 2 do
+  begin
+     cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel:=listFieldDisplay[j];
+  end;
+
+ 
   screen.Cursor:= crDefault;
   cxGrid1DBTableView1.DataController.KeyFieldNames:=self._PkFieldName;
  // RzPageMain.Enabled:=true;
@@ -122,7 +135,7 @@ begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-     DIC_SOURCE_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     MyTableName_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
   
   MyTableName_Form.actionType:=fDisplay;
@@ -155,11 +168,16 @@ begin
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
   MyTableName_MainForm:=NIL;
+  
+  listFieldName.free;
+  listFieldDisplay.free;
 end;
 
 
 
 procedure TMyTableName_MainForm.FormCreate(Sender: TObject);
+var i:integer;
+var fieldNames,displayNames:String;
 begin
   inherited;
   
@@ -180,6 +198,19 @@ begin
   self.mRegistCntrl(pnlCondition,_TableName);
   self.rzPageCondition.ActivePage:=TabSheet1;
   TabSheetDataModify.TabVisible:=False;
+  
+  //记录记录集的原始定义
+  listFieldName:=TStringList.Create;
+  listFieldDisplay:=TStringList.Create;
+  for i := 0 to cds_table.Fields.Count - 1 do
+  begin
+       fieldNames := fieldNames + cds_table.fields[i].FieldName + ',';
+       displayNames:= displayNames +  cds_table.fields[i].DisplayLabel + ',';
+  end;
+
+
+  listFieldName.CommaText := fieldNames;
+  listFieldDisplay.CommaText:= displayNames;
 end;
 
 procedure TMyTableName_MainForm.RzBtnLookupClick(Sender: TObject);

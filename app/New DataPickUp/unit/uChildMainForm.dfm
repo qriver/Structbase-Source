@@ -38,9 +38,14 @@ object ChildMainForm: TChildMainForm
         end
         item
           Caption = #32593#26684#27665#35686#30331#35760
+          OnClick = RzGroup1Items1Click
+        end
+        item
+          Caption = #31038#20250#25968#25454#37319#38598
+          OnClick = RzGroup1Items2Click
         end>
       Opened = True
-      OpenedHeight = 67
+      OpenedHeight = 87
       DividerVisible = False
       Caption = #32593#26684#27665#35686
       ParentColor = False
@@ -51,7 +56,7 @@ object ChildMainForm: TChildMainForm
       ColorDefault = False
       Items = <
         item
-          Caption = #27966#20986#25152#30003#25209
+          Caption = #27966#20986#25152#23457#25209
         end>
       Opened = True
       OpenedHeight = 47
@@ -65,7 +70,7 @@ object ChildMainForm: TChildMainForm
       ColorDefault = False
       Items = <
         item
-          Caption = #20998#23616#30003#25209
+          Caption = #20998#23616#23457#25209
         end>
       Opened = True
       OpenedHeight = 47

@@ -88,6 +88,21 @@
 			<DCCReference Include="unit\ufrmDJCheck.pas">
 				<Form>frmDJCheck</Form>
 			</DCCReference>
+			<DCCReference Include="unit\ufrmDJRegister.pas">
+				<Form>frmDJRegister</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uImportExcelFile.pas">
+				<Form>ImportExcelFile</Form>
+			</DCCReference>
+			<DCCReference Include="unit\ufrmUpLoadDoc.pas">
+				<Form>frmUpLoadDoc</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uUPLOAD_LIST_MainForm.pas">
+				<Form>UPLOAD_LIST_MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="QuanjUnit\uUPLOAD_LIST_Form.pas">
+				<Form>UPLOAD_LIST_Form</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

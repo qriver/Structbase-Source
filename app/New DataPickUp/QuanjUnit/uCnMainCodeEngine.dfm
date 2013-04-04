@@ -1,4 +1,4 @@
-object GRIDDING_DJ_MainForm: TGRIDDING_DJ_MainForm
+object TABLEDEFINE_Form: TTABLEDEFINE_Form
   Left = 194
   Top = 115
   Width = 639

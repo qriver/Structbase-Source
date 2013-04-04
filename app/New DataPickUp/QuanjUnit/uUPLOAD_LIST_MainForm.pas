@@ -1,4 +1,4 @@
-unit uGRIDDING_DJ_MainForm;
+unit uUPLOAD_LIST_MainForm;
 
 interface
 
@@ -16,7 +16,7 @@ uses
 
 
 type
-  TGRIDDING_DJ_MainForm = class(TBaseForm)
+  TUPLOAD_LIST_MainForm = class(TBaseForm)
     RzToolbar1: TRzToolbar;
     RzBtnLookup: TRzToolButton;
     RzSpacer1: TRzSpacer;
@@ -39,49 +39,46 @@ type
     cxSpinPageNo: TcxSpinEdit;
     cxSpinPageNum: TcxSpinEdit;
     CDS_TABLE: TClientDataSet;
-    GRIDDING_DJDESCRIPTION:TStringField;
-    GRIDDING_DJDWBM:TStringField;
-    GRIDDING_DJDWMC:TStringField;
-    GRIDDING_DJGLDW:TStringField;
-    GRIDDING_DJLSH:TStringField;
-    GRIDDING_DJLXDH:TStringField;
-    GRIDDING_DJPOLICE_ID:TStringField;
-    GRIDDING_DJPOLICE_NAME:TStringField;
-    GRIDDING_DJRESOURCE_ID:TStringField;
-    GRIDDING_DJSHDW:TStringField;
-    GRIDDING_DJSHSJ:TStringField;
-    GRIDDING_DJSHSM:TStringField;
-    GRIDDING_DJSHZT:TStringField;
-    GRIDDING_DJSH_RYBH:TStringField;
-    GRIDDING_DJSH_RYXM:TStringField;
-    GRIDDING_DJSSWG:TStringField;
-    GRIDDING_DJTITLE:TStringField;
-    GRIDDING_DJUPLOAD_TIME:TStringField;
+   
+UPLOAD_LISTDESCRIPTION:TWideStringField; 
+UPLOAD_LISTDWBM:TWideStringField; 
+UPLOAD_LISTDWMC:TWideStringField; 
+UPLOAD_LISTFROM_DW:TWideStringField; 
+UPLOAD_LISTJLTS:TWideStringField; 
+UPLOAD_LISTLSH:TWideStringField; 
+UPLOAD_LISTLXDH:TWideStringField; 
+UPLOAD_LISTPOLICE_ID:TWideStringField; 
+UPLOAD_LISTPOLICE_NAME:TWideStringField; 
+UPLOAD_LISTRESOURCE_ID:TWideStringField; 
+UPLOAD_LISTRK_COUNT:TWideStringField; 
+UPLOAD_LISTSFRK:TWideStringField; 
+UPLOAD_LISTSH_RYBH:TWideStringField; 
+UPLOAD_LISTSH_RYXM:TWideStringField; 
+UPLOAD_LISTSHSJ:TWideStringField; 
+UPLOAD_LISTSHSM:TWideStringField; 
+UPLOAD_LISTSHZT:TWideStringField; 
+UPLOAD_LISTSJZT:TWideStringField; 
+UPLOAD_LISTTitle:TWideStringField; 
+UPLOAD_LISTUPLOAD_TIME:TWideStringField; 
+UPLOAD_LISTWJLJ:TWideStringField; 
     TabSheetDataModify: TRzTabSheet;
     cxLocalizer1: TcxLocalizer;
-    txt4: TStaticText;
-    edtSSWG: TMaskEdit;
-    txt3: TStaticText;
-    edtSHZT: TMaskEdit;
+    cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
     cxGrid1DBTableView1DWBM: TcxGridDBColumn;
     cxGrid1DBTableView1DWMC: TcxGridDBColumn;
-    cxGrid1DBTableView1GLDW: TcxGridDBColumn;
-    cxGrid1DBTableView1LXDH: TcxGridDBColumn;
-    cxGrid1DBTableView1POLICE_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1RESOURCE_ID: TcxGridDBColumn;
-    cxGrid1DBTableView1SHDW: TcxGridDBColumn;
-    cxGrid1DBTableView1SHSJ: TcxGridDBColumn;
-    cxGrid1DBTableView1SHSM: TcxGridDBColumn;
-    cxGrid1DBTableView1SHZT: TcxGridDBColumn;
-    cxGrid1DBTableView1SH_RYBH: TcxGridDBColumn;
-    cxGrid1DBTableView1SH_RYXM: TcxGridDBColumn;
-    cxGrid1DBTableView1SSWG: TcxGridDBColumn;
-    cxGrid1DBTableView1TITLE: TcxGridDBColumn;
-    cxGrid1DBTableView1UPLOAD_TIME: TcxGridDBColumn;
-    cxGrid1DBTableView1Column1: TcxGridDBColumn;
-    cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGrid1DBTableView1FROM_DW: TcxGridDBColumn;
+    cxGrid1DBTableView1JLTS: TcxGridDBColumn;
     cxGrid1DBTableView1LSH: TcxGridDBColumn;
+    cxGrid1DBTableView1LXDH: TcxGridDBColumn;
     cxGrid1DBTableView1POLICE_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1POLICE_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1Title: TcxGridDBColumn;
+    StaticText1: TStaticText;
+    edtPolice_Id: TMaskEdit;
+    txt1: TStaticText;
+    edtDWBM: TMaskEdit;
+    txt3: TStaticText;
+    edtSHZT: TMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RzBtnLookupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -89,38 +86,34 @@ type
     procedure btnAddnewClick(Sender: TObject);
     procedure btnModifyClick(Sender: TObject);
     procedure btnDisplayClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
+    listFieldName: TStringList;
     listFieldDisplay:TStringList;
-    listFieldName :TStringList;
-
-    Const _TableName='GRIDDING_DJ';
+    Const _TableName='UPLOAD_LIST';
           _PkFieldName='LSH';
           _DBTYPE='ACCESS';
-
     procedure RefreshGrid(Const PageNo:String);
     procedure ShowDataModifyForm(umode:integer) ;
-
   public
     { Public declarations }
   end;
 
 
 var
-  GRIDDING_DJ_MainForm: TGRIDDING_DJ_MainForm;
+  UPLOAD_LIST_MainForm: TUPLOAD_LIST_MainForm;
 
 implementation
 
-uses uGRIDDING_DJ_Form,uProfile;    //
+uses uUPLOAD_LIST_Form;    //
 
 
 {$R *.dfm}
 
 
 
-procedure TGRIDDING_DJ_MainForm.RefreshGrid(const PageNo: String);
+procedure TUPLOAD_LIST_MainForm.RefreshGrid(const PageNo: String);
 var strSql,strPageSql,strFrist,strLast:String;
 var j:integer;
 begin
@@ -129,13 +122,13 @@ begin
   self.btnDelete.Enabled:=true;
   self.btnModify.Enabled:=true;
   self.btnDisplay.Enabled:=true;
-
+  cds_table.Close;
 
 
   strFrist:=(cxSpinPageNo.Value-1)*cxSpinPageNum.Value+1;
   strLast:=(cxSpinPageNo.Value)*cxSpinPageNum.Value ;
 
-  strSql:=self.mGetSqlStr(pnlCondition) ;
+  strSql:=self.mGetSqlStr(pnlCondition);
 
   if _DBTYPE<>'ACCESS' then
   begin
@@ -146,139 +139,108 @@ begin
       strSql:=format(strPageSql,[strSql,strLast,strFrist]);
   end;
   screen.Cursor:= crHourGlass;
-  cds_table.Close;
-  cds_table.Fields.Clear;
+  
+   cds_table.Fields.Clear;
   self.mDBProvide.SelectCommand(cds_table,strSql,0);
-
   if _DBTYPE<>'ACCESS' then
-    cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
-
-
+  cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
   for j := 0 to listFieldDisplay.Count - 2 do
   begin
+     listFieldDisplay[j];
+     cds_table.FieldList.IndexOf(listFieldName[j]);
+     cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel;
      cds_table.Fields[cds_table.FieldList.IndexOf(listFieldName[j])].DisplayLabel:=listFieldDisplay[j];
   end;
 
- // cds_table.Fields.Remove(cds_table.Fields[cds_table.FieldList.IndexOf('RN')]);
-
+ 
   screen.Cursor:= crDefault;
   cxGrid1DBTableView1.DataController.KeyFieldNames:=self._PkFieldName;
+     self.mTranslateGrid(cxGrid1DBTableView1,'UPLOAD_LIST');
  // RzPageMain.Enabled:=true;
   self.rzPageCondition.ActivePage:=TabSheet1;
 end;
 
 
 
-procedure TGRIDDING_DJ_MainForm.btnAddnewClick(Sender: TObject);
+procedure TUPLOAD_LIST_MainForm.btnAddnewClick(Sender: TObject);
 begin
   inherited;
   TabSheetDataModify.Caption:='新增记录';
-  GRIDDING_DJ_Form.actionType:=faddnew;
+  UPLOAD_LIST_Form.actionType:=faddnew;
   ShowDataModifyForm(0);
 end;
 
-procedure TGRIDDING_DJ_MainForm.btnDisplayClick(Sender: TObject);
+procedure TUPLOAD_LIST_MainForm.btnDisplayClick(Sender: TObject);
 begin
   inherited;
   with  cxGrid1DBTableView1.DataController  do
   begin
-      GRIDDING_DJ_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
+     UPLOAD_LIST_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
-
-  GRIDDING_DJ_Form.actionType:=fDisplay;
+  
+  UPLOAD_LIST_Form.actionType:=fDisplay;
   TabSheetDataModify.Caption:='数据浏览';
   ShowDataModifyForm(0);
 end;
 
-procedure TGRIDDING_DJ_MainForm.btnModifyClick(Sender: TObject);
-var str:string;
+procedure TUPLOAD_LIST_MainForm.btnModifyClick(Sender: TObject);
 begin
-
-  if cds_table.Active = true  then
+  inherited;
+  with  cxGrid1DBTableView1.DataController  do
   begin
-    if cds_table.FieldByName('SHZT').AsString='0'  then
-    begin
-          with  cxGrid1DBTableView1.DataController  do
-          begin
-             GRIDDING_DJ_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
-          end;
-          TabSheetDataModify.Caption:='修改记录';
-          GRIDDING_DJ_Form.actionType:=fupdate;
-          ShowDataModifyForm(0);
-    end
-    else
-    Application.messagebox('该资源已审批或已退回,无法修改！','提示',mb_ok);
-  end
-  else
-  begin
-     Application.messagebox('请先查询！','提示',mb_ok);
+     UPLOAD_LIST_Form.pkFieldValue:=DataSet.FieldByName(KeyFieldNames).Value;
   end;
-
-
-
-
-
-
-
+  TabSheetDataModify.Caption:='修改记录';
+  UPLOAD_LIST_Form.actionType:=fupdate;
+  ShowDataModifyForm(0);
 end;
 
-procedure TGRIDDING_DJ_MainForm.cxSpinPageNoClick(Sender: TObject);
+procedure TUPLOAD_LIST_MainForm.cxSpinPageNoClick(Sender: TObject);
 begin
   inherited;
   RefreshGrid(cxSpinPageNo.Value);
 end;
 
 
-procedure TGRIDDING_DJ_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TUPLOAD_LIST_MainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  listFieldDisplay.Free;
-  listFieldName.Free;
-
   cxGrid1DBTableView1.DataController.DataSource:=nil;
   CDS_TABLE.Close;
-  GRIDDING_DJ_MainForm:=NIL;
-
+  UPLOAD_LIST_MainForm:=NIL;
+  
+  listFieldName.free;
+  listFieldDisplay.free;
 end;
 
 
 
-procedure TGRIDDING_DJ_MainForm.FormCreate(Sender: TObject);
-var cds:TClientDataSet;
+procedure TUPLOAD_LIST_MainForm.FormCreate(Sender: TObject);
 var i:integer;
 var fieldNames,displayNames:String;
 begin
   inherited;
-
-  cds:=Self.getCdsGriddingPolice(mGetLoginUser.userid);
-  if cds.RecordCount=0 then
-  begin
-      messagebox(0,'请先到[网格民警登记]模块登记所在的网格!','提示',0);
-  end;
-
-
-  GRIDDING_DJ_Form:=TGRIDDING_DJ_Form.create(self);
-
+  
+  UPLOAD_LIST_Form:=TUPLOAD_LIST_Form.create(self);
   if sysutils.FileExists(GetCurrentDir+'\DevLocal.ini') then
   begin
       cxLocalizer1.FileName:=GetCurrentDir+'\DevLocal.ini';
       cxLocalizer1.Active:=true;
       cxLocalizer1.Locale:=2052;
   end;
-
-
-  edtSSWG.Text:=cds.FieldByName('GRIDDING_NAME').AsString;
-
-
+  
+ 
+       
   self.btnDelete.Enabled:=false;
   self.btnModify.Enabled:=false;
   self.btnDisplay.Enabled:=false;
 
   self.mRegistCntrl(pnlCondition,_TableName);
+  self.mOpenInputProxy(pnlCondition);
   self.rzPageCondition.ActivePage:=TabSheet1;
   TabSheetDataModify.TabVisible:=False;
-
-    //记录记录集的原始定义
+  
+  //记录记录集的原始定义
   listFieldName:=TStringList.Create;
   listFieldDisplay:=TStringList.Create;
   for i := 0 to cds_table.Fields.Count - 1 do
@@ -292,51 +254,39 @@ begin
   listFieldDisplay.CommaText:= displayNames;
 end;
 
-
-
-procedure TGRIDDING_DJ_MainForm.FormDestroy(Sender: TObject);
-begin
-
-  inherited;
- // self.Close;
-end;
-
-procedure TGRIDDING_DJ_MainForm.RzBtnLookupClick(Sender: TObject);
+procedure TUPLOAD_LIST_MainForm.RzBtnLookupClick(Sender: TObject);
 var strSql:String;
 begin
   inherited;
   cxSpinPageNo.Value:=1;
   RefreshGrid(cxSpinPageNo.Value);
   TabSheetDataModify.TabVisible:=False;
- // self.mTranslateCDS(cds_table,_TableName);
- self.mTranslateGrid(cxGrid1DBTableView1,_TableName);
-//  self.mTranslateCDS(cds_table,_TableName);
 end;
 
 
 
 
-procedure TGRIDDING_DJ_MainForm.ShowDataModifyForm(umode:integer);
+procedure TUPLOAD_LIST_MainForm.ShowDataModifyForm(umode:integer);
 begin
 if umode=0 then   //  显示在本窗体内
 begin
-  GRIDDING_DJ_Form.Parent:=TabSheetDataModify;
-  GRIDDING_DJ_Form.Align:=alClient;
-  GRIDDING_DJ_Form.BorderStyle:=bsnone;
+  UPLOAD_LIST_Form.Parent:=TabSheetDataModify;
+  UPLOAD_LIST_Form.Align:=alClient;
+  UPLOAD_LIST_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=True;
   self.rzPageCondition.ActivePage:=TabSheetDataModify;
 end;
 if umode=1 then   //  独立窗体
 begin
-   GRIDDING_DJ_Form.Parent:=nil;
- // GRIDDING_DJ_Form.Align:=alClient;
- // GRIDDING_DJ_Form.BorderStyle:=bsnone;
+   UPLOAD_LIST_Form.Parent:=nil;
+ // UPLOAD_LIST_Form.Align:=alClient;
+ // UPLOAD_LIST_Form.BorderStyle:=bsnone;
   TabSheetDataModify.TabVisible:=False;
 
   self.rzPageCondition.ActivePage:=TabSheet1;
 end;
 
-GRIDDING_DJ_Form.Show;
+UPLOAD_LIST_Form.Show;
 
 
 end;

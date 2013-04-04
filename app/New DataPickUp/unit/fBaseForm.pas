@@ -62,7 +62,7 @@ var strsql:string;
 begin
   if not Assigned(CDSGriddingPOlice) then
   begin
-      CDSGriddingPOlice:=TClientDataSet.Create(nil) ;
+      CDSGriddingPOlice:=TClientDataSet.Create(nil) ;  //在系统退出时，由主界面释放
       strsql:='select * from GRIDDING_DJ_REGISTER where police_name='''+str+'''';
       Self.mDBProvide.SelectCommand(CDSGriddingPOlice,strsql,0);
   end ;

@@ -18,7 +18,12 @@ uses
   uGRIDDING_JC_MainForm in 'QuanjUnit\uGRIDDING_JC_MainForm.pas' {Gridding_JC_MainForm},
   uGRIDDING_SP_MainForm in 'QuanjUnit\uGRIDDING_SP_MainForm.pas' {GRIDDING_SP_MainForm},
   uGRIDDING_TJ_MainForm in 'QuanjUnit\uGRIDDING_TJ_MainForm.pas' {GRIDDING_TJ_MAINFORM},
-  ufrmDJCheck in 'unit\ufrmDJCheck.pas' {frmDJCheck};
+  ufrmDJCheck in 'unit\ufrmDJCheck.pas' {frmDJCheck},
+  ufrmDJRegister in 'unit\ufrmDJRegister.pas' {frmDJRegister},
+  uImportExcelFile in 'QuanjUnit\uImportExcelFile.pas' {ImportExcelFile},
+  ufrmUpLoadDoc in 'unit\ufrmUpLoadDoc.pas' {frmUpLoadDoc},
+  uUPLOAD_LIST_MainForm in 'QuanjUnit\uUPLOAD_LIST_MainForm.pas' {UPLOAD_LIST_MainForm},
+  uUPLOAD_LIST_Form in 'QuanjUnit\uUPLOAD_LIST_Form.pas' {UPLOAD_LIST_Form};
 
 {$R *.res}
 
@@ -47,8 +52,10 @@ begin
 
     Application.MainFormOnTaskbar := True;
     Application.CreateForm(TMyDataModule, MyDataModule);
-
     Application.CreateForm(TChildMainForm, ChildMainForm);
+
+  // Application.CreateForm(TUPLOAD_LIST_MainForm, UPLOAD_LIST_MainForm);
+ // Application.CreateForm(TUPLOAD_LIST_Form, UPLOAD_LIST_Form);
     application.Run;
 
     structbase.Destroy;

@@ -4,22 +4,45 @@
   2007-03-01 09:48:58
 }
 
-unit uCnMainCodeEngine;
+unit uUPLOAD_LIST_Form;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask;
+  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask, RzButton, DB;
 
 type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
-  TTABLEDEFINE_Form = class(TBaseForm)
+  TUPLOAD_LIST_Form = class(TBaseForm)
     btnClose: TButton;
     btnSave:  TButton;
-    Panel1: TPanel;
-    
+    panel1: TPanel;
+    txtlbl2: TStaticText;
+    edtResource_id: TMaskEdit;
+    txt1: TStaticText;
+    edtPOLICE_ID: TMaskEdit;
+    txt2: TStaticText;
+    edtDWBM: TMaskEdit;
+    txt5: TStaticText;
+    edtUPLOAD_TIME: TMaskEdit;
+    txt4: TStaticText;
+    edtFROM_DW: TMaskEdit;
+    edtDESCRIPTION: TMaskEdit;
+    txt3: TStaticText;
+    StaticText1: TStaticText;
+    edtLSH: TMaskEdit;
+    RzBitBtn1: TRzBitBtn;
+    edtTitle1: TStaticText;
+    edtTitle: TMaskEdit;
+    StaticText2: TStaticText;
+    edtLXDH: TMaskEdit;
+    txt6: TStaticText;
+    edtJLTS: TMaskEdit;
+    txt7: TStaticText;
+    edtSJZT: TMaskEdit;
+    edtSHZT: TMaskEdit;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -46,7 +69,7 @@ type
   end;
 
 var
-  TABLEDEFINE_Form: TTABLEDEFINE_Form;
+  UPLOAD_LIST_Form: TUPLOAD_LIST_Form;
 
 implementation
   
@@ -55,27 +78,27 @@ implementation
 
 
 
-procedure TTABLEDEFINE_Form.FormCreate(Sender: TObject);
+procedure TUPLOAD_LIST_Form.FormCreate(Sender: TObject);
 begin
-  mRegistCntrl(panel1,'MyTableName') 
+  mRegistCntrl(panel1,'UPLOAD_LIST') 
 end;
 
-procedure TTABLEDEFINE_Form.FormDestroy(Sender: TObject);
-begin
-  //
-end;
-
-procedure TTABLEDEFINE_Form.FormShow(Sender: TObject);
+procedure TUPLOAD_LIST_Form.FormDestroy(Sender: TObject);
 begin
   //
 end;
 
-procedure TTABLEDEFINE_Form.btnCloseClick(Sender: TObject);
+procedure TUPLOAD_LIST_Form.FormShow(Sender: TObject);
+begin
+  //
+end;
+
+procedure TUPLOAD_LIST_Form.btnCloseClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure TTABLEDEFINE_Form.setActionType(ftype: ActionType);
+procedure TUPLOAD_LIST_Form.setActionType(ftype: ActionType);
 var whereSql:String;
 begin
    fActionType:=ftype;
@@ -89,8 +112,8 @@ begin
 
    if ftype=fUpdate then
    begin
-       edtPK_FieldName.readonly:=True;
-       whereSql:=' where PK_FieldName ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtLSH.readonly:=True;
+       whereSql:=' where LSH ='+ sysutils.QuotedStr(fPkFieldValue);
        self.mOpenInputProxy(panel1);
        mDisplayRecord(panel1,wheresql);
        btnSave.visible:=True;
@@ -104,8 +127,8 @@ begin
 
    if ftype=fDisplay then
    begin
-       edtPK_FieldName.readonly:=True;
-       whereSql:=' where PK_FieldName ='+ sysutils.QuotedStr(fPkFieldValue);
+       edtLSH.readonly:=True;
+       whereSql:=' where LSH ='+ sysutils.QuotedStr(fPkFieldValue);
        mDisplayRecord(panel1,wheresql);
        self.mCloseInputProxy(panel1);
        btnSave.visible:=False;
@@ -115,15 +138,15 @@ begin
 
 end;
 
-procedure TTABLEDEFINE_Form.btnSaveClick(Sender: TObject);
+procedure TUPLOAD_LIST_Form.btnSaveClick(Sender: TObject);
 var i:integer;
 begin
    if fActionType=fAddNew then
-      i:=mInsertRecord(panel1,'MyTableName');
+      i:=mInsertRecord(panel1,'UPLOAD_LIST');
 
    
    if fActionType=fUpdate then
-      i:= mUpdateRecord(panel1,'MyTableName');
+      i:= mUpdateRecord(panel1,'UPLOAD_LIST');
 
    if i=0 then 
    begin
@@ -134,12 +157,12 @@ begin
    
 end;
 
-procedure TTABLEDEFINE_Form.btnAddNewClick(Sender: TObject);
+procedure TUPLOAD_LIST_Form.btnAddNewClick(Sender: TObject);
 begin
     setActionType(fAddNew);
 end;
 
-procedure TTABLEDEFINE_Form.bttModifyClick(Sender: TObject);
+procedure TUPLOAD_LIST_Form.bttModifyClick(Sender: TObject);
 begin
     setActionType(fUpdate);
 end;
