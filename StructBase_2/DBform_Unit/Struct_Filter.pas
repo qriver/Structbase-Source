@@ -79,6 +79,7 @@ uses  StrUtils,classes;
              s1:=s1+strtmp;
           end;
           result:=s1;
+          tmp.Free;
           exit;
       end;
       idx:=pos('*',curfilter);
@@ -97,6 +98,7 @@ uses  StrUtils,classes;
                   strleft:=strleft+stringreplace(tmp[i],'*','0',[rfReplaceAll]) ;
           end;
           result:=strleft;
+          tmp.Free;
           exit;
       end;
 
@@ -105,6 +107,7 @@ uses  StrUtils,classes;
       if pos('*',curFilter)=0 then
       begin
              result:=curFilter;
+             tmp.Free;
              exit;
       end;
 
@@ -123,6 +126,7 @@ uses  StrUtils,classes;
       if (idx=tmp.Count-1) then
       begin
          result:= curvalue;
+         tmp.Free;
          exit;
       end;
       strleft:='';
@@ -134,8 +138,9 @@ uses  StrUtils,classes;
              strleft:=strleft+tmp[i];
       end;
       result:=strleft;
-      exit;
+
       tmp.Free;
+      exit;
   end;
 
 function computeCurLevel(curvalue,modestr:String):integer;

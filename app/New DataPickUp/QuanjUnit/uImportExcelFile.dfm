@@ -46,9 +46,9 @@ object ImportExcelFile: TImportExcelFile
     TabOrder = 1
     object btnDisplay: TRzToolButton
       Left = 552
-      Top = 17
+      Top = 16
       Width = 52
-      Height = 26
+      Height = 22
       Alignment = taLeftJustify
       GradientColorStyle = gcsMSOffice
       ImageIndex = 184
@@ -59,7 +59,7 @@ object ImportExcelFile: TImportExcelFile
       UseToolbarShowCaption = False
       UseToolbarVisualStyle = False
       VisualStyle = vsGradient
-      Caption = #23548#20837
+      Caption = #25171#24320
       OnClick = btnDisplayClick
     end
     object btnFileSelect: TRzBitBtn
@@ -87,7 +87,7 @@ object ImportExcelFile: TImportExcelFile
     end
     object ComboBox1: TComboBox
       Left = 397
-      Top = 13
+      Top = 16
       Width = 149
       Height = 21
       TabOrder = 2

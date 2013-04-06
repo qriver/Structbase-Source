@@ -139,7 +139,7 @@ object UPLOAD_LIST_MainForm: TUPLOAD_LIST_MainForm
           Left = 442
           Top = 9
           Width = 231
-          Height = 24
+          Height = 25
           AutoSize = False
           Ctl3D = False
           Font.Charset = DEFAULT_CHARSET

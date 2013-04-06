@@ -10,14 +10,21 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask, RzButton, DB;
+  Dialogs, StdCtrls,ExtCtrls,fBaseForm,Mask, RzButton, DB, RzTabs, Grids;
 
 type actionType=(fAddNew,fUpdate,fDelete,fDisplay);
 
 type
   TUPLOAD_LIST_Form = class(TBaseForm)
-    btnClose: TButton;
-    btnSave:  TButton;
+    RzPageControl1: TRzPageControl;
+    TabSheet1: TRzTabSheet;
+    TabSheet2: TRzTabSheet;
+    Panel2: TPanel;
+    btnDisplay: TRzToolButton;
+    btnFileSelect: TRzBitBtn;
+    edtWJLJ: TMaskEdit;
+    ComboBox1: TComboBox;
+    Label1: TLabel;
     panel1: TPanel;
     txtlbl2: TStaticText;
     edtResource_id: TMaskEdit;
@@ -33,7 +40,7 @@ type
     txt3: TStaticText;
     StaticText1: TStaticText;
     edtLSH: TMaskEdit;
-    RzBitBtn1: TRzBitBtn;
+    btnSave: TRzBitBtn;
     edtTitle1: TStaticText;
     edtTitle: TMaskEdit;
     StaticText2: TStaticText;
@@ -43,6 +50,9 @@ type
     txt7: TStaticText;
     edtSJZT: TMaskEdit;
     edtSHZT: TMaskEdit;
+    btnClose: TButton;
+    TabSheet3: TRzTabSheet;
+    StringGrid1: TStringGrid;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
